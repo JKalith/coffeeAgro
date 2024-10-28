@@ -23,15 +23,31 @@
     transition: color 0.3s; /* Transición suave al cambiar el color */
   }
   
-
+  .logoContainer {
+    background-color: #F0FDF5;
+   
+    border-radius: 10px;
+      height: 30px; /* Para que ocupe toda la altura de la ventana */
+      width:  30px;
+    
+    }
   .activeIcon{
-    background-color: #08B69C !important;
+    background-color: #08B69C;
  
     border-radius: 10px;
       height: 30px; /* Para que ocupe toda la altura de la ventana */
       width:  30px;
-  }
-
+      animation: fadeIn 0.5s ease-in-out; /* Aplica la animación */
+    }
+    
+    @keyframes fadeIn {
+      from {
+        background-color: #00ffd963; /* Fondo transparente al inicio */
+      }
+      to {
+        background-color: #08B69C; /* Transición al fondo con opacidad */
+      }
+    }
   .logo {
     padding-left: 10px;
     font-size: 20px; /* Tamaño de la fuente del logo */
@@ -53,14 +69,7 @@
 
 
   
-  .logoContainer {
-  background-color: #F0FDF5;
  
-  border-radius: 10px;
-    height: 30px; /* Para que ocupe toda la altura de la ventana */
-    width:  30px;
-  
-  }
   .menuRow {
     align-items: center; /* Centra verticalmente los elementos */
     width: 100px; /* Ancho del SideNav */

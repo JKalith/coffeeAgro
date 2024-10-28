@@ -1,15 +1,28 @@
 "use client";
 import React from 'react';
 import styles from "../styles/popUpWindow.module.css";
-
-const Modal = ({ isOpen, onClose, children }) => {
+import icon from "../../ui/styles/icons.module.css";
+const Modal = ({ isOpen, onClose, children , symbol}) => {
   if (!isOpen) return null;
 
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
-        <button className={styles.closeButton} onClick={onClose}>X</button>
-        {children}
+ 
+    {children}
+
+
+
+
+
+        <button className={styles.closeButton}  onClick={onClose}>
+        {" "}
+        <div className={`${icon.containerIcon} ${symbol}`}></div>
+   Cerrar
+      </button>
+
+        
+  
       </div>
     </div>
   );

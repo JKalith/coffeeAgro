@@ -1,6 +1,6 @@
 
 import SideNav from "../ui/salesDashboard/sideNav";
-import styles from "../styles/salesDashboard/sideNav.module.css"
+import styles from "../styles/sideNav.module.css";
 
 export default function Layout({ children }) {
     return (

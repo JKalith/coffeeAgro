@@ -1,15 +1,26 @@
 .modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.5s ease-in-out; /* Aplica la animación */
+}
+
+@keyframes fadeIn {
+  from {
+    background-color: rgba(0, 0, 0, 0); /* Fondo transparente al inicio */
   }
-  
+  to {
+    background-color: rgba(0, 0, 0, 0.5); /* Transición al fondo con opacidad */
+  }
+}
+
+
   .modalContent {
     background: white;
     padding: 20px;
@@ -21,12 +32,35 @@
   .closeButton {
     position: absolute;
     top: 10px;
-    width: 30px;
-
+align-items: center;
+background-color: #FA5246;
     right: 10px;
     border: none;
-    background: red;
+
     cursor: pointer;
     font-size: 16px;
   }
-  
+  .closeButton:hover {
+    position: absolute;
+    top: 10px;
+align-items: center;
+background-color: #fd4437;
+    right: 10px;
+    border: none;
+
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .modalContent{
+
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    width: 800px;
+    min-height: 100px;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.527);
+    justify-content: center;
+    align-items: center;
+    }
+   
