@@ -1,0 +1,87 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+  schemas  = ["Sales_management"]
+}
+
+model Accounting_closings {
+  C_accounting_closing Int                  @id(map: "PK_Accounting_closings") @db.SmallInt
+  F_date               DateTime             @db.DateTime
+  B_status             Boolean
+  Accounting_details   Accounting_details[]
+
+  @@schema("Sales_management")
+}
+
+model Accounting_details {
+  C_accounting_detail  Int                 @id(map: "PK_Accounting_details") @db.SmallInt
+  C_product            Int                 @db.SmallInt
+  C_accounting_closing Int                 @db.SmallInt
+  Q_system_quantity    Int
+  Q_physical_quantity  Int
+  Q_subtraction        Int
+  D_justification      String?             @db.NVarChar(50)
+  Accounting_closings  Accounting_closings @relation(fields: [C_accounting_closing], references: [C_accounting_closing], onUpdate: NoAction, map: "FK_Accounting_details_Accounting_closings")
+  Products             Products            @relation(fields: [C_product], references: [C_product], onUpdate: NoAction, map: "FK_Accounting_details_Products")
+
+  @@schema("Sales_management")
+}
+
+model Categories {
+  C_category      Int        @id(map: "PK_Categories") @db.SmallInt
+  D_category_name String     @unique(map: "IX_Categories") @db.NVarChar(30)
+  B_status        Boolean
+  Products        Products[]
+
+  @@schema("Sales_management")
+}
+
+model Payment_methods {
+  C_payment_method Int     @id(map: "PK_Payment_methods") @db.SmallInt
+  D_payment_method String  @unique(map: "IX_Payment_methods") @db.NVarChar(15)
+  Sales            Sales[]
+
+  @@schema("Sales_management")
+}
+
+model Products {
+  C_product          Int                  @id(map: "PK_Products") @db.SmallInt
+  D_product_name     String               @unique(map: "IX_Products") @db.NVarChar(30)
+  C_category         Int                  @db.SmallInt
+  Q_stock            Int
+  M_unit_price       Decimal              @db.Decimal(6, 2)
+  B_status           Boolean
+  Accounting_details Accounting_details[]
+  Categories         Categories           @relation(fields: [C_category], references: [C_category], onUpdate: NoAction, map: "FK_Products_Categories")
+  Sale_Details       Sale_Details[]
+
+  @@schema("Sales_management")
+}
+
+model Sale_Details {
+  C_sale_detail Int      @id(map: "PK_Sale_Details") @db.SmallInt
+  C_sale        Int      @db.SmallInt
+  C_Product     Int      @db.SmallInt
+  Q_quantity    Int
+  Products      Products @relation(fields: [C_Product], references: [C_product], onUpdate: NoAction, map: "FK_Sale_Details_Products")
+  Sales         Sales    @relation(fields: [C_sale], references: [C_Sale], onUpdate: NoAction, map: "FK_Sale_Details_Sales")
+
+  @@schema("Sales_management")
+}
+
+model Sales {
+  C_Sale           Int             @id(map: "PK_Sales") @db.SmallInt
+  C_payment_method Int             @db.SmallInt
+  F_date           DateTime        @db.DateTime
+  D_client         String          @db.NVarChar(30)
+  M_total_price    Decimal         @db.Decimal(8, 2)
+  Sale_Details     Sale_Details[]
+  Payment_methods  Payment_methods @relation(fields: [C_payment_method], references: [C_payment_method], onUpdate: NoAction, map: "FK_Sales_Payment_methods")
+
+  @@schema("Sales_management")
+}
