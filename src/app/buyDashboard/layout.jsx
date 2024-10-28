@@ -1,0 +1,17 @@
+
+import SideNav from "../ui/buyDashboard/sideNav";
+import styles from "../styles/buyDashboard/sideNav.module.css"
+
+export default function Layout({ children }) {
+    return (
+        <div className={styles.contain}>
+ 
+        <div >
+          <SideNav />
+        </div>
+        <div className={styles.content}>
+          {children}
+        </div>
+      </div>
+    );
+  }

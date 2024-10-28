@@ -1,0 +1,153 @@
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Espacio entre el logo y los enlaces */
+    align-items: center; /* Centra verticalmente los elementos */
+    background-color: #E9E9E9; /* Color de fondo del navbar */
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+  }
+
+ 
+  .navLinks {
+    list-style: none; /* Quitar los puntos de la lista */
+    display: flex; /* Hacer la lista horizontal */
+   
+  }
+  
+  .navLinks li a {
+   
+    text-decoration: none; /* Sin subrayado */
+    color: rgb(0, 0, 0); /* Color de los enlaces */
+    font-weight: bold;
+    font-size: 16px; /* Tamaño de la fuente de los enlaces */
+    transition: color 0.3s; /* Transición suave al cambiar el color */
+  }
+  
+
+  .activeIcon{
+    background-color: #08B69C !important;
+ 
+    border-radius: 10px;
+      height: 30px; /* Para que ocupe toda la altura de la ventana */
+      width:  30px;
+  }
+
+  .logo {
+    padding-left: 10px;
+    font-size: 20px; /* Tamaño de la fuente del logo */
+    color: rgb(0, 0, 0); /* Color del texto del logo */
+    font-weight: bold; /* Negrita para el logo */
+  }
+  
+
+
+  .container {
+ 
+    height: 400px; /* Para que ocupe toda la altura de la ventana */
+    width:  200px;
+  }
+
+
+
+
+
+
+  
+  .logoContainer {
+  background-color: #F0FDF5;
+ 
+  border-radius: 10px;
+    height: 30px; /* Para que ocupe toda la altura de la ventana */
+    width:  30px;
+  
+  }
+  .menuRow {
+    align-items: center; /* Centra verticalmente los elementos */
+    width: 100px; /* Ancho del SideNav */
+    height: 40px;
+    padding:0%;
+    padding-left: 5%;
+    text-align: left;
+    background-color: #ff000000; /* Color de fondo del sidebar */
+    flex-shrink: 0; /* Evitar que se reduzca de tamaño */
+  color: black;
+   border: solid rgba(245, 245, 220, 0);
+  
+  
+  }
+  .labelContent:hover{
+  
+  
+    background-color: #D9D9D9
+  
+  
+  }
+  .activeLabel{
+
+    background-color: #D9D9D9
+
+  }
+
+  .labelContent{
+  display: flex;
+  width: 140px;
+  align-items: center;
+border-radius: 5px;
+padding: 0px;
+
+padding-left: 3%;
+  }
+  
+ 
+  .containerSidebar{
+  
+    padding-top: 10px;
+  background-color: #ffffff;
+  border: solid 1.6px rgba(129, 129, 129, 0.479);
+  border-radius: 15px;
+  width: 195px;;
+  height: 100%;
+  
+  }
+  .loteIcon {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    background-repeat: no-repeat;
+   
+  
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' color='black'%3E%3Cpath d='M21.964 4.506s.177-1.785-.255-2.216m0 0c-.433-.433-2.215-.253-2.215-.253m2.215.253L19 5m2.964 14.494s.177 1.785-.255 2.215m0 0c-.433.434-2.215.254-2.215.254m2.215-.254L19 19M2.29 2.29L5 5M2.29 2.29c.434-.433 2.216-.253 2.216-.253M2.29 2.29c-.43.431-.254 2.216-.254 2.216M2.29 21.71L5 19m-2.71 2.71c.434.433 2.216.253 2.216.253m-2.216-.254c-.43-.43-.254-2.215-.254-2.215M19 12a7 7 0 1 1-14 0a7 7 0 0 1 14 0'/%3E%3Cpath d='M11.914 9.301c-1.105 0-1.914.642-1.914 1.388s.522 1.21 2 1.21c1.628 0 2 .743 2 1.489c0 .745-.712 1.333-2.086 1.333m0-5.42c.87 0 1.331.305 1.695.716M11.914 9.3v-.844m0 6.264c-.87 0-1.21-.172-1.689-.606m1.689.606v.788'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+
+
+
+
+
+
+
+
+
+
+  /* Estilos responsivos */
+  @media (max-width: 768px) {
+    .navLinks {
+      flex-direction: column; /* Cambiar a disposición vertical en móviles */
+      position: absolute; /* Posicionar el menú */
+      top: 60px; /* Distancia desde la parte superior */
+      left: 0; /* Alinear a la izquierda */
+      width: 100%; /* Ocupa todo el ancho */
+      background-color: #4CAF50; /* Color de fondo */
+      display: none; /* Ocultar por defecto */
+    }
+  
+    .navbar.active .navLinks {
+      display: flex; /* Mostrar el menú cuando esté activo */
+    }
+  
+    .navLinks li {
+      padding: 10px 20px; /* Espaciado interno en los enlaces */
+    }
+  }
+  
