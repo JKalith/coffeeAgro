@@ -10,7 +10,7 @@ datasource db {
 }
 
 model Accounting_closings {
-  C_accounting_closing Int                  @id(map: "PK_Accounting_closings") @db.SmallInt
+  C_accounting_closing Int                  @id(map: "PK_Accounting_closings") @default(autoincrement()) @db.SmallInt
   F_date               DateTime             @db.DateTime
   B_status             Boolean
   Accounting_details   Accounting_details[]
@@ -19,7 +19,7 @@ model Accounting_closings {
 }
 
 model Accounting_details {
-  C_accounting_detail  Int                 @id(map: "PK_Accounting_details") @db.SmallInt
+  C_accounting_detail  Int                 @id(map: "PK_Accounting_details") @default(autoincrement()) @db.SmallInt
   C_product            Int                 @db.SmallInt
   C_accounting_closing Int                 @db.SmallInt
   Q_system_quantity    Int
@@ -33,7 +33,7 @@ model Accounting_details {
 }
 
 model Categories {
-  C_category      Int        @id(map: "PK_Categories") @db.SmallInt
+  C_category      Int        @id(map: "PK_Categories") @default(autoincrement()) @db.SmallInt
   D_category_name String     @unique(map: "IX_Categories") @db.NVarChar(30)
   B_status        Boolean
   Products        Products[]
@@ -42,7 +42,7 @@ model Categories {
 }
 
 model Payment_methods {
-  C_payment_method Int     @id(map: "PK_Payment_methods") @db.SmallInt
+  C_payment_method Int     @id(map: "PK_Payment_methods") @default(autoincrement()) @db.SmallInt
   D_payment_method String  @unique(map: "IX_Payment_methods") @db.NVarChar(15)
   Sales            Sales[]
 
@@ -50,7 +50,7 @@ model Payment_methods {
 }
 
 model Products {
-  C_product          Int                  @id(map: "PK_Products") @db.SmallInt
+  C_product          Int                  @id(map: "PK_Products") @default(autoincrement()) @db.SmallInt
   D_product_name     String               @unique(map: "IX_Products") @db.NVarChar(30)
   C_category         Int                  @db.SmallInt
   Q_stock            Int
@@ -64,7 +64,7 @@ model Products {
 }
 
 model Sale_Details {
-  C_sale_detail Int      @id(map: "PK_Sale_Details") @db.SmallInt
+  C_sale_detail Int      @id(map: "PK_Sale_Details") @default(autoincrement()) @db.SmallInt
   C_sale        Int      @db.SmallInt
   C_Product     Int      @db.SmallInt
   Q_quantity    Int
@@ -75,7 +75,7 @@ model Sale_Details {
 }
 
 model Sales {
-  C_Sale           Int             @id(map: "PK_Sales") @db.SmallInt
+  C_Sale           Int             @id(map: "PK_Sales") @default(autoincrement()) @db.SmallInt
   C_payment_method Int             @db.SmallInt
   F_date           DateTime        @db.DateTime
   D_client         String          @db.NVarChar(30)
