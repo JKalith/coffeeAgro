@@ -36,6 +36,7 @@ export default function manageProduct() {
             symbol={icon.closeIcon}
           >
             <CreateProduct></CreateProduct>
+            
           </Modal>
           <TableProducts></TableProducts>
         </div>
