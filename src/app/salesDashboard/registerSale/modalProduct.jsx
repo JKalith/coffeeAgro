@@ -1,5 +1,5 @@
 "use client";
-import stylesDashboard from "../../styles/dashboard.module.css";
+import globals from "../../styles/globals.module.css";
 import stylesWindow from "../../ui/styles/popUpWindow.module.css";
 import { useState, useEffect } from "react";
 import styles from '../../styles/salesDashboard/registerSale.module.css'
@@ -52,18 +52,18 @@ const modalProduct = ({ onClose, onConfirm, selectedIds }) => {
     <div>
       <div className={stylesWindow.modalOverlay}>
         <div className={stylesWindow.modalContent}>
-          <p className={stylesDashboard.titlePage}>Insertar producto</p>
-          <div className={stylesDashboard.displayTitle}>
-            <div className={stylesDashboard.productRow}>
-              <div className={stylesDashboard.cell}>
+          <p className={globals.titlePage}>Insertar producto</p>
+          <div className={globals.displayTitle}>
+            <div className={globals.productRow}>
+              <div className={globals.cell}>
                 <p>Nombre</p>
               </div>
-              <div className={stylesDashboard.cell}>
+              <div className={globals.cell}>
                 <p>Seleccione producto</p>
               </div>
             </div>
           </div>
-          <div className={stylesDashboard.containerRows}>
+          <div className={globals.containerRows}>
             {loading ? (
               <p>Cargando...</p>
             ) : error ? (
@@ -72,13 +72,13 @@ const modalProduct = ({ onClose, onConfirm, selectedIds }) => {
               products.map((product) => (
                 <div
                   key={product.C_product}
-                  className={stylesDashboard.productRow}
+                  className={globals.productRow}
                 >
-                  <div className={stylesDashboard.cell}>
+                  <div className={globals.cell}>
                     <p>{product.D_product_name}</p>
                   </div>
 
-                  <div className={stylesDashboard.cell}>
+                  <div className={globals.cell}>
                     <input
                       type="checkbox"
                       id={`${product.C_product}`}
@@ -95,7 +95,18 @@ const modalProduct = ({ onClose, onConfirm, selectedIds }) => {
             )}
 
             <div className={styles.containerButton}>
-            <button className={styles.button} onClick={onClose}>Cerrar</button>
+            <button className={globals.closeButton} onClick={onClose}>
+              
+        
+              Cerrar
+              
+              </button>
+
+
+
+           
+
+
 
             <button className={styles.button}onClick={handleConfirm}>Confirmar</button>
 

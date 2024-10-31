@@ -1,5 +1,5 @@
 "use client";
-import stylesDashboard from "../../styles/dashboard.module.css";
+import globals from "../../styles/globals.module.css";
 
 import { useState, useEffect } from "react";
 
@@ -29,49 +29,49 @@ export default function ManageProduct() {
 
   return (
     <div>
-      <div className={stylesDashboard.displayTitle}>
-        <div className={stylesDashboard.productRow}>
-        <div className={stylesDashboard.cell}>
+      <div className={globals.displayTitle}>
+        <div className={globals.productRow}>
+        <div className={globals.cell}>
         <p>Producto</p>
         </div>
-        <div className={stylesDashboard.cell}>
+        <div className={globals.cell}>
         <p>Precio Unitario</p>
         </div>
-        <div className={stylesDashboard.cell}>
+        <div className={globals.cell}>
         <p>Categoria</p>
         </div>
-        <div className={stylesDashboard.cell}>
+        <div className={globals.cell}>
         <p>Estado</p>
         </div>
-        <div className={stylesDashboard.cell}>
+        <div className={globals.cell}>
         <p>Modificar</p>
         </div>
       </div>
       </div>
-      <div className={stylesDashboard.containerRows}>
+      <div className={globals.containerRows}>
         {loading ? (
           <p>Cargando...</p>
         ) : error ? (
           <p>Error: {error}</p>
         ) : products.length > 0 ? (
           products.map((product) => (
-            <div key={product.C_product} className={stylesDashboard.productRow}>
+            <div key={product.C_product} className={globals.productRow}>
 
 
                 
-              <div className={stylesDashboard.cell}>
+              <div className={globals.cell}>
                 <p>{product.D_product_name}</p>
               </div>
-              <div className={stylesDashboard.cell}>
+              <div className={globals.cell}>
                 <p>{product.M_unit_price}</p>
               </div>
-              <div className={stylesDashboard.cell}>
+              <div className={globals.cell}>
                 <p>{product.Categories?.D_category_name}</p>
               </div>
-              <div className={stylesDashboard.cell}>
+              <div className={globals.cell}>
                 <p>{product.B_status ? "Activo" : "Inactivo"}</p>
               </div>
-              <div className={stylesDashboard.cell}>
+              <div className={globals.cell}>
                
 
      

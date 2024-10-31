@@ -17,6 +17,37 @@
 
 
 }
+.containerButton{
+  
+
+  height: auto;
+  display: flex;
+  justify-content: center;
+
+
+
+}
+
+
+
+
+.closeButton{
+margin: 10px;
+color: white;
+
+
+  background-color: #FA5246;
+}
+
+.saveButton{
+  margin: 10px;
+  
+  color: white;
+  
+    background-color: #2E7D31;
+  }
+
+
 
 .container {
   width: auto;
@@ -37,8 +68,10 @@ margin-top: 10px;
 }
 
 .titles {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
+  margin: 8px;
+  margin-left: 0;
 }
 
 .titlePage {
@@ -47,15 +80,7 @@ margin-top: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.estyloParaEjemplo {
-  width: 1000px;
-  align-items: center;
-  padding: 8px;
-  justify-content: space-between;
 
-  display: flex;
-  border-radius: 5px;
-}
 
 .containerBetween {
   display: flex;
@@ -94,3 +119,8 @@ margin-top: 10px;
   text-align: center;         
 }
 
+.errorMessage{
+
+color: red;
+
+}

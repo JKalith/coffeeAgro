@@ -1,8 +1,8 @@
 "use client";
-import stylesDashboard from "../../styles/dashboard.module.css";
+import globals from "../../styles/globals.module.css";
 import styles from "../../styles/salesDashboard/registerSale.module.css";
 import { useState, useEffect } from "react";
-
+import icon from '../../ui/styles/icons.module.css'
 export default function manageCategory() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,19 +29,20 @@ export default function manageCategory() {
 
   return (
     <div>
-      <div className={stylesDashboard.displayTitle}>
-        <div className={stylesDashboard.productRow}>
-          <div className={stylesDashboard.cell}>
+      <div className={globals.displayTitle}>
+    
+        <div className={globals.productRow}>
+          <div className={globals.cell}>
             <p>Categoria</p>
           </div>
-          <div className={stylesDashboard.cell}>
+          <div className={globals.cell}>
             <p>Estado</p>
           </div>
-          <div className={stylesDashboard.cell}>
+          <div className={globals.cell}>
             <p>Modificar</p>
           </div>
 
-          <div className={stylesDashboard.cell}>
+          <div className={globals.cell}>
             <p>Cambiar estado</p>
           </div>
         </div>
@@ -53,21 +54,31 @@ export default function manageCategory() {
         <p>Error: {error}</p>
       ) : categories.length > 0 ? (
         categories.map((category) => (
-          <div key={category.C_category} className={stylesDashboard.productRow}>
-            <div className={stylesDashboard.cell}>
+          <div key={category.C_category} className={globals.productRow}>
+            <div className={globals.cell}>
               <p>{category.D_category_name}</p>
             </div>
-            <div className={stylesDashboard.cell}>
+            <div className={globals.cell}>
               <p>{category.B_status ? "Activo" : "Inactivo"}</p>
             </div>
 
-            <div className={stylesDashboard.cell}>
-              <button>Modificar</button>
+            <div className={globals.cell}>
+            <button >
+        
+            <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
+          Modificar
+          </button>
             </div>
-            <div className={stylesDashboard.cell}>
-              <button>Cambiar estado</button>
+            <div className={globals.cell}>
+            <button >
+        
+        <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
+ Cambiar estado
+      </button>
             </div>
+            
           </div>
+          
         ))
       ) : (
         <p>No hay categorías disponibles.</p>

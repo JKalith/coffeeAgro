@@ -1,13 +1,12 @@
 "use client";
-import stylesDashboard from "../../styles/dashboard.module.css";
+
+import stylesDashboard from "../../styles/globals.module.css";
 import React, { useState } from "react";
-import Modal from "../../ui/popUpWindow/window";
+import CreateProduct from "../../salesDashboard/manageProduct/createProduct";
+import TableProducts from "../../salesDashboard/manageProduct/tableProduct";
 import icon from "../../ui/styles/icons.module.css";
 
-import CreateProduct from "../../salesDashboard/manageProduct/createProduct";
-
-import TableProducts from "../../salesDashboard/manageProduct/tableProduct";
-export default function manageProduct() {
+export default function ManageProduct() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -16,29 +15,27 @@ export default function manageProduct() {
 
   const closeModal = () => {
     setIsModalOpen(false);
-  };
 
+  };
+  const handleProductCreated = () => {
+    closeModal();
+    window.location.reload();
+  };
   return (
     <div className={stylesDashboard.container}>
       <span>
-        <p className={stylesDashboard.titlePage}>Gestion de producto</p>
+        <p className={stylesDashboard.titlePage}>Gestión de producto</p>
 
         <div className={stylesDashboard.table}>
           <button onClick={openModal}>
-            {" "}
             <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
             Ventana emergente
           </button>
 
-          <Modal
-            isOpen={isModalOpen}
-            onClose={closeModal}
-            symbol={icon.closeIcon}
-          >
-            <CreateProduct></CreateProduct>
-            
-          </Modal>
-          <TableProducts></TableProducts>
+          <CreateProduct isOpen={isModalOpen} onClose={closeModal} onProductCreated={handleProductCreated}/>
+          
+
+          <TableProducts />
         </div>
       </span>
     </div>

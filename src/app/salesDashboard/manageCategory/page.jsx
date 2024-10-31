@@ -1,11 +1,14 @@
 "use client";
-import stylesDashboard from "../../styles/dashboard.module.css";
+import globals from "../../styles/globals.module.css";
 import { useState } from "react";
 import CategoryTable from '../../salesDashboard/manageCategory/categoryTable'
 import CreateCategory from "../../salesDashboard/manageCategory/createCategory";
 import Modal from "../../ui/popUpWindow/window";
 import icon from "../../ui/styles/icons.module.css";
 export default function manageCategory() {
+
+
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -16,26 +19,27 @@ export default function manageCategory() {
     setIsModalOpen(false);
   };
   return (
-    <div className={stylesDashboard.container}>
+    <div className={globals.container}>
       
       <span>
-        <p className={stylesDashboard.titlePage}>Gestion de categorias</p>
+        <p className={globals.titlePage}>Gestion de categorias</p>
 
-        <div className={stylesDashboard.table}>
+        <div className={globals.table}>
         <button onClick={openModal}>
             {" "}
             <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
-            Ventana emergente
+           Registrar categoria
           </button>
+      
+    
+            <CreateCategory
+         isOpen={isModalOpen} onClose={closeModal} 
+            />
 
-          <Modal
-            isOpen={isModalOpen}
-            onClose={closeModal}
-            symbol={icon.closeIcon}
-          >
-            <CreateCategory></CreateCategory>
-          </Modal>
-       <CategoryTable></CategoryTable>
+<CategoryTable></CategoryTable>
+
+
+    
         </div>
       </span>
     </div>

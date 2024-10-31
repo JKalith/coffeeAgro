@@ -1,5 +1,5 @@
-import styles from '../../styles/dashboard.module.css'
-import TableProducts from '../../salesDashboard/manageProduct/tableProduct'
+import styles from '../../styles/globals.module.css'
+
 export default function Home() {
     return (
       <main>
@@ -9,7 +9,7 @@ export default function Home() {
   
   </p>
 
-  <TableProducts></TableProducts>
+
 
 
 

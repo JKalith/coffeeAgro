@@ -52,7 +52,7 @@ border-radius: 10px ;
 background-color: rgb(255, 255, 255);
 color: #0a0a0a;
 
-
+width: auto;
 
 
 }
@@ -62,7 +62,8 @@ input:focus{
 
 
    box-shadow: none;
-  width: auto;
+   width: auto;
+
   border: solid 1px  #08B69C ;
   border-radius: 10px ;
   outline: none; 

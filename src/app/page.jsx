@@ -1,4 +1,4 @@
-import styles from "./styles/dashboard.module.css"
+import styles from "./styles/globals.module.css"
 
 
 export default function Home() {

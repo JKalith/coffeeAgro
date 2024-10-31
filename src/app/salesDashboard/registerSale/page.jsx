@@ -1,5 +1,5 @@
 "use client";
-import stylesDashboard from "../../styles/dashboard.module.css";
+import globals from "../../styles/globals.module.css";
 import styles from "../../styles/salesDashboard/registerSale.module.css";
 
 import icon from "../../ui/styles/icons.module.css";
@@ -21,19 +21,19 @@ export default function registerSale() {
   };
 
   return (
-    <div className={stylesDashboard.container}>
+    <div className={globals.container}>
       <span>
-        <p className={stylesDashboard.titlePage}>Registrar venta</p>
+        <p className={globals.titlePage}>Registrar venta</p>
 
-        <div className={stylesDashboard.containerBetween}>
-          <div className={stylesDashboard.flexInput}>
+        <div className={globals.containerBetween}>
+          <div className={globals.flexInput}>
             <p>Cliente:</p>
             <input type="text" />
           </div>
 
 
 
-          <div className={stylesDashboard.flexInput}>
+          <div className={globals.flexInput}>
               <p>Fecha:</p>
               <input type="date" />
             </div>
@@ -41,9 +41,9 @@ export default function registerSale() {
         
         </div>
 
-        <div className={stylesDashboard.table}>
-          <div className={stylesDashboard.containerBetween}>
-            <div className={stylesDashboard.flexInput}>
+        <div className={globals.table}>
+          <div className={globals.containerBetween}>
+            <div className={globals.flexInput}>
               <p></p>
             
             </div>
@@ -55,12 +55,12 @@ export default function registerSale() {
           </button>
 
           </div>
-          <div className={stylesDashboard.containerBetween}>
-            <div className={stylesDashboard.flexInput}>
+          <div className={globals.containerBetween}>
+            <div className={globals.flexInput}>
               <p></p>
             </div>
 
-            <div className={stylesDashboard.flexInput}></div>
+            <div className={globals.flexInput}></div>
           </div>
           <p>hola</p>
 

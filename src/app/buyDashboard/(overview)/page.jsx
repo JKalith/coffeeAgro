@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Modal from "../../ui/popUpWindow/window";
-import stylesDashboard from "../../styles/dashboard.module.css";
+import globals from "../../styles/globals.module.css";
 import Datam from "../(overview)/data";
 import icon from "../../ui/styles/icons.module.css";
 const home = () => {
@@ -16,10 +16,10 @@ const home = () => {
   };
 
   return (
-    <div className={stylesDashboard.container}>
+    <div className={globals.container}>
       <span>
         <h1>Mi Aplicación</h1>
-        <div className={stylesDashboard.table}>
+        <div className={globals.table}>
           <Datam />
           <button onClick={openModal}>
             {" "}

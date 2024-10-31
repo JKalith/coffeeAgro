@@ -8,8 +8,8 @@
   }
 .container{
 display: block;
-background-color: red;
 
+padding: 10px;
 
 }
 
@@ -19,3 +19,6 @@ margin: 10px;
 
 
   }
+.titleInput{
+  margin: 10px;
+}
