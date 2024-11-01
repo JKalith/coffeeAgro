@@ -11,7 +11,7 @@ const Navbar = () => {
     <li>  <BtnNavBar href="/buyDashboard" buttonText="Gestion de compras" icon={icons.buyIcon} /> </li>
     <li> <BtnNavBar href="/salesDashboard" buttonText="Gestion de ventas" icon={icons.salesIcon } /></li>
     <li> <BtnNavBar href="/plotDashboard" buttonText="Lotes" icon={icons.loteIcon} /></li>
-    <li> <BtnNavBar href="/payrollDashboard" buttonText="Planilla" icon={icons.loteIcon} /></li>
+    <li> <BtnNavBar href="/payrollDashboard" buttonText="Planilla" icon={icons.payrollIcon} /></li>
   </ul>
 </nav>
   );

@@ -24,26 +24,32 @@ export default function SideNav() {
         <BtnSideNav
           href="/salesDashboard/registerSale"
           buttonText="Registro de venta"
+          icon={icon.registerSaleIcon}
         />
         <BtnSideNav
           href="/salesDashboard/accountingClosing"
           buttonText="Cierre contable"
+          icon={icon.accountingClosingIcon}
         />
         <BtnSideNav
           href="/salesDashboard/historyInvoice"
           buttonText="Historial de factura"
+          icon={icon.historyInvoiceIcon}
         />
         <BtnSideNav
           href="/salesDashboard/manageCategory"
           buttonText="Gestion de categoria"
+          icon={icon.categoryIcon}
         />
         <BtnSideNav
           href="/salesDashboard/manageProduct"
           buttonText="Gestion de producto"
+          icon={icon.manageProductIcon   }
         />
         <BtnSideNav
           href="/salesDashboard/productInventory"
           buttonText="Inventario de productos"
+          icon={icon.procductInventoryIcon}
         />
       </div>
     </div>

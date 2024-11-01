@@ -1,15 +1,15 @@
-import stylesDashboard from "../../styles/dashboard.module.css";
+import globals from "../../styles/globals.module.css";
 
 export default function createInvoice() {
   return (
     <div>
-      <div className={stylesDashboard.container}>
+      <div className={globals.container}>
         <span>
           <p>aqui se crea el cierre contable</p>
 
-          <div className={stylesDashboard.table}>
+          <div className={globals.table}>
             <p>aqui se crea los campos de la tabla </p>
-            <div className={stylesDashboard.displayTitle}>
+            <div className={globals.displayTitle}>
               <p>cedula</p>
               <p>telefono</p>
               <p>hora</p>

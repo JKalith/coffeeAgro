@@ -62,7 +62,7 @@ export default function registerSale() {
 
             <div className={globals.flexInput}></div>
           </div>
-          <p>hola</p>
+     
 
           <div>
         <h3>IDs seleccionados:</h3>
