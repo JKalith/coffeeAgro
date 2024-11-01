@@ -1,6 +1,6 @@
 "use client";
 import globals from "../../styles/globals.module.css";
-
+import icon from '../../ui/styles/icons.module.css'
 import { useState, useEffect } from "react";
 
 export default function ManageProduct() {
@@ -44,6 +44,9 @@ export default function ManageProduct() {
         <p>Estado</p>
         </div>
         <div className={globals.cell}>
+        Cambiar estado
+        </div>
+        <div className={globals.cell}>
         <p>Modificar</p>
         </div>
       </div>
@@ -71,11 +74,21 @@ export default function ManageProduct() {
               <div className={globals.cell}>
                 <p>{product.B_status ? "Activo" : "Inactivo"}</p>
               </div>
-              <div className={globals.cell}>
-               
 
-     
-                <button>Modificar</button>
+
+              <div className={globals.cell}>
+            <button >
+            <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
+            Cambiar 
+          </button>
+                               
+          
+              </div>
+              <div className={globals.cell}>
+            <button >
+            <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
+            modificar
+          </button>
                                
           
               </div>

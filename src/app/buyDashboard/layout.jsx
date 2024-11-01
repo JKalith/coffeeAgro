@@ -7,6 +7,7 @@ export default function Layout({ children }) {
         <div className={styles.contain}>
  
         <div >
+       
           <SideNav />
         </div>
         <div className={styles.content}>

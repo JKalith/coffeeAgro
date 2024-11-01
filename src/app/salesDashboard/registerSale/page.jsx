@@ -54,6 +54,8 @@ export default function registerSale() {
             Añadir Producto
           </button>
 
+          
+
           </div>
           <div className={globals.containerBetween}>
             <div className={globals.flexInput}>

@@ -3,6 +3,9 @@ import globals from "../../styles/globals.module.css";
 import stylesWindow from "../../ui/styles/popUpWindow.module.css";
 import { useState, useEffect } from "react";
 import styles from '../../styles/salesDashboard/registerSale.module.css'
+
+
+
 const modalProduct = ({ onClose, onConfirm, selectedIds }) => {
   const [localSelectedIds, setLocalSelectedIds] = useState(selectedIds);
 
@@ -52,6 +55,9 @@ const modalProduct = ({ onClose, onConfirm, selectedIds }) => {
     <div>
       <div className={stylesWindow.modalOverlay}>
         <div className={stylesWindow.modalContent}>
+
+
+          
           <p className={globals.titlePage}>Insertar producto</p>
           <div className={globals.displayTitle}>
             <div className={globals.productRow}>
