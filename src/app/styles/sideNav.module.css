@@ -1,28 +1,27 @@
 .contain {
   display: flex;
-  height: 100vh; /* Para que ocupe toda la altura de la ventana */
-  background-color: #FAFAF9; /* Color de fondo del sidebar */
+  min-height: 97vh;
+  height: fit-content;
+  background-color: #FAFAF9; 
+
 }
 
 .sidebar {
-  width: 200px; /* Ancho del sideNav */
-  background-color: #FAFAF9; /* Color de fondo del sidebar */
-  flex-shrink: 0; /* Evitar que se reduzca de tamaño */
+  width: 200px; 
+
+  background-color: #FAFAF9; 
+  flex-shrink: 0; 
+height: fit-content;
 
 
 }
 
 .content {
-  flex-grow: 1; /* El contenido principal ocupa todo el espacio restante */
-  padding: 20px; /* Espaciado interno */
-  background-color: #FAFAF9; /* Color de fondo del contenido */
+  flex-grow: 1; 
+  padding: 20px; 
+  background-color: #FAFAF9; 
 }
-.containerNav{
-  height: 10000px;
-  background-color: red;
-  width: 1000px;
 
-    }
 
 
 
@@ -35,15 +34,15 @@
  
 .sidenav {
  
-  width: 0; /* Start with zero width (hidden) */
-  position: fixed; /* Fixed Sidebar */
-  z-index: 1; /* Stay on top */
+  width: 0; 
+  position: fixed; 
+  z-index: 1; 
   top: 0;
   left: 0;
  
-  overflow-x: hidden; /* Disable horizontal scroll */
-  transition: 0.5s; /* Smooth transition for the width */
-  padding-top: 60px; /* Place content below the close button */
+  overflow-x: hidden; 
+  transition: 0.5s; 
+  padding-top: 60px; 
 }
 
 .sidenav a {
@@ -58,7 +57,7 @@
 
 
 .open {
-  width: 250px; /* When the nav is open, set width to 250px */
+  width: 250px; 
 }
 
 .menuBtn {
@@ -68,9 +67,23 @@
   color: white;
   border: none;
   padding: 10px 15px;
-  
+
   margin: 10px;
   position: absolute;
   top: 10px;
   left: 10px;
+}
+
+
+@media (max-width: 768px) {
+   
+  .sidebar {
+display: none;
+  
+  }
+}
+
+
+@media (max-width: 480px) {
+ 
 }

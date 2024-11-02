@@ -16,6 +16,7 @@ body {
   overflow-x: hidden;
 }
 button{
+  width: auto;
 border-radius: 5px;
 border-style: none;
 background-color: #86EFAC;
@@ -56,7 +57,14 @@ width: auto;
 
 
 }
+p {
+  font-size: 16px; 
+  line-height: 1.5; 
+  
+  color: #333; 
 
+   
+}
 
 input:focus{
 
@@ -77,4 +85,29 @@ input:focus{
   html {
     color-scheme: dark;
   }
+}
+@media (max-width: 480px) {
+  p {
+    font-size: 16px; 
+    line-height: 1.5; 
+   
+    text-align: center;
+    color: #000000; 
+  }
+
+  button{
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+  border-radius: 5px;
+  border-style: none;
+  background-color: #86EFAC;
+  color: #0a0a0a;
+  padding: 10px;
+  width: 60PX;
+  display: flex;
+
+  }
+
+
 }

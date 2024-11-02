@@ -2,35 +2,63 @@
 import globals from "../../styles/globals.module.css";
 import styles from "../../styles/salesDashboard/registerSale.module.css";
 import { useState, useEffect } from "react";
-import icon from '../../ui/styles/icons.module.css'
-export default function manageCategory() {
+import icon from "../../ui/styles/icons.module.css";
+import CreateCategory from "../../salesDashboard/manageCategory/createCategory";
+import ChangeStatusModal from "../../salesDashboard/manageCategory/changeStatusModal"; // Asegúrate de importar tu componente de cambio de estado
+
+export default function CategoryTable() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isStatusModalOpen, setIsStatusModalOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  // Función para recuperar las categorías
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch("/api/category/");
+      if (!response.ok) {
+        throw new Error("Error fetching categories: " + response.statusText);
+      }
+      const data = await response.json();
+      setCategories(data);
+    } catch (error) {
+      console.error("Error:", error);
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await fetch("/api/category/");
-        if (!response.ok) {
-          throw new Error("Error fetching categories: " + response.statusText);
-        }
-        const data = await response.json();
-        setCategories(data);
-      } catch (error) {
-        console.error("Error:", error);
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCategories();
+    fetchCategories(); // Llama a la función para obtener las categorías al cargar el componente
   }, []);
+
+  const openEditModal = (category) => {
+    setSelectedCategory(category);
+    setIsEditModalOpen(true);
+  };
+
+  const closeEditModal = () => {
+    setSelectedCategory(null);
+    setIsEditModalOpen(false);
+  };
+
+  const openStatusModal = (category) => {
+    setSelectedCategory(category);
+    setIsStatusModalOpen(true);
+  };
+
+  const closeStatusModal = () => {
+    setSelectedCategory(null);
+    setIsStatusModalOpen(false);
+    fetchCategories(); // Vuelve a cargar las categorías después de cerrar el modal
+  };
 
   return (
     <div>
       <div className={globals.displayTitle}>
-    
         <div className={globals.productRow}>
           <div className={globals.cell}>
             <p>Categoria</p>
@@ -41,7 +69,6 @@ export default function manageCategory() {
           <div className={globals.cell}>
             <p>Modificar</p>
           </div>
-
           <div className={globals.cell}>
             <p>Cambiar estado</p>
           </div>
@@ -61,27 +88,39 @@ export default function manageCategory() {
             <div className={globals.cell}>
               <p>{category.B_status ? "Activo" : "Inactivo"}</p>
             </div>
-
             <div className={globals.cell}>
-            <button >
-        
-            <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
-          Modificar
-          </button>
+              <button onClick={() => openEditModal(category)}>
+                <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
+                Modificar
+              </button>
             </div>
             <div className={globals.cell}>
-            <button >
-        
-        <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
- Cambiar estado
-      </button>
+              <button onClick={() => openStatusModal(category)}>
+                <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
+                Cambiar estado
+              </button>
             </div>
-            
           </div>
-          
         ))
       ) : (
         <p>No hay categorías disponibles.</p>
+      )}
+
+      {isEditModalOpen && (
+        <CreateCategory
+          isOpen={isEditModalOpen}
+          onClose={closeEditModal}
+          initialCategory={selectedCategory}
+        />
+      )}
+
+      {isStatusModalOpen && (
+        <ChangeStatusModal
+          isOpen={isStatusModalOpen}
+          onClose={closeStatusModal}
+          category={selectedCategory}
+          setCategories={setCategories} 
+        />
       )}
     </div>
   );

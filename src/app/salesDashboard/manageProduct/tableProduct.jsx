@@ -1,6 +1,6 @@
 "use client";
 import globals from "../../styles/globals.module.css";
-import icon from '../../ui/styles/icons.module.css'
+import icon from "../../ui/styles/icons.module.css";
 import { useState, useEffect } from "react";
 
 export default function ManageProduct() {
@@ -31,25 +31,23 @@ export default function ManageProduct() {
     <div>
       <div className={globals.displayTitle}>
         <div className={globals.productRow}>
-        <div className={globals.cell}>
-        <p>Producto</p>
+          <div className={globals.cell}>
+            <p>Producto</p>
+          </div>
+          <div className={globals.cell}>
+            <p>Precio Unitario</p>
+          </div>
+          <div className={globals.cell}>
+            <p>Categoria</p>
+          </div>
+          <div className={globals.cell}>
+            <p>Estado</p>
+          </div>
+          <div className={globals.cell}>Cambiar estado</div>
+          <div className={globals.cell}>
+            <p>Modificar</p>
+          </div>
         </div>
-        <div className={globals.cell}>
-        <p>Precio Unitario</p>
-        </div>
-        <div className={globals.cell}>
-        <p>Categoria</p>
-        </div>
-        <div className={globals.cell}>
-        <p>Estado</p>
-        </div>
-        <div className={globals.cell}>
-        Cambiar estado
-        </div>
-        <div className={globals.cell}>
-        <p>Modificar</p>
-        </div>
-      </div>
       </div>
       <div className={globals.containerRows}>
         {loading ? (
@@ -59,9 +57,6 @@ export default function ManageProduct() {
         ) : products.length > 0 ? (
           products.map((product) => (
             <div key={product.C_product} className={globals.productRow}>
-
-
-                
               <div className={globals.cell}>
                 <p>{product.D_product_name}</p>
               </div>
@@ -75,22 +70,21 @@ export default function ManageProduct() {
                 <p>{product.B_status ? "Activo" : "Inactivo"}</p>
               </div>
 
-
               <div className={globals.cell}>
-            <button >
-            <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
-            Cambiar 
-          </button>
-                               
-          
+                <button>
+                  <div
+                    className={`${icon.containerIcon} ${icon.buyIcon}`}
+                  ></div>
+                  Cambiar
+                </button>
               </div>
               <div className={globals.cell}>
-            <button >
-            <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
-            modificar
-          </button>
-                               
-          
+                <button>
+                  <div
+                    className={`${icon.containerIcon} ${icon.buyIcon}`}
+                  ></div>
+                  modificar
+                </button>
               </div>
             </div>
           ))

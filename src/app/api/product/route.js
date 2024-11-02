@@ -14,7 +14,7 @@ export async function GET(req) {
       },
     });
   } catch (error) {
-    console.error("Error categorias: ", error);
+    console.error("Error productos: ", error);
     return new Response(JSON.stringify({ error: "Error fetching productos" }), {
       status: 500,
       headers: {

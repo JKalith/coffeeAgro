@@ -1,92 +1,132 @@
 "use client";
+import React, { useState } from "react";
 import globals from "../../styles/globals.module.css";
-import styles from "../../styles/salesDashboard/registerSale.module.css";
-
 import icon from "../../ui/styles/icons.module.css";
 import ModalProduct from "../registerSale/modalProduct";
-import React, { useState } from "react";
-export default function registerSale() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCheckboxIds, setSelectedCheckboxIds] = useState([]);
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
+import RegisterSaleTable from "../registerSale/RegisterSaleTable"; // Importamos el nuevo componente
 
-  const closeModal = () => {
+export default function RegisterSale() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState("");
+  const [quantity, setQuantity] = useState(1);
+  const [productList, setProductList] = useState([]);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  const handleProductSelect = (id) => {
+    setSelectedProductId(id);
     setIsModalOpen(false);
   };
-  const handleConfirm = (ids) => {
-    setSelectedCheckboxIds(ids); // Guardar los IDs seleccionados
-    setIsModalOpen(false); // Cerrar el modal después de confirmar
+
+  const handleInputChange = (e) => {
+    setSelectedProductId(e.target.value);
+  };
+
+  const handleQuantityChange = (e) => {
+    setQuantity(Number(e.target.value));
+  };
+
+  const fetchProduct = async () => {
+    if (!selectedProductId) {
+      alert("Por favor, ingrese un ID de producto.");
+      return;
+    }
+    try {
+      const response = await fetch(`/api/product/${selectedProductId}`);
+      if (!response.ok) {
+        throw new Error("Producto no encontrado");
+      }
+      const product = await response.json();
+
+      setProductList((prevList) => {
+        const existingProductIndex = prevList.findIndex(
+          (item) => item.C_product === product.C_product
+        );
+
+        if (existingProductIndex >= 0) {
+          const updatedList = [...prevList];
+          updatedList[existingProductIndex].quantity = quantity;
+          return updatedList;
+        } else {
+          return [...prevList, { ...product, quantity }];
+        }
+      });
+
+      setSelectedProductId("");
+      setQuantity(1);
+    } catch (error) {
+      console.error("Error al buscar el producto:", error);
+      alert("Error al buscar el producto.");
+    }
+  };
+
+  // Función para quitar un producto del arreglo
+  const removeProduct = (productId) => {
+    setProductList((prevList) =>
+      prevList.filter((product) => product.C_product !== productId)
+    );
   };
 
   return (
     <div className={globals.container}>
       <span>
         <p className={globals.titlePage}>Registrar venta</p>
-
         <div className={globals.containerBetween}>
           <div className={globals.flexInput}>
             <p>Cliente:</p>
             <input type="text" />
           </div>
-
-
-
           <div className={globals.flexInput}>
-              <p>Fecha:</p>
-              <input type="date" />
-            </div>
-       
-        
+            <p>Fecha:</p>
+            <input type="date" />
+          </div>
         </div>
-
         <div className={globals.table}>
           <div className={globals.containerBetween}>
             <div className={globals.flexInput}>
-              <p></p>
-            
+              <form onSubmit={(e) => e.preventDefault()}>
+                <div className={globals.flexInput}>
+                  <p>Producto seleccionado:</p>
+                  <input
+                    type="number"
+                    value={selectedProductId}
+                    onChange={handleInputChange}
+                    placeholder="ID del producto"
+                  />
+                  <p>Cantidad:</p>
+                  <input
+                    type="number"
+                    value={quantity}
+                    onChange={handleQuantityChange}
+                    min="1"
+                    placeholder="Cantidad"
+                  />
+                  <button type="button" onClick={fetchProduct}>
+                    buscar
+                  </button>
+                </div>
+              </form>
             </div>
-
             <button onClick={openModal}>
-            {" "}
-            <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
-            Añadir Producto
-          </button>
-
-          
-
+              <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
+              Seleccionar Producto
+            </button>
           </div>
-          <div className={globals.containerBetween}>
-            <div className={globals.flexInput}>
-              <p></p>
-            </div>
 
-            <div className={globals.flexInput}></div>
-          </div>
-     
-
-          <div>
-        <h3>IDs seleccionados:</h3>
-        {selectedCheckboxIds.length > 0 ? (
-          <ul>
-            {selectedCheckboxIds.map((id) => (
-              <li key={id}>{id}</li>
-            ))}
-          </ul>
-        ) : (
-          <p>No hay IDs seleccionados</p>
-        )}
-      </div>
-
+          {/* Componente RegisterSaleTable */}
+          <RegisterSaleTable
+            productList={productList}
+            removeProduct={removeProduct}
+          />
         </div>
+
         {isModalOpen && (
-        <ModalProduct
-          onClose={closeModal}
-          onConfirm={handleConfirm}
-          selectedIds={selectedCheckboxIds} // Pasar los IDs seleccionados
-        />
-      )}
+          <ModalProduct
+            onClose={closeModal}
+            onSelectProduct={handleProductSelect}
+          />
+        )}
       </span>
     </div>
   );
