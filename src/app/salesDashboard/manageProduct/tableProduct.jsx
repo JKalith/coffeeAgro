@@ -72,17 +72,17 @@ export default function ManageProduct() {
               </div>
 
               <div className={globals.cell}>
-                <button>
+                <button className={globals.changeButton}>
                   <div
-                    className={`${icon.containerIcon} ${icon.buyIcon}`}
+                    className={`${icon.containerIcon} ${icon.changeIcon}`}
                   ></div>
                   Cambiar
                 </button>
               </div>
               <div className={globals.cell}>
-                <button>
+                <button className={globals.modifyButton}>
                   <div
-                    className={`${icon.containerIcon} ${icon.buyIcon}`}
+                    className={`${icon.containerIcon} ${icon.modifyIcon}`}
                   ></div>
                   modificar
                 </button>

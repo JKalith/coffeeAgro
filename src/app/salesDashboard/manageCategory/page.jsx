@@ -23,7 +23,7 @@ export default function manageCategory() {
         <div className={globals.table}>
           <button onClick={openModal}>
             {" "}
-            <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
+            <div className={`${icon.containerIcon} ${icon.addCategoryIcon}`}></div>
             Registrar categoria
           </button>
 

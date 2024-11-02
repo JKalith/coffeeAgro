@@ -88,15 +88,33 @@ export default function CategoryTable() {
             <div className={globals.cell}>
               <p>{category.B_status ? "Activo" : "Inactivo"}</p>
             </div>
+
+
+
+
+
             <div className={globals.cell}>
-              <button onClick={() => openEditModal(category)}>
-                <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
+
+
+
+
+
+
+              <button className={globals.modifyButton} onClick={() => openEditModal(category)}>
+                <div className={`${icon.containerIcon} ${icon.modifyIcon}`}></div>
                 Modificar
               </button>
+
+
+
             </div>
+
+
+
+
             <div className={globals.cell}>
-              <button onClick={() => openStatusModal(category)}>
-                <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
+              <button className={globals.changeButton} onClick={() => openStatusModal(category)}>
+                <div className={`${icon.containerIcon} ${icon.changeIcon}`}></div>
                 Cambiar estado
               </button>
             </div>

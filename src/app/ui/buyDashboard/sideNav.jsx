@@ -1,7 +1,7 @@
 "use client";
 import BtnSideNav from "../sideNav/btnSideNav"; // Asegúrate de que el nombre del componente esté con mayúscula
 import styles from "../styles/sideNav.module.css";
-import icons from "../styles/icons.module.css";
+import icon from "../styles/icons.module.css";
 
 import { useState } from "react";
 
@@ -24,24 +24,28 @@ const SideNav = () => {
       >
             <div className={styles.container}></div>
         <div className={styles.containerSidebar}>
-          <div className={styles.containerTitle}>
+        <div className={styles.containerTitle}>
             
-            <button className={styles.menuBtn} onClick={toggleNav}>
-              {isOpen ? "Close" : "Open"}
-            </button>
-            <p>gestion de compras</p>
+            <span className={styles.containerIconTitle}>
+              <span
+                className={`${icon.buyIcon}  ${styles.containerIcon}`}
+              ></span>
+            </span>
+
+            <p className={styles.titleDashboard}>Gestion de <br />
+            compras</p>
           </div>
 
           {/* Usa el componente BtnSideNav correctamente */}
           <BtnSideNav
             href="/buyDashboard/accoutingClosing"
             buttonText="Crear cierre contable"
-            icon={icons.registerSaleIcon}
+            icon={icon.registerSaleIcon}
           />
           <BtnSideNav
             href="/buyDashboard/createInvoice"
             buttonText="Crear Factura"
-            icon={icons.loteIcon}
+            icon={icon.loteIcon}
           />
           <BtnSideNav
             href="/buyDashboard/historyAccouting"

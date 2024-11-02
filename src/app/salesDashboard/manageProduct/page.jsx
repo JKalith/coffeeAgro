@@ -28,8 +28,8 @@ export default function ManageProduct() {
 
         <div className={stylesDashboard.table}>
           <button onClick={openModal}>
-            <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
-            Ventana emergente
+            <div className={`${icon.containerIcon} ${icon.addProductIcon}`}></div>
+           Registrar producto
           </button>
 
           <CreateProduct isOpen={isModalOpen} onClose={closeModal} onProductCreated={handleProductCreated}/>

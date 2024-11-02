@@ -26,7 +26,13 @@
 }
 
 
+.modifyButton{
 
+  color: rgb(0, 0, 0);
+  
+  
+    background-color: #73C4E7;
+  }
 
 .closeButton{
 margin: 10px;
@@ -34,6 +40,14 @@ color: white;
 
 
   background-color: #FA5246;
+}
+
+.changeButton{
+
+  background-color: #02C4A7;
+
+  color: rgb(0, 0, 0);
+
 }
 
 .saveButton{

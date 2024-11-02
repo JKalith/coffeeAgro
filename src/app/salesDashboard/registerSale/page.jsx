@@ -103,14 +103,15 @@ export default function RegisterSale() {
                     placeholder="Cantidad"
                   />
                   <button type="button" onClick={fetchProduct}>
-                    buscar
+                  <div className={`${icon.containerIcon} ${icon.addIcon}`}></div>
+                    Agregar
                   </button>
                 </div>
               </form>
             </div>
             <button onClick={openModal}>
-              <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
-              Seleccionar Producto
+              <div className={`${icon.containerIcon} ${icon.searchProduct}`}></div>
+              Buscar producto
             </button>
           </div>
 
