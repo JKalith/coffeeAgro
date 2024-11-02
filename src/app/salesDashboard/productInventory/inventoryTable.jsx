@@ -50,6 +50,7 @@ export default function inventoryTable() {
         
               </div>
               </div>
+              <div className={globals.scrollTable}>
             {loading ? (
               <p>Cargando...</p>
             ) : error ? (
@@ -79,7 +80,8 @@ export default function inventoryTable() {
               <p>No hay categorías disponibles.</p>
             )}
         
-  
+     
+        </div>
      
     </div>
   );

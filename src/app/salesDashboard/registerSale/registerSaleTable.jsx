@@ -24,7 +24,7 @@ export default function RegisterSaleTable({ productList, removeProduct }) {
           </div>
         </div>
       </div>
-
+      <div className={globals.scrollTable}>
       <div className={globals.containerRows}>
         {productList.map((product) => (
           <div key={product.C_product} className={globals.productRow}>
@@ -49,6 +49,6 @@ export default function RegisterSaleTable({ productList, removeProduct }) {
           </div>
         ))}
       </div>
-    </div>
+    </div>    </div>
   );
 }

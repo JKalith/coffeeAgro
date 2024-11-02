@@ -2,7 +2,7 @@
 import React from 'react';
 import { usePathname } from 'next/navigation'; 
 import Link from 'next/link';
-import styles from "../styles/sideNav.module.css"
+import styles from "../styles/sideNav.module.css";
 const btnSideNav = ({ href, buttonText, icon}) => {
   const pathname = usePathname(); 
   const isActive = pathname.includes(href);

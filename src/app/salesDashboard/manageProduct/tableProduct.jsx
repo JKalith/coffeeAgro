@@ -49,6 +49,7 @@ export default function ManageProduct() {
           </div>
         </div>
       </div>
+      <div className={globals.scrollTable}>
       <div className={globals.containerRows}>
         {loading ? (
           <p>Cargando...</p>
@@ -92,6 +93,6 @@ export default function ManageProduct() {
           <p>No hay categorías disponibles.</p>
         )}
       </div>
-    </div>
+    </div>  </div>
   );
 }

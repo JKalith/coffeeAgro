@@ -1,6 +1,6 @@
 
 import SideNav from "../ui/plotDashboard/sideNav";
-import styles from "../styles/sideNav.module.css";
+import styles from "../ui/styles/sideNav.module.css";
 
 export default function Layout({ children }) {
     return (

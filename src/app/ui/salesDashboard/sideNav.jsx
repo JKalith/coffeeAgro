@@ -1,9 +1,28 @@
+"use client";
 import BtnSideNav from "../sideNav/btnSideNav"; // Asegúrate de que el nombre del componente esté con mayúscula
 import styles from "../styles/sideNav.module.css";
+import { useState } from "react";
 import icon from "../styles/icons.module.css";
 export default function SideNav() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleNav = () => {
+    setIsOpen(!isOpen);
+  };
   return (
-    <div className={styles.container}>
+    <div>
+ 
+       
+       <button className={styles.menuBtn} onClick={toggleNav}>
+        {isOpen ? "Close" : "Open"}
+      </button>
+
+      <div
+        className={`${styles.sidenav}  ${
+          isOpen ? styles.open : ""
+        }`}
+      >
+           <div className={styles.container}>
       <div className={styles.containerSidebar}>
         <div className={styles.containerTitle}>
    
@@ -14,7 +33,7 @@ export default function SideNav() {
             <div className={icon.containerIcon}></div>
           </span>
 
-
+         
           <p className={styles.titleDashboard}>Gestion de ventas </p>
   
 
@@ -51,7 +70,7 @@ export default function SideNav() {
           buttonText="Inventario de productos"
           icon={icon.procductInventoryIcon}
         />
-      </div>
-    </div>
+      </div>     </div>
+    </div></div>
   );
 }

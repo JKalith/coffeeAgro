@@ -74,7 +74,7 @@ export default function CategoryTable() {
           </div>
         </div>
       </div>
-
+      <div className={globals.scrollTable}>
       {loading ? (
         <p>Cargando...</p>
       ) : error ? (
@@ -121,7 +121,7 @@ export default function CategoryTable() {
           category={selectedCategory}
           setCategories={setCategories} 
         />
-      )}
+      )}</div>
     </div>
   );
 }

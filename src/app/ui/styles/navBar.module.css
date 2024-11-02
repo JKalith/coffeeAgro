@@ -137,26 +137,3 @@ padding-left: 3%;
 
 
 
-
-
-  /* Estilos responsivos */
-  @media (max-width: 768px) {
-    .navLinks {
-      flex-direction: column; /* Cambiar a disposición vertical en móviles */
-      position: absolute; /* Posicionar el menú */
-      top: 60px; /* Distancia desde la parte superior */
-      left: 0; /* Alinear a la izquierda */
-      width: 100%; /* Ocupa todo el ancho */
-      background-color: #4CAF50; /* Color de fondo */
-      display: none; /* Ocultar por defecto */
-    }
-  
-    .navbar.active .navLinks {
-      display: flex; /* Mostrar el menú cuando esté activo */
-    }
-  
-    .navLinks li {
-      padding: 10px 20px; /* Espaciado interno en los enlaces */
-    }
-  }
-  

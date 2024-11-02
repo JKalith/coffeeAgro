@@ -1,6 +1,7 @@
 .container {
   height: 100%; /* Para que ocupe toda la altura de la ventana */
   width: 200px;
+
 }
 .logoContainer {
   background-color: #f0fdf5;
@@ -12,6 +13,7 @@
 .menuRow {
   width: 80%; /* Ancho del SideNav */
   height: 40px;
+  cursor: pointer;
   padding: 2%;
   text-align: left;
   background-color: #ffffff00; 
@@ -59,7 +61,7 @@
   border: solid 1.6px rgba(129, 129, 129, 0.479);
   border-radius: 15px;
   width: 195px;
-  height: 600px;
+  height: 800px;
 }
 .loteIcon {
   display: inline-block;
@@ -74,7 +76,7 @@
   display: flex;
   justify-content: center;
 
-  width: 200px;
+  width: auto;
   overflow: auto;
   align-items: center;
 }
@@ -88,4 +90,102 @@
 .containerIcon {
   justify-content: center;
   align-items: center;
+}
+
+.contain {
+  display: flex;
+  min-height: 97vh;
+  height: fit-content;
+  background-color: #FAFAF9; 
+
+}
+
+.sidebar {
+  width: 200px; 
+
+  background-color: #FAFAF9; 
+  flex-shrink: 0; 
+height: fit-content;
+
+
+}
+
+.content {
+  flex-grow: 1; 
+  padding: 20px; 
+  background-color: #FAFAF9; 
+}
+
+
+
+
+
+
+
+
+
+
+ 
+.sidenav {
+ 
+
+}
+
+
+
+
+
+.open {
+
+}
+
+.menuBtn {
+ display: none;
+}
+
+
+
+@media (max-width: 1000px) {
+  .sidenav {
+ 
+    width: 0; 
+    display: block;
+    z-index: 1; 
+    top: 0;
+    left: 0;
+   
+    overflow-x: hidden; 
+    transition: 0.5s; 
+ 
+  }
+  .open {
+    width: 250px; 
+  }
+  .sidenav a {
+  
+    text-decoration: none;
+  
+    transition: 0.3s;
+  }
+  .menuBtn {
+    font-size: 20px;
+    cursor: pointer;
+    display: block;
+    background-color: #111;
+    color: white;
+    border: none;
+  position: absolute;
+  
+    margin: 10px;
+
+    top: 10px;
+    left: 10px;
+  }
+  
+
+}
+
+
+@media (max-width: 480px) {
+ 
 }
