@@ -1,41 +1,50 @@
 "use client";
 
-import stylesDashboard from "../../styles/globals.module.css";
-import React, { useState } from "react";
+import globals from "../../styles/globals.module.css";
+import { useState } from "react";
+import TableProduct from "../../salesDashboard/manageProduct/tableProduct";
 import CreateProduct from "../../salesDashboard/manageProduct/createProduct";
-import TableProducts from "../../salesDashboard/manageProduct/tableProduct";
 import icon from "../../ui/styles/icons.module.css";
 
 export default function ManageProduct() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [refresh, setRefresh] = useState(false); 
 
+  // Función para abrir el modal
   const openModal = () => {
     setIsModalOpen(true);
   };
 
+  
   const closeModal = () => {
     setIsModalOpen(false);
-
   };
-  const handleProductCreated = () => {
-    closeModal();
-    window.location.reload();
-  };
-  return (
-    <div className={stylesDashboard.container}>
-      <span>
-        <p className={stylesDashboard.titlePage}>Gestión de producto</p>
 
-        <div className={stylesDashboard.table}>
-          <button onClick={openModal}>
+  
+  const handleProductCreated = () => {
+    setRefresh((prev) => !prev); 
+    closeModal(); 
+  };
+
+  return (
+    <div className={globals.container}>
+      <span>
+        <p className={globals.titlePage}>Gestión de Productos</p>
+
+        <div className={globals.table}>
+          <button onClick={openModal} className={globals.registerButton}>
             <div className={`${icon.containerIcon} ${icon.addProductIcon}`}></div>
-           Registrar producto
+            Registrar Producto
           </button>
 
-          <CreateProduct isOpen={isModalOpen} onClose={closeModal} onProductCreated={handleProductCreated}/>
-          
+          <CreateProduct
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            onProductCreated={handleProductCreated}
+          />
 
-          <TableProducts />
+         
+          <TableProduct refresh={refresh} />
         </div>
       </span>
     </div>

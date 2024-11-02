@@ -2,8 +2,10 @@
 import { useState, useEffect } from "react";
 import styles from "../../styles/salesDashboard/manageCategory.module.css";
 import stylesWindow from "../../ui/styles/popUpWindow.module.css";
-import globals from '../../styles/globals.module.css'
-const CreateProduct = ({ isOpen, onClose ,onProductCreated }) => {
+import globals from '../../styles/globals.module.css';
+
+const CreateProduct = ({ isOpen, onClose, onProductCreated, isEditing, productData }) => {
+ 
   const initialFormState = {
     productName: "",
     categoryCode: "",
@@ -16,8 +18,8 @@ const CreateProduct = ({ isOpen, onClose ,onProductCreated }) => {
   const [categories, setCategories] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState("");
+  const [loadingCategories, setLoadingCategories] = useState(true);
 
-  // Carga las categorías al montar el componente
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -31,12 +33,28 @@ const CreateProduct = ({ isOpen, onClose ,onProductCreated }) => {
       } catch (error) {
         console.error("Error al obtener categorías: ", error);
         setMessage("Error al cargar categorías.");
+      } finally {
+        setLoadingCategories(false);
       }
     };
     fetchCategories();
   }, []);
 
-  // Manejador de cambios en los inputs
+  useEffect(() => {
+    if (isEditing && productData) {
+      console.log("Cargando datos del producto para editar:", productData);
+      setFormData({
+        productName: productData.D_product_name || "",
+        categoryCode: productData.C_category ? productData.C_category.toString() : "",
+        stock: productData.Q_stock || 0,
+        unitPrice: productData.M_unit_price ? productData.M_unit_price.toString() : "0",
+        status: productData.B_status || true,
+      });
+    } else {
+      setFormData(initialFormState);
+    }
+  }, [isEditing, productData]);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
@@ -44,13 +62,13 @@ const CreateProduct = ({ isOpen, onClose ,onProductCreated }) => {
       [name]: type === "checkbox" ? checked : value,
     }));
   };
+
   const handleClose = () => {
-    setFormData(initialFormState); // Limpia el formulario
-    setMessage(""); // Limpia el mensaje
-    onClose(); // Llama la función para cerrar la ventana emergente
+    setFormData(initialFormState);
+    setMessage(""); 
+    onClose(); 
   };
 
-  // Validaciones del formulario
   const validateForm = () => {
     const unitPriceValue = parseFloat(formData.unitPrice);
     if (formData.stock < 0) {
@@ -58,66 +76,61 @@ const CreateProduct = ({ isOpen, onClose ,onProductCreated }) => {
       return false;
     }
     if (unitPriceValue <= 0 || unitPriceValue > 9999.99) {
-      setMessage(
-        "El precio unitario debe ser mayor que cero y no puede exceder 9999.99."
-      );
+      setMessage("El precio unitario debe ser mayor que cero y no puede exceder 9999.99.");
       return false;
     }
     return true;
   };
 
-  // Manejador de envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
-
+  
     if (!validateForm()) return;
-
+  
     setIsSubmitting(true);
-
+  
     try {
-      const response = await fetch("/api/product/", {
-        method: "POST",
+      const url = isEditing ? `/api/product/${productData.C_product}` : "/api/product/";
+       
+      const response = await fetch(url, {
+        method: isEditing ? "PUT" : "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           D_product_name: formData.productName,
-          C_category: parseInt(formData.categoryCode),
-          Q_stock: parseInt(formData.stock),
+          C_category: parseInt(formData.categoryCode, 10),
+          Q_stock: isEditing ? undefined : parseInt(formData.stock, 10),
           M_unit_price: parseFloat(formData.unitPrice).toFixed(2),
           B_status: formData.status,
         }),
       });
-
+  
       if (response.ok) {
-
-
-        setMessage("Producto creado exitosamente");
+        setMessage("Producto creado/modificado exitosamente");
         setFormData(initialFormState);
         onProductCreated();
       } else {
         const errorData = await response.json();
-        setMessage(
-          response.status === 400
-            ? "Por favor, revise los datos ingresados."
-            : `Error: ${errorData.error}`
-        );
+        setMessage(response.status === 400 
+          ? "Por favor, revise los datos ingresados." 
+          : `Error: ${errorData.error || 'Error desconocido.'}`);
       }
     } catch (error) {
-      setMessage("Error al crear el producto. Por favor, intente nuevamente.");
+      console.error("Error al crear/modificar el producto: ", error);
+      setMessage("Error al crear/modificar el producto. Por favor, intente nuevamente.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // No renderizar si el modal no está abierto
   if (!isOpen) return null;
 
   return (
     <div className={stylesWindow.modalOverlay}>
       <div className={stylesWindow.modalContent}>
-        <h2>Crear Nuevo Producto</h2>
+        <h2>{isEditing ? "Modificar Producto" : "Crear Nuevo Producto"}</h2>
         <form onSubmit={handleSubmit} className={styles.form}>
           <label>
             Nombre del Producto:
@@ -138,7 +151,7 @@ const CreateProduct = ({ isOpen, onClose ,onProductCreated }) => {
               required
             >
               <option value="">Seleccione una categoría</option>
-              {categories.length === 0 ? (
+              {loadingCategories ? (
                 <option value="" disabled>
                   Cargando categorías...
                 </option>
@@ -151,19 +164,20 @@ const CreateProduct = ({ isOpen, onClose ,onProductCreated }) => {
               )}
             </select>
           </label>
-          <label>
-            Stock:
-            <input
-              type="number"
-              name="stock"
-              value={formData.stock}
-              onChange={handleChange}
-              required
-            />
-          </label>
+          {!isEditing && (
+            <label>
+              Stock:
+              <input
+                type="number"
+                name="stock"
+                value={formData.stock}
+                onChange={handleChange}
+                required
+              />
+            </label>
+          )}
           <label>
             Precio Unitario:
-            <p>Descripcion</p>
             <input
               type="number"
               name="unitPrice"
@@ -173,19 +187,12 @@ const CreateProduct = ({ isOpen, onClose ,onProductCreated }) => {
               required
             />
           </label>
-<div className={globals.containerButton}>
-
-
-
-          <button  className={globals.saveButton} type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Creando..." : "Registrar"}
-          </button>
-
-
-
-        <button className={globals.closeButton} onClick={handleClose}>Cerrar</button>
-  
-        </div>
+          <div className={globals.containerButton}>
+            <button className={globals.saveButton} type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Guardando..." : (isEditing ? "Modificar" : "Registrar")}
+            </button>
+            <button type="button" className={globals.closeButton} onClick={handleClose}>Cerrar</button>
+          </div>
         </form>
 
         {message && <p>{message}</p>}
