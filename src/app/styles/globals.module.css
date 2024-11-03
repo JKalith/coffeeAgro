@@ -170,6 +170,60 @@ color: red;
 }
 
 
+.filterWrapper {
+  position: relative; /* Hace que el panel se posicione relativo al botón */
+  width: 100px;
+
+  height: 50px;
+}
+
+.filterContainer {
+  position: absolute;
+  top: 0; /* Esto coloca el div justo debajo del botón */
+  left: 0;
+  width: 0;
+  max-height: 0; /* Inicia con max-height en 0 */
+  
+  border: 2px #78716C solid;
+  overflow: hidden;
+  background-color: hsl(0, 0%, 100%);
+  transition: width 0.5s ease-in-out, max-height 0.5s ease-in-out, padding 0.5s ease-in-out ; /* Transiciones */
+  
+  border-radius: 5px;
+  padding: 0; /* Sin padding inicial */
+  z-index: 1; /* Para que el div quede por encima de otros elementos si es necesario */
+}
+
+/* Estilo para cuando está completamente abierto */
+.openFilter {
+  width: 300px; /* Ajusta el ancho según tu preferencia */
+  height: 400px;
+  max-height: 400px; /* Ajusta según el contenido que esperas */
+
+
+}
+
+
+
+/* Estilo para el estado semi abierto */
+.semiOpenFilter {
+  height: 400px;
+
+  width: 100px; /* Ancho fijo */
+  max-height:50px; /* Altura para el estado semi abierto */
+
+}
+
+
+.buttonFilter {
+
+  width: 100px;
+  height: 50px;
+  display: relative;
+}
+
+
+
 @media (max-width: 768px) {
   .p {
     font-size: 50px; /* Reduce el tamaño de la fuente en pantallas más pequeñas */
