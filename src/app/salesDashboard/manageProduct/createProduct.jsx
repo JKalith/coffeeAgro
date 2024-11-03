@@ -119,7 +119,7 @@ const CreateProduct = ({ isOpen, onClose, onProductCreated, isEditing, productDa
       }
     } catch (error) {
       console.error("Error al crear/modificar el producto: ", error);
-      setMessage("Error al crear/modificar el producto. Por favor, intente nuevamente.");
+      setMessage("Nombre del producto ya existente");
     } finally {
       setIsSubmitting(false);
     }
@@ -181,7 +181,7 @@ const CreateProduct = ({ isOpen, onClose, onProductCreated, isEditing, productDa
             <input
               type="number"
               name="unitPrice"
-              step="0.01"
+              step="1000.00"
               value={formData.unitPrice}
               onChange={handleChange}
               required
@@ -195,7 +195,7 @@ const CreateProduct = ({ isOpen, onClose, onProductCreated, isEditing, productDa
           </div>
         </form>
 
-        {message && <p>{message}</p>}
+        {message && <p style={{ color: 'red' }}>{message}</p>}
       </div>
     </div>
   );

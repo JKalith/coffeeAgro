@@ -75,6 +75,6 @@ export async function PUT(request, { params }) {
     return NextResponse.json(updatedProduct, { status: 200 });
   } catch (error) {
     console.error("Error updating product:", error);
-    return createResponse({ error: "Error al actualizar el producto" }, 500);
+    return createResponse({ error: "Nombre del producto ya existente" }, 500);
   }
 }
