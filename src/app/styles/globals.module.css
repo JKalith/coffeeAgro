@@ -224,18 +224,36 @@ color: red;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 768px) {
   .p {
-    font-size: 50px; /* Reduce el tamaño de la fuente en pantallas más pequeñas */
+    font-size: 50px; 
   }
 
   .table {
-    width: 100%; /* Asegura que la tabla ocupe todo el ancho disponible */
+    width: 100%;
   
   }
 
   .titles, .titlePage {
-    font-size: 16px; /* Ajusta el tamaño de las fuentes */
+    font-size: 16px; 
   }
 
   .containerBetween {
@@ -246,7 +264,7 @@ color: red;
   .cell {
     display: flex;               
     flex: 1;            
-  /*border: solid 1px red;*/
+
     min-width: 80px;
     margin: 0px  10px;
     height: 50px;             
@@ -260,12 +278,12 @@ color: red;
 
 
   .closeButton, .saveButton {
-    width: 100%; /* Asegura que los botones sean fluidos en pantallas pequeñas */
+    width: 100%; 
     margin: 5px 0;
   }
 }
 
-/* Ajustes para pantallas muy pequeñas (teléfonos) */
+
 @media (max-width: 480px) {
 
  .productRow{

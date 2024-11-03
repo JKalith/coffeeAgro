@@ -39,11 +39,11 @@ export default function ManageInventory() {
                   Filtrar
                 </button>
 
-                <input type="text" name="input1" placeholder="Campo 1" />
+                <input type="text" name="input1" placeholder="Campo 1"  ></input>
                 <input type="text" name="input2" placeholder="Campo 2" />
                 <input type="text" name="input3" placeholder="Campo 3" />
 
-                <button className={globals.buttonFilter}>
+                <button className={globals.containerButton}>
                   <div
                     className={`${icon.containerIcon} ${icon.filterSearchIcon}`}
                   ></div>

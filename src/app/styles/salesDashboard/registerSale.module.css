@@ -8,7 +8,7 @@
   }
 .container{
 display: block;
-background-color: red;
+
 
 
 }
@@ -18,4 +18,65 @@ background-color: red;
 margin: 10px;
 cursor: pointer;
 
+  }
+
+.containerSale{
+display: flex;
+width: 100%;
+
+justify-content: end;
+
+
+}
+  .displayPayment{
+margin-top: 5px;
+
+width: fit-content;
+border: solid 1.5px #78716c63;
+padding: 5px;
+border-radius: 10px;
+padding-bottom: 0px;
+background-color: #FFFFFF;
+  }
+
+  .inputPayment{
+
+margin-left: 10px;
+display: flex;
+
+width: 150px;
+
+  }
+
+  .inputPayment:focus{
+
+    margin-left: 10px;
+    display: flex;
+    width: 150px;
+    
+      }
+
+
+      .containerButton{
+  
+
+        height: auto;
+        display: flex;
+        justify-content: end;
+
+
+      
+      }
+      
+
+
+
+
+
+  .flexInput{
+    display: flex;
+width: auto;
+align-items: end;
+justify-content: end;
+margin-bottom: 5px;
   }

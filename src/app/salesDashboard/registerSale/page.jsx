@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import globals from "../../styles/globals.module.css";
+import styles from '../../styles/salesDashboard/registerSale.module.css'
 import icon from "../../ui/styles/icons.module.css";
 import ModalProduct from "../registerSale/modalProduct";
 import RegisterSaleTable from "../registerSale/RegisterSaleTable";
@@ -211,6 +212,7 @@ export default function RegisterSale() {
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 required
+              
               />
             </div>
           </div>
@@ -254,14 +256,31 @@ export default function RegisterSale() {
             />
           </div>
 
-          <div className={globals.flexInput}>
+
+
+
+
+<div className={styles.containerSale}>
+
+
+
+
+<div className={styles.displayPayment}>
+
+
+
+
+
+<div className={styles.flexInput}>
             <p>Método de pago:</p>
             <select
+            className={styles.inputPayment}
               value={paymentMethod}
               onChange={(e) => setPaymentMethod(e.target.value)}
               required
             >
-              <option value="">Selecciona un método</option>
+                 
+              <option value="" >Método de pago</option>
               {listPaymentMethods.map((method) => (
                 <option
                   key={method.C_payment_method}
@@ -271,25 +290,42 @@ export default function RegisterSale() {
                 </option>
               ))}
             </select>
+            </div>
+            <div className={styles.flexInput}>
             <p>Total:</p>
+
             <input
+
+className={styles.inputPayment}
               type="number"
               value={String(total)}
               readOnly
               placeholder="Total"
             />
-          </div>
+           </div>
+           <div className={styles.containerButton}>
 
-          <button type="submit" className={globals.submitButton}>
-            Registrar Venta
+
+
+           <button type="submit" className={globals.closeButton}>
+            Reiniciar 
           </button>
+          <button type="submit" className={globals.saveButton}>
+            Registrar 
+          </button>
+          </div>
+          </div>
+      
+          
+          
+          </div>
         </form>
 
         {isModalOpen && (
           <ModalProduct
             onClose={closeModal}
             onSelectProduct={handleProductSelect}
-          />
+          />   
         )}
       </span>
     </div>

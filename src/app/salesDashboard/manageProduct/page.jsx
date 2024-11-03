@@ -32,17 +32,17 @@ export default function ManageProduct() {
         <p className={globals.titlePage}>Gestión de Productos</p>
 
         <div className={globals.table}>
-          <button onClick={openModal} className={globals.registerButton}>
-            <div className={`${icon.containerIcon} ${icon.addProductIcon}`}></div>
-            Registrar Producto
-          </button>
+       
 
           <CreateProduct
             isOpen={isModalOpen}
             onClose={closeModal}
             onProductCreated={handleProductCreated}
           />
-
+   <button onClick={openModal} className={globals.registerButton}>
+            <div className={`${icon.containerIcon} ${icon.addProductIcon}`}></div>
+            Registrar Producto
+          </button>
          
           <TableProduct refresh={refresh} />
         </div>
