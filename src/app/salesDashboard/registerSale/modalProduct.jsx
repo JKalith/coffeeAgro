@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import globals from "../../styles/globals.module.css";
 import stylesWindow from "../../ui/styles/popUpWindow.module.css";
-
+import styles from "../../styles/salesDashboard/registerSale.module.css"
 const ModalProduct = ({ onClose, onSelectProduct }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,7 +11,7 @@ const ModalProduct = ({ onClose, onSelectProduct }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("/api/product/");
+        const response = await fetch("/api/product/");  
         if (!response.ok) {
           throw new Error("Error fetching product: " + response.statusText);
         }
@@ -30,13 +30,12 @@ const ModalProduct = ({ onClose, onSelectProduct }) => {
   return (
     <div>
       <div className={stylesWindow.modalOverlay}>
-        <div className={stylesWindow.modalContent}>
+        <div className={styles.modalContent}>
           <p className={globals.titlePage}>Insertar producto</p>
           <div className={globals.displayTitle}>
             <div className={globals.productRow}>
-              <div className={globals.cell}>
-                <p>Nombre</p>
-              </div>
+              <div className={globals.cell}><p>ID</p></div>
+              <div className={globals.cell}><p>Nombre</p></div>
             </div>
           </div>
           <div className={globals.containerRows}>
@@ -46,18 +45,23 @@ const ModalProduct = ({ onClose, onSelectProduct }) => {
               <p>Error: {error}</p>
             ) : products.length > 0 ? (
               products.map((product) => (
-                <div key={product.C_product} className={globals.productRow}>
+                <div 
+                  key={product.C_product} 
+                  className={`${globals.productRow} ${globals.cursorPointer}`} 
+                  onClick={() => onSelectProduct(product.C_product)}
+                >
                   <div className={globals.cell}>
-                    <p onClick={() => onSelectProduct(product.C_product)}>
-                      {product.D_product_name}
-                    </p>
+                    <p>{product.C_product}</p>
+                  </div>
+                  <div className={globals.cell}>
+                    <p>{product.D_product_name}</p>
                   </div>
                 </div>
               ))
             ) : (
               <p>No hay productos registrados.</p>
             )}
-            <div className={stylesWindow.containerButton}>
+            <div className={globals.containerButton}>
               <button className={globals.closeButton} onClick={onClose}>
                 Cerrar
               </button>

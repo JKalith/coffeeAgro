@@ -78,3 +78,21 @@ align-items: end;
 justify-content: end;
 margin-bottom: 5px;
   }
+
+
+
+
+
+  .modalContent{
+
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+   width: 400px;
+    min-height: 100px;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.527);
+    justify-content: center;
+    align-items: center;
+    }
+   

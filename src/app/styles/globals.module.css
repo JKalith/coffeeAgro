@@ -15,8 +15,8 @@
   box-sizing: border-box; /* Asegura que el padding no desborde el ancho */
 }
 .containerButton{
-  
 
+  width: 100%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -143,7 +143,7 @@ margin-top: 10px;
   align-items: center;
   flex: 1;    
   flex-wrap: wrap; 
-
+  
   width: auto;               
   margin-bottom: 5px;      
 
@@ -220,6 +220,10 @@ color: red;
   width: 100px;
   height: 50px;
   display: relative;
+}
+
+.cursorPointer{
+cursor: pointer;
 }
 
 
