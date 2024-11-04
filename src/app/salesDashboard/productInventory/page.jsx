@@ -16,6 +16,7 @@ export default function ManageInventory() {
 
   return (
     <div className={globals.container}>
+
       <span>
         <p className={globals.titlePage}>Inventario de productos</p>
 
@@ -54,8 +55,9 @@ export default function ManageInventory() {
           </div>
 
           {/* Aquí iría el Modal y la tabla de inventario */}
-          <Modal isOpen={false} onClose={() => {}} symbol={icon.closeIcon} />
+       
           <InventoryTable />
+          <Modal isOpen={false} onClose={() => {}} symbol={icon.closeIcon} />
         </div>
       </span>
     </div>

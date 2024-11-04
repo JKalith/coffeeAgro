@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import stylesWindow from "../../ui/styles/popUpWindow.module.css";
 import globals from "../../styles/globals.module.css";
-
+import styles from '../../styles/salesDashboard/inventoryProducts.module.css'
 export default function AddStock({ isOpen, onClose, product }) {
   const [additionalStock, setAdditionalStock] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -53,14 +53,31 @@ export default function AddStock({ isOpen, onClose, product }) {
 
   return (
     <div className={stylesWindow.modalOverlay}>
-      <div className={stylesWindow.modalContent}>
-        <p className={globals.titles}>Agregar Stock</p>
+      <div className={styles.containerAddStock}>
+ 
         <form onSubmit={handleSubmit} className={stylesWindow.form}>
-          <p className={globals.cell}>{product.D_product_name}</p>
-          <p className={globals.titleInput}>Cantidad a agregar</p>
+
+ 
+      
+        <p className={styles.titleModal}>Ingreso de productos</p>
+        <p className={globals.titleInput}>Nombre de producto</p>
+   
+        <div className={styles.containerText}>
+   
+
+        <p >{product.D_product_name}</p>
+
+        </div>
+
+
+
+
+
+          <p className={globals.titleInput}>Stock</p>
           <input
             type="number"
             min="1"
+            className={styles.containerText}
             value={additionalStock}
             onChange={(e) => setAdditionalStock(e.target.value)}
             required

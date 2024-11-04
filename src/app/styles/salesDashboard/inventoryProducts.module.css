@@ -1,0 +1,42 @@
+.containerAddStock {
+  background: white;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 25px;
+  padding-bottom: 5px;
+
+  display: flex;
+  border-radius: 15px;
+
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.titleModal {
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: -15px;
+  margin-top: -10px;
+  padding-bottom: 5px;
+}
+.containerText {
+  height: 30px;
+  margin-bottom: 5px;
+  width: 250px;
+  padding-left: 7px;
+
+  border: solid 0.5px #78716c;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  color: #0a0a0a;
+}
+.containerText:focus {
+  height: 30px;
+  width: 250px;
+  padding-left: 7px;
+
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  color: #0a0a0a;
+}

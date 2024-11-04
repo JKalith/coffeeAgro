@@ -2,10 +2,15 @@
 import { useState, useEffect } from "react";
 import styles from "../../styles/salesDashboard/manageCategory.module.css";
 import stylesWindow from "../../ui/styles/popUpWindow.module.css";
-import globals from '../../styles/globals.module.css';
+import globals from "../../styles/globals.module.css";
 
-const CreateProduct = ({ isOpen, onClose, onProductCreated, isEditing, productData }) => {
- 
+const CreateProduct = ({
+  isOpen,
+  onClose,
+  onProductCreated,
+  isEditing,
+  productData,
+}) => {
   const initialFormState = {
     productName: "",
     categoryCode: "",
@@ -45,9 +50,13 @@ const CreateProduct = ({ isOpen, onClose, onProductCreated, isEditing, productDa
       console.log("Cargando datos del producto para editar:", productData);
       setFormData({
         productName: productData.D_product_name || "",
-        categoryCode: productData.C_category ? productData.C_category.toString() : "",
+        categoryCode: productData.C_category
+          ? productData.C_category.toString()
+          : "",
         stock: productData.Q_stock || 0,
-        unitPrice: productData.M_unit_price ? productData.M_unit_price.toString() : "0",
+        unitPrice: productData.M_unit_price
+          ? productData.M_unit_price.toString()
+          : "0",
         status: productData.B_status || true,
       });
     } else {
@@ -65,8 +74,8 @@ const CreateProduct = ({ isOpen, onClose, onProductCreated, isEditing, productDa
 
   const handleClose = () => {
     setFormData(initialFormState);
-    setMessage(""); 
-    onClose(); 
+    setMessage("");
+    onClose();
   };
 
   const validateForm = () => {
@@ -76,7 +85,9 @@ const CreateProduct = ({ isOpen, onClose, onProductCreated, isEditing, productDa
       return false;
     }
     if (unitPriceValue <= 0 || unitPriceValue > 9999.99) {
-      setMessage("El precio unitario debe ser mayor que cero y no puede exceder 9999.99.");
+      setMessage(
+        "El precio unitario debe ser mayor que cero y no puede exceder 9999.99."
+      );
       return false;
     }
     return true;
@@ -85,14 +96,16 @@ const CreateProduct = ({ isOpen, onClose, onProductCreated, isEditing, productDa
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
-  
+
     if (!validateForm()) return;
-  
+
     setIsSubmitting(true);
-  
+
     try {
-      const url = isEditing ? `/api/product/${productData.C_product}` : "/api/product/";
-       
+      const url = isEditing
+        ? `/api/product/${productData.C_product}`
+        : "/api/product/";
+
       const response = await fetch(url, {
         method: isEditing ? "PUT" : "POST",
         headers: {
@@ -106,16 +119,18 @@ const CreateProduct = ({ isOpen, onClose, onProductCreated, isEditing, productDa
           B_status: formData.status,
         }),
       });
-  
+
       if (response.ok) {
         setMessage("Producto creado/modificado exitosamente");
         setFormData(initialFormState);
         onProductCreated();
       } else {
         const errorData = await response.json();
-        setMessage(response.status === 400 
-          ? "Por favor, revise los datos ingresados." 
-          : `Error: ${errorData.error || 'Error desconocido.'}`);
+        setMessage(
+          response.status === 400
+            ? "Por favor, revise los datos ingresados."
+            : `Error: ${errorData.error || "Error desconocido."}`
+        );
       }
     } catch (error) {
       console.error("Error al crear/modificar el producto: ", error);
@@ -132,70 +147,140 @@ const CreateProduct = ({ isOpen, onClose, onProductCreated, isEditing, productDa
       <div className={stylesWindow.modalContent}>
         <h2>{isEditing ? "Modificar Producto" : "Crear Nuevo Producto"}</h2>
         <form onSubmit={handleSubmit} className={styles.form}>
-          <label>
-            Nombre del Producto:
-            <input
-              type="text"
-              name="productName"
-              value={formData.productName}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Categoría:
-            <select
-              name="categoryCode"
-              value={formData.categoryCode}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Seleccione una categoría</option>
-              {loadingCategories ? (
-                <option value="" disabled>
-                  Cargando categorías...
-                </option>
-              ) : (
-                categories.map((category) => (
-                  <option key={category.C_category} value={category.C_category}>
-                    {category.D_category_name}
+          <div className={globals.flexInput}>
+
+
+
+            <div>
+              <p>Nombre del Producto:</p>
+              <label>
+                <input
+                  type="text"
+                  name="productName"
+                  value={formData.productName}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+        
+
+
+
+<p>        Categoría: </p>
+            <label >
+        
+              <select
+                name="categoryCode"
+                value={formData.categoryCode}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Seleccione una categoría</option>
+                {loadingCategories ? (
+                  <option value="" disabled>
+                    Cargando categorías...
                   </option>
-                ))
-              )}
-            </select>
-          </label>
-          {!isEditing && (
-            <label>
-              Stock:
+                ) : (
+                  categories.map((category) => (
+                    <option
+                      key={category.C_category}
+                      value={category.C_category}
+                    >
+                      {category.D_category_name}
+                    </option>
+                  ))
+                )}
+              </select>
+        
+            </label>
+            </div>
+
+
+
+
+
+<div>
+
+
+
+
+            {!isEditing && (
+
+
+
+              <label >
+         <p>
+
+Stock:
+
+
+</p>
+                <input
+                  type="number"
+                  name="stock"
+                  value={formData.stock}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+            )}
+
+
+
+
+<label>
+            <p>
+            Precio Unitario:
+            </p>
+     
+       
               <input
                 type="number"
-                name="stock"
-                value={formData.stock}
+                name="unitPrice"
+                step="1000.00"
+                value={formData.unitPrice}
                 onChange={handleChange}
                 required
               />
-            </label>
-          )}
-          <label>
-            Precio Unitario:
-            <input
-              type="number"
-              name="unitPrice"
-              step="1000.00"
-              value={formData.unitPrice}
-              onChange={handleChange}
-              required
-            />
-          </label>
+            </label>{" "}
+
+
+
+
+
+
+
+          </div>
+          </div>
           <div className={globals.containerButton}>
-            <button className={globals.saveButton} type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Guardando..." : (isEditing ? "Modificar" : "Registrar")}
+
+
+          <button
+              type="button"
+              className={globals.closeButton}
+              onClick={handleClose}
+            >
+              Cerrar
             </button>
-            <button type="button" className={globals.closeButton} onClick={handleClose}>Cerrar</button>
+
+
+
+            <button
+              className={globals.saveButton}
+              type="submit"
+              disabled={isSubmitting}
+            >
+              {isSubmitting
+                ? "Guardando..."
+                : isEditing
+                ? "Modificar"
+                : "Registrar"}
+            </button>
+      
           </div>
         </form>
 
-        {message && <p style={{ color: 'red' }}>{message}</p>}
+        {message && <p style={{ color: "red" }}>{message}</p>}
       </div>
     </div>
   );

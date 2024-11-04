@@ -39,11 +39,9 @@ padding-bottom: 0px;
 background-color: #FFFFFF;
   }
 
-  .inputPayment{
-
+.inputPayment{
 margin-left: 10px;
 display: flex;
-
 width: 150px;
 
   }

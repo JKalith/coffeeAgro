@@ -2,7 +2,7 @@
 import globals from "../../styles/globals.module.css";
 import { useState, useEffect } from "react";
 import AddStock from "../productInventory/addStock";
-
+import icon from '../../ui/styles/icons.module.css'
 export default function InventoryTable() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -75,18 +75,19 @@ export default function InventoryTable() {
                 <p>{product.M_unit_price}</p>
               </div>
               <div className={globals.cell}>
-                <button onClick={() => openAddStockModal(product)}>
+                <button className={globals.changeButton} onClick={() => openAddStockModal(product)}>
+
+                  <div className={`${icon.containerIcon} ${icon.addProductIcon}`}></div>
                   Agregar stock
                 </button>
               </div>
             </div>
           ))
         ) : (
-          <p>No hay productos disponibles.</p>
+          <p className={globals.errorMessage}>No hay productos disponibles.</p>
         )}
       </div>
 
-      {/* AddStock Modal */}
       <AddStock
         isOpen={!!selectedProduct}
         onClose={closeAddStockModal}
