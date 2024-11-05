@@ -58,3 +58,15 @@ background-color: #fd4437;
     align-items: center;
     }
    
+
+
+    
+@media (prefers-color-scheme: dark) {
+
+  .modalContent{
+
+background-color: #343434;
+border: solid 2px #8686867f;
+
+  }
+}

@@ -133,9 +133,51 @@ width: auto;
     }
 
 @media (prefers-color-scheme: dark) {
+
+
+
+  select{
+
+  color: rgb(255, 255, 255);
+
+  background-color:#868686;
+
+
+  
+  
+    }
+
+input{
+
+color: rgb(255, 255, 255);
+background-color: #868686;
+
+}
+input:focus{
+
+  color: rgb(255, 255, 255);
+  background-color: #868686;
+  
+  }
+  p {
+ 
+    color: #ffffff; 
+  }
+
+
+
   html {
     color-scheme: dark;
   }
+
+  button{
+
+background-color: #3BBC6A;
+
+
+  }
+
+
 }
 @media (max-width: 480px) {
   p {
@@ -162,3 +204,5 @@ width: auto;
 
 
 }
+
+

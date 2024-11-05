@@ -55,7 +55,7 @@ export default function AddStock({ isOpen, onClose, product }) {
     <div className={stylesWindow.modalOverlay}>
       <div className={styles.containerAddStock}>
  
-        <form onSubmit={handleSubmit} className={stylesWindow.form}>
+        <form onSubmit={handleSubmit} className={`${styles.form} ${stylesWindow.modalContent}`}>
 
  
       

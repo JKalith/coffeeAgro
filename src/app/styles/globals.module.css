@@ -14,6 +14,11 @@
   width: 100%; /* Ocupa el 100% del ancho del padre */
   box-sizing: border-box; /* Asegura que el padding no desborde el ancho */
 }
+
+
+
+
+
 .containerButton{
 
   width: 100%;
@@ -332,4 +337,29 @@ background-color: #FAFAF9;
    
   }
 
+}
+
+
+
+
+@media (prefers-color-scheme: dark) {
+  .table {
+   background-color: #3C3C3C;
+  }
+
+
+
+  .filterContainer {
+
+
+    background-color: #3C3C3C;
+  }
+  .displayTitle{
+
+
+
+    background-color: #5D5D5D;
+  }
+
+  
 }

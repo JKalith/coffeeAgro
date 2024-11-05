@@ -30,7 +30,7 @@ const ModalProduct = ({ onClose, onSelectProduct }) => {
   return (
     <div>
       <div className={stylesWindow.modalOverlay}>
-        <div className={styles.modalContent}>
+        <div className={`${stylesWindow.modalContent}  ${styles.modalWidth} }`}>
           <p className={globals.titlePage}>Insertar producto</p>
           <div className={globals.displayTitle}>
             <div className={globals.productRow}>
