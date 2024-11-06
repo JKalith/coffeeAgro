@@ -1,6 +1,29 @@
 import { NextResponse } from 'next/server';
 import db from '../../../libs/db'; // Ajusta la ruta a tu instancia de Prisma
+export async function GET(req) {
+  try {
+    const sales = await db.sales.findMany({
+      include: {
+        Payment_methods: true,
+    },
+    }); 
 
+    return new Response(JSON.stringify(sales), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    console.error("Error sales: ", error);
+    return new Response(JSON.stringify({ error: "Error fetching sales" }), {
+      status: 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  }
+}
 export async function POST(req) {
   try {
     const { C_payment_method, F_date, D_client, M_total_price } = await req.json();

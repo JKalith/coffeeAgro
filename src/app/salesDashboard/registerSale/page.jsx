@@ -128,6 +128,13 @@ export default function RegisterSale() {
       return updatedList;
     });
   };
+  const resetSale = () => {
+    setProductList([]);
+    setTotal(0);
+    setClient("");
+    setDate("");
+    setPaymentMethod("");
+  }
 
   const handleRegisterSale = async (e) => {
     e.preventDefault(); // Prevenir el envío del formulario
@@ -177,11 +184,7 @@ export default function RegisterSale() {
 
       alert("Venta registrada con éxito!");
       // Reiniciar el formulario después de registrar
-      setProductList([]);
-      setTotal(0);
-      setClient("");
-      setDate("");
-      setPaymentMethod("");
+      resetSale();
     } catch (error) {
       console.error("Error al registrar la venta catch:", error);
       alert("Error al registrar la venta cath.");
@@ -307,16 +310,19 @@ className={styles.inputPayment}
 
 
 
-           <button type="submit" className={globals.closeButton}>
+           <button onClick={resetSale} type="button"  className={globals.closeButton}>
             Reiniciar 
           </button>
           <button type="submit" className={globals.saveButton}>
             Registrar 
           </button>
+          
           </div>
           </div>
           </div>
+          
         </form>
+        
 
         {isModalOpen && (
           <ModalProduct

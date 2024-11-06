@@ -10,10 +10,11 @@ datasource db {
 }
 
 model Accounting_closings {
-  C_accounting_closing Int                  @id(map: "PK_Accounting_closings") @default(autoincrement()) @db.SmallInt
-  F_date               DateTime             @db.DateTime
-  B_status             Boolean
-  Accounting_details   Accounting_details[]
+  C_accounting_closing   Int                  @id(map: "PK_Accounting_closings") @default(autoincrement()) @db.SmallInt
+  F_date                 DateTime             @db.DateTime
+  B_status               Boolean
+  B_inventory_adjustment Boolean
+  Accounting_details     Accounting_details[]
 
   @@schema("Sales_management")
 }
@@ -80,6 +81,7 @@ model Sales {
   F_date           DateTime        @db.DateTime
   D_client         String          @db.NVarChar(30)
   M_total_price    Decimal         @db.Decimal(8, 2)
+  B_status         Boolean         @default(true, map: "DF_Sales_B_status")
   Sale_Details     Sale_Details[]
   Payment_methods  Payment_methods @relation(fields: [C_payment_method], references: [C_payment_method], onUpdate: NoAction, map: "FK_Sales_Payment_methods")
 
