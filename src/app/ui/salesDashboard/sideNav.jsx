@@ -36,21 +36,24 @@ export default function SideNav() {
               buttonText="Registro de venta"
               icon={icon.registerSaleIcon}
             />
-            <BtnSideNav
-              href="/salesDashboard/accountingClosing"
-              buttonText="Cierre contable"
-              icon={icon.accountingClosingIcon}
-            />
-            <BtnSideNav
+                    <BtnSideNav
               href="/salesDashboard/historyInvoice"
               buttonText="Historial de factura"
               icon={icon.historyInvoiceIcon}
             />
             <BtnSideNav
-              href="/salesDashboard/manageCategory"
-              buttonText="Gestion de categoria"
-              icon={icon.categoryIcon}
+              href="/salesDashboard/accountingClosing"
+              buttonText="Cierre contable"
+              icon={icon.accountingClosingIcon}
             />
+
+<BtnSideNav
+              href="/salesDashboard/historyAccountingC"
+              buttonText="Historial de cierre contable"
+              icon={icon.historyAccountingIcon}
+            />
+    
+          
             <BtnSideNav
               href="/salesDashboard/manageProduct"
               buttonText="Gestion de producto"
@@ -61,7 +64,12 @@ export default function SideNav() {
               buttonText="Inventario de productos"
               icon={icon.procductInventoryIcon}
             />
-          </div>{" "}
+         <BtnSideNav
+              href="/salesDashboard/manageCategory"
+              buttonText="Gestion de categoria"
+              icon={icon.categoryIcon}
+            />
+          </div>
         </div>
       </div>
     </div>
