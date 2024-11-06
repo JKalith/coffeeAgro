@@ -69,7 +69,11 @@ width: 150px;
 
 
 
+      .modalWidth{
+width: 400px;
 
+
+      }
 
   .flexInput{
     display: flex;

@@ -9,16 +9,49 @@
 .container{
 display: block;
 
-padding: 10px;
+
 
 }
 
   .button{
 
-margin: 10px;
+
 cursor: pointer;
+
 
   }
 .titleInput{
   margin: 10px;
+}
+.input{
+width: 300px;
+
+
+
+}
+.input:focus{
+
+  width: 300px;
+
+
+
+}
+@media (max-width: 480px) {
+
+  .input{
+width: 100%;
+    
+    
+    
+    }
+    .input:focus{
+
+      width: 100%;
+
+
+
+    }
+
+
+
 }

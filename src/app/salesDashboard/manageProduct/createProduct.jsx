@@ -145,7 +145,7 @@ const CreateProduct = ({
   return (
     <div className={stylesWindow.modalOverlay}>
       <div className={stylesWindow.modalContent}>
-        <h2>{isEditing ? "Modificar Producto" : "Crear Nuevo Producto"}</h2>
+        <p className={globals.titles}> {isEditing ? "Modificar Producto" : "Crear Nuevo Producto"}</p>
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={globals.flexInput}>
 

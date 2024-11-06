@@ -68,6 +68,7 @@ export default function CreateCategory({ isOpen, onClose, initialCategory = null
           <form onSubmit={handleSubmit} className={styles.form}>
             <p className={styles.titleInput}>Nombre</p>
             <input
+            className={styles.input}
               type="text"
               value={categoryName}
               onChange={(e) => setCategoryName(e.target.value)}

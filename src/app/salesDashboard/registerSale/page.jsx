@@ -315,9 +315,6 @@ className={styles.inputPayment}
           </button>
           </div>
           </div>
-      
-          
-          
           </div>
         </form>
 

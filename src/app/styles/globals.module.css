@@ -300,7 +300,7 @@ cursor: pointer;
 padding: 5px;
 border: solid 0.5px #78716C;
 border-radius: 10px;
-background-color: #FAFAF9; 
+
 
  }
 
@@ -363,6 +363,14 @@ background-color: #FAFAF9;
 
     background-color: #5D5D5D;
   }
+  .productRow{
+
+color: white;
+
+
+  }
+
+
 
   
 }
