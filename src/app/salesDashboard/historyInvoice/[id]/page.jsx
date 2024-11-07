@@ -42,13 +42,15 @@ export default function InvoiceDetails() {
 
   return (
     <div>
-      <h1 className={globals.displayTitle}>Detalles de la Factura #{id}</h1>
+      <p className={globals.titlePage}>Detalles de la Factura #{id}</p>
 
-      <button onClick={handleOpenModal} className={globals.cancelButton}>
-        Anular Factura
-      </button>
+  
 
-      <div className={globals.productRow}>
+  <div className={`${globals.table}`}>
+
+
+
+      <div className={`${globals.productRow} ${globals.displayTitle}`}>
         <div className={globals.cell}>
           <p>Código de Producto</p>
         </div>
@@ -87,6 +89,11 @@ export default function InvoiceDetails() {
           )}
         </div>
       </div>
+      </div>
+      
+      <button onClick={handleOpenModal} className={globals.closeButton}>
+        Anular Factura
+      </button>
 
       <CancelInvoiceModal
         isOpen={isModalOpen}

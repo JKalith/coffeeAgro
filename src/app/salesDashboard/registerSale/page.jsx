@@ -202,6 +202,7 @@ export default function RegisterSale() {
             <div className={globals.flexInput}>
               <p>Cliente:</p>
               <input
+                    className={styles.inputPayment}
                 type="text"
                 value={client}
                 onChange={(e) => setClient(e.target.value)}
@@ -211,6 +212,7 @@ export default function RegisterSale() {
             <div className={globals.flexInput}>
               <p>Fecha:</p>
               <input
+                    className={styles.inputPayment}
                 type="datetime-local"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
@@ -223,21 +225,31 @@ export default function RegisterSale() {
           <div className={globals.table}>
             <div className={globals.containerBetween}>
               <div className={globals.flexInput}>
-                <p>Producto seleccionado:</p>
+
+
+
+
+
+
+
+              <p className={styles.flexInputTitle}>Producto seleccionado:
                 <input
+                      className={styles.inputPayment}
                   type="number"
                   value={selectedProductId}
                   onChange={handleInputChange}
                   placeholder="ID del producto"
                 />
-                <p>Cantidad:</p>
+</p>
+<p className={styles.flexInputTitle}>Cantidad:
                 <input
+                      className={styles.inputPayment}
                   type="number"
                   value={quantity}
                   onChange={handleQuantityChange}
                   min="1"
                   placeholder="Cantidad"
-                />
+                /></p>
                 <button type="button" onClick={fetchProduct}>
                   <div
                     className={`${icon.containerIcon} ${icon.addIcon}`}

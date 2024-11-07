@@ -7,8 +7,8 @@
     justify-content: center;
   }
 .container{
-display: block;
 
+display: flex;
 
 
 }
@@ -42,15 +42,19 @@ background-color: hsl(0, 0%, 100%);
 .inputPayment{
 margin-left: 10px;
 display: flex;
-width: 150px;
+width: 170px;
 
   }
+.containerImputPayment{
+margin-right: 10px;
+display: flex;
 
+  }
   .inputPayment:focus{
 
     margin-left: 10px;
     display: flex;
-    width: 150px;
+    width: 170px;
     
       }
 
@@ -82,8 +86,21 @@ align-items: end;
 justify-content: end;
 margin-bottom: 5px;
   }
+  .flexInputTitle{
+    display: flex;
+width: auto;
+align-items: end;
+justify-content: end;
+margin-bottom: 5px;
+  }
 
+  .containerInputSale{
+    display: flex;
 
+align-items: center;
+justify-content: center;
+margin-bottom: 5px;
+  }
 
 
 
@@ -112,3 +129,42 @@ background-color: #343434;
 border: solid 0.5px #78716C;
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+  @media (max-width: 480px) {
+
+    .inputPayment{
+      margin-left: 10px;
+      display: flex;
+      width: 170px;
+      
+        }
+   
+        .inputPayment:focus{
+      
+          margin-left: 10px;
+          display: flex;
+          width: 150px;
+          
+            }
+    .containerSale{
+      display: flex;
+      width: 100%;
+
+         
+      
+      }
+
+
+
+  }

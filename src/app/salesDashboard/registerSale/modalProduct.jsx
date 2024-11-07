@@ -31,13 +31,21 @@ const ModalProduct = ({ onClose, onSelectProduct }) => {
     <div>
       <div className={stylesWindow.modalOverlay}>
         <div className={`${stylesWindow.modalContent}  ${styles.modalWidth} }`}>
+
           <p className={globals.titlePage}>Insertar producto</p>
+        
           <div className={globals.displayTitle}>
+
+
+
+
+
             <div className={globals.productRow}>
               <div className={globals.cell}><p>ID</p></div>
               <div className={globals.cell}><p>Nombre</p></div>
             </div>
           </div>
+          <div className={globals.scrollTable}>
           <div className={globals.containerRows}>
             {loading ? (
               <p>Cargando...</p>
@@ -61,13 +69,15 @@ const ModalProduct = ({ onClose, onSelectProduct }) => {
             ) : (
               <p>No hay productos registrados.</p>
             )}
+
+</div></div>
             <div className={globals.containerButton}>
               <button className={globals.closeButton} onClick={onClose}>
                 Cerrar
               </button>
             </div>
-          </div>
-        </div>
+         
+            </div>
       </div>
     </div>
   );

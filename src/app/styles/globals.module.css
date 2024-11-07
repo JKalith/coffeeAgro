@@ -18,7 +18,6 @@
 
 
 
-
 .containerButton{
 
   width: 100%;
@@ -130,8 +129,12 @@ margin-top: 10px;
 .containerBetween {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  
 }
 .flexInput {
+
+  flex-wrap: wrap;
   display: flex;
   align-items: center;
 }
@@ -294,6 +297,11 @@ cursor: pointer;
 
 
 @media (max-width: 480px) {
+
+  .containerBetween {
+    display: flex;
+    justify-content: space-between;
+  }
 
  .productRow{
  

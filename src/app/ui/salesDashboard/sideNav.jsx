@@ -51,7 +51,7 @@ export default function SideNav() {
             <BtnSideNav
               href="/salesDashboard/historyAccountingC"
               buttonText="Historial de cierre contable"
-              icon={icon.historyAccountingIcon}
+              icon={icon.historyAccountingClosingIcon}
             />
 
             <BtnSideNav
