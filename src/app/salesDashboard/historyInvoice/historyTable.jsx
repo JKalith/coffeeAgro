@@ -1,14 +1,17 @@
 "use client";
 import globals from "../../styles/globals.module.css";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { format } from "date-fns";
-export default function historyTable() {
+
+export default function HistoryTable() {
   const [invoices, setInvoices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const router = useRouter();
 
   const fetchInvoices = async () => {
-    setLoading(true); // Añade esto para mostrar el estado de carga al actualizar
+    setLoading(true);
     try {
       const response = await fetch("/api/sale/");
       if (!response.ok) {
@@ -23,15 +26,15 @@ export default function historyTable() {
       setLoading(false);
     }
   };
+
   const onSelectedInvoice = (id) => {
-    
+    router.push(`/salesDashboard/historyInvoice/${id}`);
   };
 
-
   useEffect(() => {
-
     fetchInvoices();
   }, []);
+
   return (
     <div>
       <div className={globals.displayTitle}>
@@ -46,13 +49,13 @@ export default function historyTable() {
             <p>Fecha</p>
           </div>
           <div className={globals.cell}>
-            <p>Metodo de pago </p>
+            <p>Metodo de pago</p>
           </div>
           <div className={globals.cell}>
-            <p>Estado </p>
+            <p>Estado</p>
           </div>
           <div className={globals.cell}>
-            <p>Monto total </p>
+            <p>Monto total</p>
           </div>
         </div>
       </div>
@@ -64,7 +67,11 @@ export default function historyTable() {
             <p>Error: {error}</p>
           ) : invoices.length > 0 ? (
             invoices.map((invoice) => (
-              <div onClick={onSelectedInvoice(invoice.C_Sale)} key={invoice.C_Sale} className={globals.productRow}>
+              <div
+                onClick={() => onSelectedInvoice(invoice.C_Sale)}
+                key={invoice.C_Sale}
+                className={globals.productRow}
+              >
                 <div className={globals.cell}>
                   <p>{invoice.C_Sale}</p>
                 </div>
@@ -72,15 +79,13 @@ export default function historyTable() {
                   <p>{invoice.D_client}</p>
                 </div>
                 <div className={globals.cell}>
-                  <p>
-                    {format(new Date(invoice.F_date), "MMM dd yyyy, hh:mm a")}
-                  </p>
+                  <p>{format(new Date(invoice.F_date), "MMM dd yyyy, hh:mm a")}</p>
                 </div>
                 <div className={globals.cell}>
                   <p>{invoice.Payment_methods?.D_payment_method}</p>
                 </div>
                 <div className={globals.cell}>
-                  <p>{invoice.B_status ? "Anulada" : "Procesada"}</p>
+                  <p>{invoice.B_status ? "Procesada" : "Anulada"}</p>
                 </div>
                 <div className={globals.cell}>
                   <p>{invoice.M_total_price}</p>

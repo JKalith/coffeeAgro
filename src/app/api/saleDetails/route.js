@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
-import db from '../../../libs/db';
+import { NextResponse } from "next/server";
+import db from "../../../libs/db";
 
 // Método POST para registrar los detalles de una venta
 export const POST = async (req) => {
