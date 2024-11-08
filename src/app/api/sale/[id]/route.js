@@ -11,14 +11,15 @@ export async function PUT(request, { params }) {
 
     if (!saleExists) {
       return NextResponse.json(
-        { error: "Factura no encontrada o ya anulada" },
+        { error: "Factura no encontrada" },
         { status: 404 }
       );
     }
+
     if (saleExists.B_status === false) {
       return NextResponse.json(
-        { error: "Factura ya anulada" },
-        { status: 404 }
+        { error: "La factura ya está anulada" },
+        { status: 400 }
       );
     }
 

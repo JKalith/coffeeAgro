@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import globals from "../../styles/globals.module.css";
-import styles from '../../styles/salesDashboard/registerSale.module.css'
+import styles from "../../styles/salesDashboard/registerSale.module.css";
 import icon from "../../ui/styles/icons.module.css";
 import ModalProduct from "../registerSale/modalProduct";
 import RegisterSaleTable from "../registerSale/RegisterSaleTable";
@@ -134,7 +134,7 @@ export default function RegisterSale() {
     setClient("");
     setDate("");
     setPaymentMethod("");
-  }
+  };
 
   const handleRegisterSale = async (e) => {
     e.preventDefault(); // Prevenir el envío del formulario
@@ -202,7 +202,7 @@ export default function RegisterSale() {
             <div className={globals.flexInput}>
               <p>Cliente:</p>
               <input
-                    className={styles.inputPayment}
+                className={styles.inputPayment}
                 type="text"
                 value={client}
                 onChange={(e) => setClient(e.target.value)}
@@ -212,12 +212,11 @@ export default function RegisterSale() {
             <div className={globals.flexInput}>
               <p>Fecha:</p>
               <input
-                    className={styles.inputPayment}
+                className={styles.inputPayment}
                 type="datetime-local"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 required
-              
               />
             </div>
           </div>
@@ -225,31 +224,27 @@ export default function RegisterSale() {
           <div className={globals.table}>
             <div className={globals.containerBetween}>
               <div className={globals.flexInput}>
-
-
-
-
-
-
-
-              <p className={styles.flexInputTitle}>Producto seleccionado:
-                <input
-                      className={styles.inputPayment}
-                  type="number"
-                  value={selectedProductId}
-                  onChange={handleInputChange}
-                  placeholder="ID del producto"
-                />
-</p>
-<p className={styles.flexInputTitle}>Cantidad:
-                <input
-                      className={styles.inputPayment}
-                  type="number"
-                  value={quantity}
-                  onChange={handleQuantityChange}
-                  min="1"
-                  placeholder="Cantidad"
-                /></p>
+                <p className={styles.flexInputTitle}>
+                  Producto seleccionado:
+                  <input
+                    className={styles.inputPayment}
+                    type="number"
+                    value={selectedProductId}
+                    onChange={handleInputChange}
+                    placeholder="ID del producto"
+                  />
+                </p>
+                <p className={styles.flexInputTitle}>
+                  Cantidad:
+                  <input
+                    className={styles.inputPayment}
+                    type="number"
+                    value={quantity}
+                    onChange={handleQuantityChange}
+                    min="1"
+                    placeholder="Cantidad"
+                  />
+                </p>
                 <button type="button" onClick={fetchProduct}>
                   <div
                     className={`${icon.containerIcon} ${icon.addIcon}`}
@@ -271,76 +266,59 @@ export default function RegisterSale() {
             />
           </div>
 
-
-
-
-
-<div className={styles.containerSale}>
-
-
-
-
-<div className={styles.displayPayment}>
-
-
-
-
-
-<div className={styles.flexInput}>
-            <p>Método de pago:</p>
-            <select
-            className={styles.inputPayment}
-              value={paymentMethod}
-              onChange={(e) => setPaymentMethod(e.target.value)}
-              required
-            >
-                 
-              <option value="" >Método de pago</option>
-              {listPaymentMethods.map((method) => (
-                <option
-                  key={method.C_payment_method}
-                  value={method.C_payment_method}
+          <div className={styles.containerSale}>
+            <div className={styles.displayPayment}>
+              <div className={styles.flexInput}>
+                <p>Método de pago:</p>
+                <select
+                  className={styles.inputPayment}
+                  value={paymentMethod}
+                  onChange={(e) => setPaymentMethod(e.target.value)}
+                  required
                 >
-                  {method.D_payment_method}
-                </option>
-              ))}
-            </select>
+                  <option value="">Método de pago</option>
+                  {listPaymentMethods.map((method) => (
+                    <option
+                      key={method.C_payment_method}
+                      value={method.C_payment_method}
+                    >
+                      {method.D_payment_method}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className={styles.flexInput}>
+                <p>Total:</p>
+
+                <input
+                  className={styles.inputPayment}
+                  type="number"
+                  value={String(total)}
+                  readOnly
+                  placeholder="Total"
+                />
+              </div>
+              <div className={styles.containerButton}>
+                <button
+                  onClick={resetSale}
+                  type="button"
+                  className={globals.closeButton}
+                >
+                  Reiniciar
+                </button>
+                <button type="submit" className={globals.saveButton}>
+                  Registrar
+                </button>
+              </div>
             </div>
-            <div className={styles.flexInput}>
-            <p>Total:</p>
-
-            <input
-
-className={styles.inputPayment}
-              type="number"
-              value={String(total)}
-              readOnly
-              placeholder="Total"
-            />
-           </div>
-           <div className={styles.containerButton}>
-
-
-
-           <button onClick={resetSale} type="button"  className={globals.closeButton}>
-            Reiniciar 
-          </button>
-          <button type="submit" className={globals.saveButton}>
-            Registrar 
-          </button>
-          
           </div>
-          </div>
-          </div>
-          
         </form>
-        
 
         {isModalOpen && (
           <ModalProduct
             onClose={closeModal}
             onSelectProduct={handleProductSelect}
-          />   
+          />
         )}
       </span>
     </div>
