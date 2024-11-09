@@ -3,6 +3,9 @@ import globals from "../../styles/globals.module.css";
 import { useState, useEffect } from "react";
 import AccountingClosingWindow from "../../salesDashboard/accountingClosing/accountingClosingWindow";
 import AccountingJustificationWindow from "../../salesDashboard/accountingClosing/accountingJustificationWindow";
+import icon from '../../ui/styles/icons.module.css'
+import spinner from '../../ui/styles/loadingScreen.module.css'
+
 export default function AccountingTable() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,6 +14,7 @@ export default function AccountingTable() {
   const [message, setMessage] = useState("");
   const [isClosingModalOpen, setIsClosingModalOpen] = useState(false);
   const [isJustificationModalOpen, setIsJustificationModalOpen] = useState(false);
+
 
   
 
@@ -80,6 +84,19 @@ const updatedListFilter = updatedList.filter((product) => product.difference !==
     console.log("Processed list:", updatedList);
   };
 
+
+
+
+
+
+
+
+
+
+
+
+
+  
   return (
     <div>
       <div className={globals.displayTitle}>
@@ -98,10 +115,20 @@ const updatedListFilter = updatedList.filter((product) => product.difference !==
           </div>
         </div>
       </div>
+      <form onSubmit={handleOperation}>
       <div className={globals.scrollTable}>
-        <form onSubmit={handleOperation}>
+   
           {loading ? (
-            <p>Cargando...</p>
+
+
+<div className={spinner.loadingContainer}>
+<div className={spinner.loader}></div>
+<p>Cargando...</p>
+</div>
+ 
+
+
+
           ) : error ? (
             <p>Error: {error}</p>
           ) : products.length > 0 ? (
@@ -132,11 +159,33 @@ const updatedListFilter = updatedList.filter((product) => product.difference !==
               No hay productos disponibles.
             </p>
           )}
-          <button type="submit" className={globals.saveButton}>
-            Procesar
-          </button>
-        </form>
+
+
+      
+
+
+     
+      
+
+
+
+
+       
       </div>
+      <div className={globals.displayLeft}>
+
+
+
+<button type="submit" className={globals.button}>
+<div
+          className={`${icon.containerIcon} ${icon.createAccountingIcon }`}
+        ></div>
+  Procesar
+</button>
+
+
+</div>
+</form>
       
       <AccountingClosingWindow
         isOpen={isClosingModalOpen}
