@@ -4,19 +4,29 @@ import db from '../../../libs/db'
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { B_status, B_inventory_adjustment, F_date } = body;
+    const {
+      C_product,
+      C_accounting_closing,
+      Q_system_quantity,
+      Q_physical_quantity,
+      Q_subtraction,
+      D_justification,
+    } = body;
 
-    const newClosing = await db.accounting_closings.create({
+    const newAccountingDetail = await db.accounting_details.create({
       data: {
-        F_date: F_date || new Date(), 
-        B_status,
-        B_inventory_adjustment,
+        C_product,
+        C_accounting_closing,
+        Q_system_quantity,
+        Q_physical_quantity,
+        Q_subtraction,
+        D_justification,
       },
     });
 
-    return NextResponse.json({ message: "Cierre contable guardado con éxito.", newClosing });
+    return NextResponse.json({ message: "Detalle contable guardado con éxito.", newAccountingDetail });
   } catch (error) {
-    console.error("Error al guardar el cierre contable:", error);
-    return NextResponse.json({ error: "Error al guardar el cierre contable" }, { status: 500 });
+    console.error("Error al guardar el detalle contable:", error);
+    return NextResponse.json({ error: "Error al guardar el detalle contable" }, { status: 500 });
   }
 }

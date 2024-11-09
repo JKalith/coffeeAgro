@@ -14,7 +14,7 @@ export async function POST(req) {
       },
     });
 
-    return NextResponse.json({ message: "Cierre contable guardado con éxito.", newClosing });
+    return NextResponse.json(newClosing, { status: 201 });
   } catch (error) {
     console.error("Error al guardar el cierre contable:", error);
     return NextResponse.json({ error: "Error al guardar el cierre contable" }, { status: 500 });

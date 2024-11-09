@@ -2,6 +2,7 @@
 import globals from "../../styles/globals.module.css";
 import { useState, useEffect } from "react";
 import AccountingClosingWindow from "../../salesDashboard/accountingClosing/accountingClosingWindow";
+import AccountingJustificationWindow from "../../salesDashboard/accountingClosing/accountingJustificationWindow";
 export default function AccountingTable() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -9,6 +10,9 @@ export default function AccountingTable() {
   const [listProduct, setListProduct] = useState([]);
   const [message, setMessage] = useState("");
   const [isClosingModalOpen, setIsClosingModalOpen] = useState(false);
+  const [isJustificationModalOpen, setIsJustificationModalOpen] = useState(false);
+
+  
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -18,7 +22,9 @@ export default function AccountingTable() {
         throw new Error("Error fetching product: " + response.statusText);
       }
       const data = await response.json();
-      setProducts(data);
+      // Filtrar solo los productos con estado true
+      const activeProducts = data.filter((product) => product.B_status);
+      setProducts(activeProducts);
     } catch (error) {
       console.error("Error:", error);
       setError(error.message);
@@ -26,7 +32,6 @@ export default function AccountingTable() {
       setLoading(false);
     }
   };
-
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -37,19 +42,24 @@ export default function AccountingTable() {
       const physicalInput = document.getElementById(
         `physical-${product.C_product}`
       );
+      const name = product.D_product_name;
+
       const physicalQuantity = parseInt(physicalInput.value || "0", 10);
       const systemQuantity = product.Q_stock;
       const difference = systemQuantity - physicalQuantity;
+      const justification = "";
 
       return {
+        name,
         code: product.C_product,
         systemQuantity,
         physicalQuantity,
         difference,
+        justification,
       };
     });
-
-    setListProduct(updatedList);
+const updatedListFilter = updatedList.filter((product) => product.difference !== 0);
+    setListProduct(updatedListFilter);
 
     const allZeroDifference = updatedList.every(
       (item) => item.difference === 0
@@ -57,6 +67,7 @@ export default function AccountingTable() {
     if (allZeroDifference) {
       setIsClosingModalOpen(true);
     } else {
+      setIsJustificationModalOpen(true);
       let message = "";
       updatedList.forEach((item) => {
         message +=
@@ -111,6 +122,7 @@ export default function AccountingTable() {
                     type="number"
                     min="0"
                     placeholder="Cantidad"
+                    required
                   />
                 </div>
               </div>
@@ -125,27 +137,16 @@ export default function AccountingTable() {
           </button>
         </form>
       </div>
-      <div>
-        <h2>Resultados de la Operación</h2>
-        {message && <p>{message}</p>}
-        {listProduct.length > 0 ? (
-          <ul>
-            {listProduct.map((item, index) => (
-              <li key={index}>
-                <p>Producto: {item.code}</p>
-                <p>Cantidad en sistema: {item.systemQuantity}</p>
-                <p>Cantidad física: {item.physicalQuantity}</p>
-                <p>Diferencia: {item.difference}</p>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No se ha procesado ningún producto.</p>
-        )}
-      </div>
+      
       <AccountingClosingWindow
         isOpen={isClosingModalOpen}
         onClose={() => setIsClosingModalOpen(false)}
+      />
+      <AccountingJustificationWindow
+        isOpen={isJustificationModalOpen}
+        onClose={() => setIsJustificationModalOpen(false)}
+        listProduct={listProduct}
+        setListProduct={setListProduct} 
       />
     </div>
   );
