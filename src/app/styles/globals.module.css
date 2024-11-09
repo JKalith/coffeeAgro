@@ -38,29 +38,76 @@
     background-color: #73C4E7;
   }
 
+
+
+  .modifyButton:active{
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+  transform: scale(0.95);  }
+
 .closeButton{
 margin: 10px;
 color: white;
-
+transition: transform 0.1s ease, box-shadow 0.1s ease; 
 
   background-color: #FA5246;
 }
+.closeButton:active{
+  transform: scale(0.95); 
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
 
+
+}
 .changeButton{
 
   background-color: #02C4A7;
-
+  transition: transform 0.1s ease, box-shadow 0.1s ease; 
   color: rgb(0, 0, 0);
 
 }
+.changeButton:active{
 
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+  transform: scale(0.95);
+
+
+}
 .saveButton{
   margin: 10px;
   
   color: white;
-  
+  transition: transform 0.1s ease, box-shadow 0.1s ease; 
     background-color: #2E7D31;
   }
+
+
+
+  .saveButton:active{
+
+    transform: scale(0.95); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+
+  }
+.button{
+
+  transition: transform 0.1s ease, box-shadow 0.1s ease; 
+
+
+
+}
+
+.button:active{
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+  transform: scale(0.95); 
+
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -99,6 +146,25 @@ color: white;
   }
   
 
+  .displayLeft{
+
+    display: flex;
+    justify-content: flex-end;
+margin-right: 1%;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  
   
 .displayTitle {
   align-items: center;
@@ -232,14 +298,26 @@ color: red;
 
 .cursorPointer{
 cursor: pointer;
+
+
+
 }
 
 
 
 
 
+.hoverRows:hover {
+  background-color: #faf9fa;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* La sombra se aplica solo en hover */
+}
 
 
+
+.hoverRows {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
+}
 
 
 
@@ -379,6 +457,10 @@ color: white;
   }
 
 
-
+  .hoverRows:hover {
+    background-color: #343434;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.575); /* La sombra se aplica solo en hover */
+  }
   
 }

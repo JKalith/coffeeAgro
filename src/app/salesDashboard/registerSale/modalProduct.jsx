@@ -46,7 +46,9 @@ const ModalProduct = ({ onClose, onSelectProduct }) => {
             </div>
           </div>
           <div className={globals.scrollTable}>
-          <div className={globals.containerRows}>
+          <div className={globals.containerRows}
+          
+          >
             {loading ? (
               <p>Cargando...</p>
             ) : error ? (
@@ -55,7 +57,13 @@ const ModalProduct = ({ onClose, onSelectProduct }) => {
               products.map((product) => (
                 <div 
                   key={product.C_product} 
-                  className={`${globals.productRow} ${globals.cursorPointer}`} 
+                  className={`${globals.productRow} ${globals.hoverRows} ${globals.cursorPointer}`} 
+
+
+
+     
+
+
                   onClick={() => onSelectProduct(product.C_product)}
                 >
                   <div className={globals.cell}>

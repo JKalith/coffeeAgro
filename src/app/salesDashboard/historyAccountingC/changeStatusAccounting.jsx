@@ -59,8 +59,20 @@ export default function RevertAccountingModal({
               type="button"
               onClick={handleClose}
             >
+
+
               Cancelar
             </button>
+
+
+
+
+       
+
+
+
+
+
             <button
               className={globals.saveButton}
               type="button"
@@ -69,6 +81,22 @@ export default function RevertAccountingModal({
             >
               {isSubmitting ? "Revertiendo..." : "Revertir cierre"}
             </button>
+
+
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
           </div>
           {message && <p className={globals.errorMessage}>{message}</p>}
         </div>

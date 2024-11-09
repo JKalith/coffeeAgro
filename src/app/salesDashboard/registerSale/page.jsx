@@ -5,7 +5,7 @@ import styles from "../../styles/salesDashboard/registerSale.module.css";
 import icon from "../../ui/styles/icons.module.css";
 import ModalProduct from "../registerSale/modalProduct";
 import RegisterSaleTable from "../registerSale/RegisterSaleTable";
-
+import ErrorMessage from "../../ui/popUpWindow/errorMessage"; // Importa el componente
 export default function RegisterSale() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState("");
@@ -17,6 +17,7 @@ export default function RegisterSale() {
   const [paymentMethod, setPaymentMethod] = useState("");
   const [listPaymentMethods, setListPaymentMethods] = useState([]);
   const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // Estado para el mensaje de error
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -59,8 +60,14 @@ export default function RegisterSale() {
 
   const fetchProduct = async () => {
     if (!selectedProductId) {
-      alert("Por favor, ingrese un ID de producto.");
+
+
+      setErrorMessage("Por favor, ingrese un ID de producto."); // Usar el estado para mostrar el error
+
+
+
       return;
+   
     }
     if (quantity < 1) {
       alert("Por favor, ingrese una cantidad.");
@@ -193,6 +200,7 @@ export default function RegisterSale() {
 
   return (
     <div className={globals.container}>
+       {errorMessage && <ErrorMessage  message={errorMessage} />} {/* Mostrar mensaje de error */}
       <span>
         <p className={globals.titlePage}>Registrar venta</p>
 
@@ -245,14 +253,17 @@ export default function RegisterSale() {
                     placeholder="Cantidad"
                   />
                 </p>
-                <button type="button" onClick={fetchProduct}>
+                <button type="button" 
+                className={globals.button} onClick={fetchProduct}>
                   <div
                     className={`${icon.containerIcon} ${icon.addIcon}`}
                   ></div>
                   Agregar
                 </button>
               </div>
-              <button type="button" onClick={openModal}>
+              <button type="button" onClick={openModal}
+              className={globals.button}
+              >
                 <div
                   className={`${icon.containerIcon} ${icon.searchProduct}`}
                 ></div>

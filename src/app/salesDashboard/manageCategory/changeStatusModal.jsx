@@ -14,6 +14,7 @@ export default function ChangeStatusModal({ isOpen, onClose, category, categorie
   const handleClose = () => {
     setMessage(''); 
     onClose(); 
+ 
   };
 
   const handleChangeStatus = async (newStatus) => {
@@ -52,7 +53,7 @@ export default function ChangeStatusModal({ isOpen, onClose, category, categorie
   };
 
   return (
-    <div className={stylesWindow.modalOverlay}>
+    <div className={`${stylesWindow.modalOverlay}`}>
       <div className={stylesWindow.modalContent}>
         <div className={styles.container}>
           <p className={globals.titles}>Cambiar Estado de {category.D_category_name}</p>

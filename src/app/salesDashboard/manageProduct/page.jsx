@@ -39,7 +39,7 @@ export default function ManageProduct() {
             onClose={closeModal}
             onProductCreated={handleProductCreated}
           />
-   <button onClick={openModal} className={globals.registerButton}>
+   <button onClick={openModal} className={globals.button}>
             <div className={`${icon.containerIcon} ${icon.addProductIcon}`}></div>
             Registrar Producto
           </button>

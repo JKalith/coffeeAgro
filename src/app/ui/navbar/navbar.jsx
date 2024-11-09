@@ -5,7 +5,7 @@ import BtnNavBar from "./btnNavBar"
 const Navbar = () => {
   return (
 <nav className={styles.navbar}>
-  <div className={styles.logo}>AgroCofee</div>
+  <div className={styles.logo}>CoffeeAgro</div>
   <ul className={styles.navLinks}>
   
     <li>  <BtnNavBar href="/buyDashboard" buttonText="Compras" icon={icons.buyIcon} /> </li>

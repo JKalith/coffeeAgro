@@ -51,9 +51,15 @@ export default function HistoryAccountingTable() {
         </div>
       </div>
       <div className={globals.scrollTable}>
-        <div className={globals.containerRows}>
+        <div className={`${globals.containerRows} ${globals.cursorPointer}` }>
           {loading ? (
+
+
             <p>Cargando...</p>
+
+
+
+            
           ) : error ? (
             <p>Error: {error}</p>
           ) : accounting.length > 0 ? (
@@ -61,7 +67,7 @@ export default function HistoryAccountingTable() {
               <div
                 onClick={() => onSelectedAccounting(account.C_accounting_closing)}
                 key={account.C_accounting_closing}
-                className={globals.productRow}
+                className={`${globals.productRow} ${globals.hoverRows}`}
               >
                 <div className={globals.cell}>
                   <p>{account.C_accounting_closing}</p>

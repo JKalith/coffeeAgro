@@ -60,7 +60,7 @@ export default function HistoryTable() {
         </div>
       </div>
       <div className={globals.scrollTable}>
-        <div className={globals.containerRows}>
+        <div className={`${globals.containerRows} ${globals.cursorPointer}`}>
           {loading ? (
             <p>Cargando...</p>
           ) : error ? (
@@ -70,7 +70,7 @@ export default function HistoryTable() {
               <div
                 onClick={() => onSelectedInvoice(invoice.C_Sale)}
                 key={invoice.C_Sale}
-                className={globals.productRow}
+                className={`${globals.productRow} ${globals.hoverRows}`}
               >
                 <div className={globals.cell}>
                   <p>{invoice.C_Sale}</p>
