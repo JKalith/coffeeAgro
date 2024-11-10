@@ -48,6 +48,12 @@ export default function AccountingJustificationWindow({
   return (
     <div className={stylesWindow.modalOverlay}>
       <div className={stylesWindow.modalContent}>
+
+        <p className=
+        {globals.titlePage}>
+          Procesar ajuste
+        </p>
+ 
         <div className={globals.container}>
           <div className={globals.displayTitle}>
             <div className={globals.productRow}>
@@ -60,7 +66,7 @@ export default function AccountingJustificationWindow({
               <div className={globals.cell}>
                 <p>Cant. faltante/sobrante</p>
               </div>
-              <div className={globals.cell}>
+              <div className={`${globals.cell} `}>
                 <p>Justificación</p>
               </div>
             </div>
@@ -78,9 +84,11 @@ export default function AccountingJustificationWindow({
                   <div className={globals.cell}>
                     <p>{item.difference < 0 ? item.difference*-1 : item.difference}</p>
                   </div>
-                  <div className={globals.cell}>
+                  <div className={`${globals.cell} ${globals.inputJustify}`}>
+            
                     <input
                       type="text"
+                   
                       placeholder="Justificación"
                       value={item.justification || ""}
                       onChange={(e) =>

@@ -18,7 +18,7 @@ export async function PUT(request, { params }) {
 
     if (accountingExists.B_status === false) {
       return NextResponse.json(
-        { error: "Ciere ya esta revertido" },
+        { error: "Cierre ya esta revertido" },
         { status: 400 }
       );
     }

@@ -16,7 +16,11 @@
 }
 
 
+.container{
 
+width: 100%;
+
+}
 
 .containerButton{
 
@@ -101,24 +105,41 @@ transition: transform 0.1s ease, box-shadow 0.1s ease;
 
 }
 
+.inputJustify{
+width: auto;
+
+
+  white-space: normal; /* Permite los saltos de línea */
+  overflow-wrap: break-word; /* Permite el corte de palabras largas */
+  resize: none; /* Evita que el usuario cambie el tamaño del textarea */
 
 
 
 
 
+
+
+}
+
+  .inputJustify:focus{
+    width: 140px;
+  white-space: nowrap;
+    height: 50px;}
+  
+  
 
 
 
 
 
   .scrollTable {
-    height: 500px;
+    height: 600px;
     overflow-y: scroll;
     overflow-x: none;  
     justify-content: center;
-    
- 
-    padding: 10px;
+padding: 30px;
+padding-top: 10px;
+
   
     
  
@@ -158,9 +179,68 @@ margin-right: 1%;
 
 
 
+.marginleft{
+
+padding-left: 10px;
 
 
 
+}
+
+
+.checkbox {
+  cursor: pointer;
+  background-image: none;
+ background-color: #cdffe0;
+  width: 38px;
+ 
+  height: 38px;
+  appearance: none;
+  border: 1px solid #19725D;
+  transition: background-color 0.3s ease-in-out;
+}
+
+
+
+.checkbox:checked {
+  background-color:#77BDFF;
+  width: 38px;
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+
+  height: 38px;
+}
+
+
+
+.checkbox:focus {
+  width: 38px;
+  height: 38px;
+
+
+}
+
+
+.checkbox:disabled {
+
+  background-image: none;
+  width: 38px;
+  height: 38px;
+} 
+
+.checkbox:disabled:checked {
+   width: 38px;
+  height: 38px;
+  background-color: #51b8a8;
+ 
+} 
+
+
+.checkboxLabel {
+
+width: 300px;
+  font-weight: 500;
+  margin-left: 10px;
+}
 
 
 
@@ -238,8 +318,11 @@ margin-top: 10px;
 }
 
 .errorMessage{
-
+align-items: center;
+justify-content: center;
 color: red;
+text-align: center;
+width: 100%;
 
 }
 
@@ -429,6 +512,66 @@ border-radius: 10px;
 
 
 @media (prefers-color-scheme: dark) {
+
+
+
+
+
+  .checkbox {
+    cursor: pointer;
+    background-image: none;
+   background-color: #00000000;
+    width: 38px;
+   
+    height: 38px;
+    appearance: none;
+    border: 1px solid #19725D;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  
+  
+  .checkbox:checked {
+    background-color:#77BDFF;
+    width: 38px;
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  
+    height: 38px;
+  }
+  
+  
+  
+  .checkbox:focus {
+    width: 38px;
+    height: 38px;
+    background-image: none;
+  
+  }
+  
+  
+  .checkbox:disabled {
+  
+    background-image: none;
+    width: 38px;
+    height: 38px;
+  } 
+  
+  .checkbox:disabled:checked {
+     width: 38px;
+    height: 38px;
+    background-color: #51b8a8;
+   
+  } 
+  
+  
+  .checkboxLabel {
+  
+  width: 300px;
+    font-weight: 500;
+    margin-left: 10px;
+  }
+  
+
   .table {
    background-color: #3C3C3C;
   }

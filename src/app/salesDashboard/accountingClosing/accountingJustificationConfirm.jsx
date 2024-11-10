@@ -74,15 +74,29 @@ export default function AccountingClosingWindow({
     <div className={stylesWindow.modalOverlay}>
       <div className={stylesWindow.modalContent}>
         <div className={globals.container}>
+
+       
           <p className={globals.titles}>¿Desea finalizar el cierre contable?</p>
+
+
+          <div className={globals.flexInput}>
+
           <input
-            type="checkbox"
-            checked={isInventorySyncChecked}
-            onChange={(e) => setIsInventorySyncChecked(e.target.checked)}
-          />
-          <p>
-            Sincronizar el inventario del sistema con las existencias físicas
-          </p>
+        type="checkbox"
+        className={globals.checkbox} // Aplica clase CSS global
+        checked={isInventorySyncChecked}
+        onChange={(e) => setIsInventorySyncChecked(e.target.checked)}
+      />
+      <p className={globals.checkboxLabel}>
+      Sincronizar el inventario del sistema con las existencias físicas
+      </p>
+          </div>
+   
+
+
+
+
+         
           <div className={globals.containerButton}>
             <button
               className={globals.closeButton}

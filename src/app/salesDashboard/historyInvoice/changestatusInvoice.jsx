@@ -53,7 +53,9 @@ export default function CancelInvoiceModal({
         <div className={globals.container}>
           <p className={globals.titles}>Anular Factura #{invoiceId}</p>
           <p>¿Está seguro de que desea anular esta factura?</p>
+          {message && <p className={globals.errorMessage}>{message}</p>}
           <div className={globals.containerButton}>
+
             <button
               className={globals.closeButton}
               type="button"
@@ -70,7 +72,7 @@ export default function CancelInvoiceModal({
               {isSubmitting ? "Anulando..." : "Confirmar Anulación"}
             </button>
           </div>
-          {message && <p className={globals.errorMessage}>{message}</p>}
+   
         </div>
       </div>
     </div>

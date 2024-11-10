@@ -57,8 +57,30 @@ background-color: #fd4437;
     justify-content: center;
     align-items: center;
     }
-   
 
+ .statusAccounting{
+
+padding-left: -10px;
+width: 1000px;
+background-color: red;
+
+
+
+    }
+
+
+
+
+
+   
+    .errorContainer{
+padding-top: 15px;
+text-align: center;
+width: 300px;
+
+justify-content: center;
+align-items: center;
+    }
 
 
 /* styles/errorMessage.module.css */

@@ -21,7 +21,9 @@ export default function RegisterSale() {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
+  const handleCloseErrorMessage = () => {
+    setErrorMessage(null); // Cierra el modal al restablecer el estado del mensaje
+  };
   const fetchPaymentMethods = async () => {
     try {
       const response = await fetch("/api/paymentMethods");
@@ -70,7 +72,7 @@ export default function RegisterSale() {
    
     }
     if (quantity < 1) {
-      alert("Por favor, ingrese una cantidad.");
+      setErrorMessage("Por favor, ingrese una cantidad.");
       return;
     }
     try {
@@ -114,7 +116,7 @@ export default function RegisterSale() {
       setQuantity(1);
     } catch (error) {
       console.error("Error al buscar el producto:", error);
-      alert("Error al buscar el producto.");
+      setErrorMessage("Error al buscar el producto.");
     }
   };
 
@@ -147,7 +149,7 @@ export default function RegisterSale() {
     e.preventDefault(); // Prevenir el envío del formulario
 
     if (productList.length === 0) {
-      alert("Por favor, agrega al menos un producto.");
+      setErrorMessage("Por favor, agrega al menos un producto.");
       return;
     }
 
@@ -189,18 +191,18 @@ export default function RegisterSale() {
         )
       );
 
-      alert("Venta registrada con éxito!");
+      setErrorMessage("Venta registrada con éxito!");
       // Reiniciar el formulario después de registrar
       resetSale();
     } catch (error) {
       console.error("Error al registrar la venta catch:", error);
-      alert("Error al registrar la venta cath.");
+      setErrorMessage("Error al registrar la venta cath.");
     }
   };
 
   return (
     <div className={globals.container}>
-       {errorMessage && <ErrorMessage  message={errorMessage} />} {/* Mostrar mensaje de error */}
+       {errorMessage && <ErrorMessage  message={errorMessage}   onClose={handleCloseErrorMessage} />} {/* Mostrar mensaje de error */}
       <span>
         <p className={globals.titlePage}>Registrar venta</p>
 

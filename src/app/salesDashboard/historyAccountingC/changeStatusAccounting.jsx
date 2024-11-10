@@ -52,7 +52,7 @@ export default function RevertAccountingModal({
       <div className={stylesWindow.modalContent}>
         <div className={globals.container}>
           <p className={globals.titles}>¿Seguro que desea revertir este cierre contable?</p>
-          <p>No podra revertir esta acción</p>
+          <p className={globals.marginleft}>No podra revertir esta acción</p>
           <div className={globals.containerButton}>
             <button
               className={globals.closeButton}
