@@ -9,27 +9,21 @@ const ErrorMessage = ({ message, onClose }) => {
 
   return (
     <div className={styles.modalOverlay}>
-
-
-
       <div className={`${styles.modalContent} `}>
-
         <div className={styles.errorContainer}>
-
-
-
-    
-        <span>{message}</span>
-        <span className={globals.containerButton}>
-          
-      
-        <button className={globals.closeButton} type="button" onClick={handleClose}>
-          
-          Cerrar
-        </button>
-        </span>
-      </div>
-    </div>     </div>
+          <span>{message}</span>
+          <span className={globals.containerButton}>
+            <button
+              className={globals.closeButton}
+              type="button"
+              onClick={handleClose}
+            >
+              Cerrar
+            </button>
+          </span>
+        </div>
+      </div>{" "}
+    </div>
   );
 };
 

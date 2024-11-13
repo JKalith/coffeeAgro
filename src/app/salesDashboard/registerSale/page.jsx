@@ -5,7 +5,8 @@ import styles from "../../styles/salesDashboard/registerSale.module.css";
 import icon from "../../ui/styles/icons.module.css";
 import ModalProduct from "../registerSale/modalProduct";
 import RegisterSaleTable from "../registerSale/RegisterSaleTable";
-import ErrorMessage from "../../ui/popUpWindow/errorMessage"; // Importa el componente
+import ErrorMessage from "../../ui/popUpWindow/errorMessage";
+
 export default function RegisterSale() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState("");
@@ -16,27 +17,21 @@ export default function RegisterSale() {
   const [date, setDate] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("");
   const [listPaymentMethods, setListPaymentMethods] = useState([]);
-  const [error, setError] = useState("");
-  const [errorMessage, setErrorMessage] = useState(""); // Estado para el mensaje de error
+  const [errorMessage, setErrorMessage] = useState("");
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-  const handleCloseErrorMessage = () => {
-    setErrorMessage(null); // Cierra el modal al restablecer el estado del mensaje
-  };
+  const handleCloseErrorMessage = () => setErrorMessage(null);
+
   const fetchPaymentMethods = async () => {
     try {
       const response = await fetch("/api/paymentMethods");
-      if (!response.ok) {
-        throw new Error(
-          "Error fetching metodos de pago: " + response.statusText
-        );
-      }
+      if (!response.ok) throw new Error("Error fetching metodos de pago");
       const data = await response.json();
       setListPaymentMethods(data);
     } catch (error) {
       console.error("Error:", error);
-      setError(error.message);
+      setErrorMessage("Error al obtener los métodos de pago.");
     }
   };
 
@@ -49,27 +44,17 @@ export default function RegisterSale() {
     setIsModalOpen(false);
   };
 
-  const handleInputChange = (e) => {
-    setSelectedProductId(e.target.value);
-  };
+  const handleInputChange = (e) => setSelectedProductId(e.target.value);
 
   const handleQuantityChange = (e) => {
     const value = e.target.value;
-    if (value === "" || Number(value) > 0) {
-      setQuantity(value);
-    }
+    if (value === "" || Number(value) > 0) setQuantity(value);
   };
 
   const fetchProduct = async () => {
     if (!selectedProductId) {
-
-
-      setErrorMessage("Por favor, ingrese un ID de producto."); // Usar el estado para mostrar el error
-
-
-
+      setErrorMessage("Por favor, ingrese un ID de producto.");
       return;
-   
     }
     if (quantity < 1) {
       setErrorMessage("Por favor, ingrese una cantidad.");
@@ -77,10 +62,14 @@ export default function RegisterSale() {
     }
     try {
       const response = await fetch(`/api/product/${selectedProductId}`);
-      if (!response.ok) {
-        throw new Error("Producto no encontrado");
-      }
+      if (!response.ok) throw new Error("Producto no encontrado");
       const product = await response.json();
+
+     
+      if (product.Q_stock < quantity) {
+        setErrorMessage(`No hay suficiente stock en el inventario del producto ${product.D_product_name}`);
+        return;
+      }
 
       setProductList((prevList) => {
         const existingProductIndex = prevList.findIndex(
@@ -99,7 +88,6 @@ export default function RegisterSale() {
           updatedList = [...prevList, { ...product, quantity }];
         }
 
-        // Recalcular total
         const newTotal = updatedList.reduce((acc, item) => {
           const quantity = Number(item.quantity) || 0;
           const price = Number(item.M_unit_price) || 0;
@@ -107,8 +95,6 @@ export default function RegisterSale() {
         }, 0);
 
         setTotal(newTotal);
-        console.log("Nuevo total:", newTotal); // Verifica el nuevo total
-
         return updatedList;
       });
 
@@ -126,7 +112,6 @@ export default function RegisterSale() {
         (product) => product.C_product !== productId
       );
 
-      // Recalcular total
       const newTotal = updatedList.reduce((acc, item) => {
         const quantity = Number(item.quantity) || 0;
         const price = Number(item.M_unit_price) || 0;
@@ -137,6 +122,7 @@ export default function RegisterSale() {
       return updatedList;
     });
   };
+
   const resetSale = () => {
     setProductList([]);
     setTotal(0);
@@ -146,20 +132,17 @@ export default function RegisterSale() {
   };
 
   const handleRegisterSale = async (e) => {
-    e.preventDefault(); // Prevenir el envío del formulario
+    e.preventDefault();
 
     if (productList.length === 0) {
       setErrorMessage("Por favor, agrega al menos un producto.");
       return;
     }
 
-    // Registrar la venta
     try {
       const response = await fetch("/api/sale/", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           C_payment_method: paymentMethod,
           F_date: date,
@@ -168,22 +151,17 @@ export default function RegisterSale() {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error("Error al registrar la venta response ok");
-      }
+      if (!response.ok) throw new Error("Error al registrar la venta");
 
       const saleData = await response.json();
 
-      // Registrar los detalles de la venta
       await Promise.all(
         productList.map((product) =>
           fetch("/api/saleDetails", {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              C_sale: saleData.C_Sale, // Usar el ID de la venta creada
+              C_sale: saleData.C_Sale,
               C_Product: product.C_product,
               Q_quantity: product.quantity,
             }),
@@ -192,21 +170,23 @@ export default function RegisterSale() {
       );
 
       setErrorMessage("Venta registrada con éxito!");
-      // Reiniciar el formulario después de registrar
       resetSale();
     } catch (error) {
-      console.error("Error al registrar la venta catch:", error);
-      setErrorMessage("Error al registrar la venta cath.");
+      console.error("Error al registrar la venta:", error);
+      setErrorMessage("Error al registrar la venta.");
     }
   };
 
   return (
     <div className={globals.container}>
-       {errorMessage && <ErrorMessage  message={errorMessage}   onClose={handleCloseErrorMessage} />} {/* Mostrar mensaje de error */}
+      {errorMessage && (
+        <ErrorMessage
+          message={errorMessage}
+          onClose={handleCloseErrorMessage}
+        />
+      )}
       <span>
         <p className={globals.titlePage}>Registrar venta</p>
-
-        {/* Formulario principal de registro de la venta */}
         <form onSubmit={handleRegisterSale}>
           <div className={globals.containerBetween}>
             <div className={globals.flexInput}>
@@ -255,16 +235,21 @@ export default function RegisterSale() {
                     placeholder="Cantidad"
                   />
                 </p>
-                <button type="button" 
-                className={globals.button} onClick={fetchProduct}>
+                <button
+                  type="button"
+                  className={globals.button}
+                  onClick={fetchProduct}
+                >
                   <div
                     className={`${icon.containerIcon} ${icon.addIcon}`}
                   ></div>
                   Agregar
                 </button>
               </div>
-              <button type="button" onClick={openModal}
-              className={globals.button}
+              <button
+                type="button"
+                onClick={openModal}
+                className={globals.button}
               >
                 <div
                   className={`${icon.containerIcon} ${icon.searchProduct}`}
@@ -302,7 +287,6 @@ export default function RegisterSale() {
               </div>
               <div className={styles.flexInput}>
                 <p>Total:</p>
-
                 <input
                   className={styles.inputPayment}
                   type="number"
@@ -315,25 +299,22 @@ export default function RegisterSale() {
                 <button
                   onClick={resetSale}
                   type="button"
-                  className={globals.closeButton}
+                  className={globals.button}
                 >
-                  Reiniciar
+                  Cancelar
                 </button>
-                <button type="submit" className={globals.saveButton}>
+                <button
+                  type="submit"
+                  className={globals.button}
+                >
                   Registrar
                 </button>
               </div>
             </div>
           </div>
         </form>
-
-        {isModalOpen && (
-          <ModalProduct
-            onClose={closeModal}
-            onSelectProduct={handleProductSelect}
-          />
-        )}
       </span>
+      {isModalOpen && <ModalProduct onProductSelect={handleProductSelect} />}
     </div>
   );
 }
