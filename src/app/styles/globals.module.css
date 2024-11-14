@@ -388,11 +388,19 @@ width: 182px;
 }
 .inputFilterDate{
   margin-left: 5px;
+  margin-bottom:3px;
+  width: 182px;
+}
+
+.inputFilterDate:focus{
+  margin-left: 5px;
+  margin-bottom: 2px;
   width: 182px;
 }
 
 .inputFilterAmount{
   margin-left: 5px;
+  margin-bottom: 2px;
   width: 182px;
 }
 
