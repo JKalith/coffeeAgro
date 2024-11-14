@@ -48,7 +48,11 @@ export default function HistoryInvoice() {
 
   // Generamos listas de nombres y métodos de pago únicos para el filtro
   const clientNames = [...new Set(invoices.map((invoice) => invoice.D_client))];
-  const paymentMethods = [...new Set(invoices.map((invoice) => invoice.Payment_methods?.D_payment_method))];
+  const paymentMethods = [
+    ...new Set(
+      invoices.map((invoice) => invoice.Payment_methods?.D_payment_method)
+    ),
+  ];
 
   // Función para aplicar el filtro cuando se presiona el botón "Filtrar"
   const handleFilter = () => {
@@ -65,22 +69,31 @@ export default function HistoryInvoice() {
     if (filterDate) {
       results = results.filter((invoice) => {
         // Convertir la fecha de la factura a formato "YYYY-MM-DD" y comparar
-        const invoiceDate = new Date(invoice.F_date).toISOString().split("T")[0];
+        const invoiceDate = new Date(invoice.F_date)
+          .toISOString()
+          .split("T")[0];
         return invoiceDate === filterDate;
       });
     }
 
     // Filtrar por monto total
     if (minAmount) {
-      results = results.filter((invoice) => invoice.M_total_price >= parseFloat(minAmount));
+      results = results.filter(
+        (invoice) => invoice.M_total_price >= parseFloat(minAmount)
+      );
     }
     if (maxAmount) {
-      results = results.filter((invoice) => invoice.M_total_price <= parseFloat(maxAmount));
+      results = results.filter(
+        (invoice) => invoice.M_total_price <= parseFloat(maxAmount)
+      );
     }
 
     // Filtrar por método de pago
     if (filterPaymentMethod) {
-      results = results.filter((invoice) => invoice.Payment_methods?.D_payment_method === filterPaymentMethod);
+      results = results.filter(
+        (invoice) =>
+          invoice.Payment_methods?.D_payment_method === filterPaymentMethod
+      );
     }
 
     setFilteredInvoices(results);
@@ -103,26 +116,29 @@ export default function HistoryInvoice() {
                   isOpen ? icon.closeFilterIcon : icon.openFilterIcon
                 }`}
               ></div>
-              Filtrar
+              Filtro
             </button>
+
+            {/* Filtro de fecha */}
+            <input
+              className={globals.inputFilterDate}
+              type="date"
+              value={filterDate}
+              onChange={(e) => setFilterDate(e.target.value)}
+            />
 
             {/* Filtro de nombre de cliente */}
             <input
+              className={globals.inputFilter}
               type="text"
               placeholder="Nombre de cliente"
               value={filterName}
               onChange={(e) => setFilterName(e.target.value)}
             />
 
-            {/* Filtro de fecha */}
-            <input
-              type="date"
-              value={filterDate}
-              onChange={(e) => setFilterDate(e.target.value)}
-            />
-
             {/* Filtro de monto mínimo */}
             <input
+              className={globals.inputFilterAmount}
               type="number"
               placeholder="Monto mínimo"
               value={minAmount}
@@ -131,6 +147,7 @@ export default function HistoryInvoice() {
 
             {/* Filtro de monto máximo */}
             <input
+              className={globals.inputFilterAmount}
               type="number"
               placeholder="Monto máximo"
               value={maxAmount}
@@ -139,10 +156,11 @@ export default function HistoryInvoice() {
 
             {/* Filtro de método de pago */}
             <select
+              className={globals.inputFilterPayMethod}
               value={filterPaymentMethod}
               onChange={(e) => setFilterPaymentMethod(e.target.value)}
             >
-              <option value="">Seleccione un método de pago</option>
+              <option value="">Todos los método de pago</option>
               {paymentMethods.map((method, index) => (
                 <option key={index} value={method}>
                   {method}
@@ -151,7 +169,9 @@ export default function HistoryInvoice() {
             </select>
 
             <button className={globals.containerButton} onClick={handleFilter}>
-              <div className={`${icon.containerIcon} ${icon.filterSearchIcon}`}></div>
+              <div
+                className={`${icon.containerIcon} ${icon.filterSearchIcon}`}
+              ></div>
               Filtrar
             </button>
           </div>
@@ -162,7 +182,9 @@ export default function HistoryInvoice() {
           invoices={filteredInvoices}
           loading={loading}
           error={error}
-          onSelectedInvoice={(id) => router.push(`/salesDashboard/historyInvoice/${id}`)}
+          onSelectedInvoice={(id) =>
+            router.push(`/salesDashboard/historyInvoice/${id}`)
+          }
         />
       </div>
     </div>

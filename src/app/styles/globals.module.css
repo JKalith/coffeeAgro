@@ -23,8 +23,10 @@ width: 100%;
 }
 
 .containerButton{
-
-  width: 100%;
+  margin-left: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 182px;
   height: auto;
   display: flex;
   justify-content: center;
@@ -353,8 +355,8 @@ width: 100%;
 
 /* Estilo para cuando está completamente abierto */
 .openFilter {
-  width: 300px; /* Ajusta el ancho según tu preferencia */
-  height: 400px;
+  width: 200px; /* Ajusta el ancho según tu preferencia */
+  height: auto;
   max-height: 400px; /* Ajusta según el contenido que esperas */
 
 
@@ -364,8 +366,7 @@ width: 100%;
 
 /* Estilo para el estado semi abierto */
 .semiOpenFilter {
-  height: 400px;
-
+  height: auto;
   width: 100px; /* Ancho fijo */
   max-height:50px; /* Altura para el estado semi abierto */
 
@@ -373,10 +374,32 @@ width: 100%;
 
 
 .buttonFilter {
-
+  margin-bottom: 10px;
   width: 100px;
   height: 50px;
   display: relative;
+}
+
+
+.inputFilter{
+margin-left: 5px;
+margin-bottom: 10px;
+width: 182px;
+}
+.inputFilterDate{
+  margin-left: 5px;
+  width: 182px;
+}
+
+.inputFilterAmount{
+  margin-left: 5px;
+  width: 182px;
+}
+
+.inputFilterPayMethod{
+  margin-left: 5px;
+  margin-top: 10px;
+  width: 182px;
 }
 
 .cursorPointer{
@@ -478,11 +501,13 @@ border-radius: 10px;
   }
 
   .containerButton{
-  
-
-    height: auto;
-    display: flex;
-    justify-content: center;
+    margin-left: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 182px;
+  height: auto;
+  display: flex;
+  justify-content: center;
   
   
   
