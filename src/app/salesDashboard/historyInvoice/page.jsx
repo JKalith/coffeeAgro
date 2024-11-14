@@ -56,7 +56,9 @@ export default function HistoryInvoice() {
 
     // Filtrar por nombre de cliente
     if (filterName) {
-      results = results.filter((invoice) => invoice.D_client === filterName);
+      results = results.filter((invoice) =>
+        invoice.D_client.toLowerCase().includes(filterName.toLowerCase())
+      );
     }
 
     // Filtrar por fecha
@@ -105,17 +107,12 @@ export default function HistoryInvoice() {
             </button>
 
             {/* Filtro de nombre de cliente */}
-            <select
+            <input
+              type="text"
+              placeholder="Nombre de cliente"
               value={filterName}
               onChange={(e) => setFilterName(e.target.value)}
-            >
-              <option value="">Seleccione un nombre</option>
-              {clientNames.map((name, index) => (
-                <option key={index} value={name}>
-                  {name}
-                </option>
-              ))}
-            </select>
+            />
 
             {/* Filtro de fecha */}
             <input
