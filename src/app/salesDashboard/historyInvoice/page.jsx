@@ -33,7 +33,7 @@ export default function HistoryInvoice() {
       }
       const data = await response.json();
       setInvoices(data);
-      setFilteredInvoices(data); // Inicializar facturas filtradas con todas las facturas
+      setFilteredInvoices(data);
     } catch (error) {
       console.error("Error:", error);
       setError(error.message);

@@ -16,7 +16,9 @@ const ModalProduct = ({ onClose, onSelectProduct }) => {
           throw new Error("Error fetching product: " + response.statusText);
         }
         const data = await response.json();
-        setProducts(data);
+        const activeProducts = data.filter((product) => product.B_status);
+      setProducts(activeProducts);
+  
       } catch (error) {
         console.error("Error:", error);
         setError(error.message);

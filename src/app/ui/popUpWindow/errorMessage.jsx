@@ -11,7 +11,7 @@ const ErrorMessage = ({ message, onClose }) => {
     <div className={styles.modalOverlay}>
       <div className={`${styles.modalContent} `}>
         <div className={styles.errorContainer}>
-          <span>{message}</span>
+          <p>{message}</p>
           <span className={globals.containerButton}>
             <button
               className={globals.closeButton}

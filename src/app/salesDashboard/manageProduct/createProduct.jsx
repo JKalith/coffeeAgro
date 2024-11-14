@@ -84,9 +84,9 @@ const CreateProduct = ({
       setMessage("El stock no puede ser negativo.");
       return false;
     }
-    if (unitPriceValue <= 0 || unitPriceValue > 9999.99) {
+    if (unitPriceValue <= 0 || unitPriceValue > 999999.99) {
       setMessage(
-        "El precio unitario debe ser mayor que cero y no puede exceder 9999.99."
+        "El precio unitario debe ser mayor que cero y no puede exceder 999999.99."
       );
       return false;
     }
@@ -129,7 +129,7 @@ const CreateProduct = ({
         setMessage(
           response.status === 400
             ? "Por favor, revise los datos ingresados."
-            : `Error: ${errorData.error || "Error desconocido."}`
+            : ` ${errorData.error || "Error desconocido."}`
         );
       }
     } catch (error) {

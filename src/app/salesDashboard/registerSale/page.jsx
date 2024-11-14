@@ -65,9 +65,16 @@ export default function RegisterSale() {
       if (!response.ok) throw new Error("Producto no encontrado");
       const product = await response.json();
 
-     
       if (product.Q_stock < quantity) {
-        setErrorMessage(`No hay suficiente stock en el inventario del producto ${product.D_product_name}`);
+        setErrorMessage(
+          `No hay suficiente stock en el inventario del producto ${product.D_product_name}`
+        );
+        return;
+      }
+      if (!product.B_status) {
+        setErrorMessage(
+          `El producto ${product.D_product_name} está inactivo`
+        );
         return;
       }
 
@@ -303,10 +310,7 @@ export default function RegisterSale() {
                 >
                   Cancelar
                 </button>
-                <button
-                  type="submit"
-                  className={globals.button}
-                >
+                <button type="submit" className={globals.button}>
                   Registrar
                 </button>
               </div>
@@ -314,7 +318,12 @@ export default function RegisterSale() {
           </div>
         </form>
       </span>
-      {isModalOpen && <ModalProduct onProductSelect={handleProductSelect} />}
+      {isModalOpen && (
+        <ModalProduct
+          onSelectProduct={handleProductSelect}
+          onClose={closeModal}
+        />
+      )}
     </div>
   );
 }
