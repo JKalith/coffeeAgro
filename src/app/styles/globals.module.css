@@ -19,7 +19,7 @@ justify-content: center;
   min-height: 100px;
   border-radius: 15px;
   padding: 15px;
-  
+  height: 750px;
 
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.527);
   width: 100%; /* Ocupa el 100% del ancho del padre */
@@ -149,6 +149,18 @@ width: auto;
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
   .inputJustify:focus{
     width: 140px;
   white-space: nowrap;
@@ -180,7 +192,7 @@ width: auto;
 padding: 4px;
 padding-top: 10px;
 
-  
+  width: auto;
     
  
    

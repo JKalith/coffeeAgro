@@ -4,8 +4,9 @@ import styles from "../../styles/salesDashboard/manageCategory.module.css";
 import { useState, useEffect } from "react";
 import stylesWindow from "../../ui/styles/popUpWindow.module.css";
 
-export default function CreateCategory({ isOpen, onClose, initialCategory = null }) {
+export default function CreateCategory({ isOpen, onClose, initialCategory = null,onCategoryCreated }) {
   const [categoryName, setCategoryName] = useState('');
+
   const [status, setStatus] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
@@ -44,9 +45,9 @@ export default function CreateCategory({ isOpen, onClose, initialCategory = null
       });
 
       if (response.ok) {
-        onClose();
         setCategoryName('');
         setStatus(true);
+        onCategoryCreated(); 
       } else {
         const errorData = await response.json();
         setMessage(errorData.error || 'Error al crear o actualizar la categoría');
@@ -70,6 +71,7 @@ export default function CreateCategory({ isOpen, onClose, initialCategory = null
             <input
             className={styles.input}
               type="text"
+             
               value={categoryName}
               onChange={(e) => setCategoryName(e.target.value)}
               required

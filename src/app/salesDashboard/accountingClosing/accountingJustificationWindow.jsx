@@ -3,7 +3,7 @@ import globals from "../../styles/globals.module.css";
 import stylesWindow from "../../ui/styles/popUpWindow.module.css";
 import AccountingJustificationConfirm from "../../salesDashboard/accountingClosing/accountingJustificationConfirm";
 import { useState } from "react";
-
+import styles from "../../styles/salesDashboard/accountingClosing.module.css"
 export default function AccountingJustificationWindow({
   isOpen,
   onClose,
@@ -47,7 +47,7 @@ export default function AccountingJustificationWindow({
 
   return (
     <div className={stylesWindow.modalOverlay}>
-      <div className={stylesWindow.modalContent}>
+      <div className={`${stylesWindow.modalContent} ${styles.container}`}>
 
         <p className=
         {globals.titlePage}>

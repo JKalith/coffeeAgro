@@ -21,40 +21,9 @@ export default function ManageInventory() {
         <p className={globals.titlePage}>Inventario de productos</p>
 
         <div className={globals.table}>
-          <div className={globals.flexInput}>
-            <div className={globals.filterWrapper}>
-              {/* Botón para alternar la visualización del filtro */}
+     
 
-              {/* Contenedor del filtro */}
-              <div
-                className={`${globals.filterContainer} ${
-                  isOpen ? globals.openFilter : globals.semiOpenFilter
-                }`}
-              >
-                <button className={globals.buttonFilter} onClick={toggleFilter}>
-                  <div
-                    className={`${icon.containerIcon} ${
-                      isOpen ? icon.closeFilterIcon : icon.openFilterIcon
-                    }`}
-                  ></div>
-                  Filtrar
-                </button>
 
-                <input type="text" name="input1" placeholder="Campo 1"  ></input>
-                <input type="text" name="input2" placeholder="Campo 2" />
-                <input type="text" name="input3" placeholder="Campo 3" />
-
-                <button className={globals.containerButton}>
-                  <div
-                    className={`${icon.containerIcon} ${icon.filterSearchIcon}`}
-                  ></div>
-                  filtrar
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Aquí iría el Modal y la tabla de inventario */}
        
           <InventoryTable />
           <Modal isOpen={false} onClose={() => {}} symbol={icon.closeIcon} />

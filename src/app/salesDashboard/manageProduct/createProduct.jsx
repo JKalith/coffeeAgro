@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import styles from "../../styles/salesDashboard/manageCategory.module.css";
+import styles from "../../styles/salesDashboard/manageProduct.module.css";
 import stylesWindow from "../../ui/styles/popUpWindow.module.css";
 import globals from "../../styles/globals.module.css";
 
@@ -143,18 +143,23 @@ const CreateProduct = ({
   if (!isOpen) return null;
 
   return (
-    <div className={stylesWindow.modalOverlay}>
+    <div className={stylesWindow.modalOverlay} >
       <div className={stylesWindow.modalContent}>
-        <p className={globals.titles}> {isEditing ? "Modificar Producto" : "Crear Nuevo Producto"}</p>
+        <p className={globals.titles}>
+          {" "}
+          {isEditing ? "Modificar Producto" : "Crear Nuevo Producto"}
+        </p>
         <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={globals.flexInput}>
-
-
-
+          <div
+            className={`${
+              isEditing ? styles.editingFlexInput : styles.creatingFlexInput
+            }`}
+          >
             <div>
               <p>Nombre del Producto:</p>
               <label>
                 <input
+                  className={styles.input}
                   type="text"
                   name="productName"
                   value={formData.productName}
@@ -162,108 +167,72 @@ const CreateProduct = ({
                   required
                 />
               </label>
-        
 
-
-
-<p>        Categoría: </p>
-            <label >
-        
-              <select
-                name="categoryCode"
-                value={formData.categoryCode}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Seleccione una categoría</option>
-                {loadingCategories ? (
-                  <option value="" disabled>
-                    Cargando categorías...
-                  </option>
-                ) : (
-                  categories.map((category) => (
-                    <option
-                      key={category.C_category}
-                      value={category.C_category}
-                    >
-                      {category.D_category_name}
+              <p> Categoría: </p>
+              <label>
+                <select
+                  className={styles.input}
+                  name="categoryCode"
+                  value={formData.categoryCode}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Seleccione una categoría</option>
+                  {loadingCategories ? (
+                    <option value="" disabled>
+                      Cargando categorías...
                     </option>
-                  ))
-                )}
-              </select>
-        
-            </label>
+                  ) : (
+                    categories.map((category) => (
+                      <option
+                        key={category.C_category}
+                        value={category.C_category}
+                      >
+                        {category.D_category_name}
+                      </option>
+                    ))
+                  )}
+                </select>
+              </label>
             </div>
 
+            <div>
+              {!isEditing && (
+                <label>
+                  <p>Stock:</p>
+                  <input
+                    type="number"
+                    name="stock"
+                    value={formData.stock}
+                    onChange={handleChange}
+                    required
+                    className={styles.input}
+                  />
+                </label>
+              )}
+              <label>
+                <p>Precio Unitario:</p>
 
-
-
-
-<div>
-
-
-
-
-            {!isEditing && (
-
-
-
-              <label >
-         <p>
-
-Stock:
-
-
-</p>
                 <input
+                  className={styles.input}
                   type="number"
-                  name="stock"
-                  value={formData.stock}
+                  name="unitPrice"
+                  step="1000.00"
+                  value={formData.unitPrice}
                   onChange={handleChange}
                   required
                 />
-              </label>
-            )}
-
-
-
-
-<label>
-            <p>
-            Precio Unitario:
-            </p>
-     
-       
-              <input
-                type="number"
-                name="unitPrice"
-                step="1000.00"
-                value={formData.unitPrice}
-                onChange={handleChange}
-                required
-              />
-            </label>{" "}
-
-
-
-
-
-
-
-          </div>
+              </label>{" "}
+            </div>
           </div>
           <div className={globals.containerButton}>
-
-
-          <button
+            <button
               type="button"
               className={globals.closeButton}
               onClick={handleClose}
             >
               Cerrar
             </button>
-
-
 
             <button
               className={globals.saveButton}
@@ -276,7 +245,6 @@ Stock:
                 ? "Modificar"
                 : "Registrar"}
             </button>
-      
           </div>
         </form>
 

@@ -7,7 +7,7 @@ import Modal from "../../ui/popUpWindow/window";
 import icon from "../../ui/styles/icons.module.css";
 export default function manageCategory() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [refresh, setRefresh] = useState(false);
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -15,6 +15,10 @@ export default function manageCategory() {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  const handleCategoryCreated = () => {
+    setRefresh((prev) => !prev);
+    closeModal();
+  };
   return (
     <div className={globals.container}>
       <span>
@@ -23,13 +27,20 @@ export default function manageCategory() {
         <div className={globals.table}>
           <button onClick={openModal}>
             {" "}
-            <div className={`${icon.containerIcon} ${icon.addCategoryIcon}`}></div>
+            <div
+              className={`${icon.containerIcon} ${icon.addCategoryIcon}`}
+            ></div>
             Registrar categoria
           </button>
 
-          <CreateCategory isOpen={isModalOpen} onClose={closeModal} />
-
-          <CategoryTable></CategoryTable>
+          {isModalOpen && (
+            <CreateCategory
+              isOpen={isModalOpen}
+              onClose={closeModal}
+              onCategoryCreated={handleCategoryCreated}
+            />
+          )}
+          <CategoryTable refresh={refresh}></CategoryTable>
         </div>
       </span>
     </div>

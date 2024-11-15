@@ -1,0 +1,58 @@
+.form{  
+    padding: 10px;
+    padding-bottom: 0px;
+    }
+    
+
+
+    .input{
+
+
+        width: 175px;
+   margin-bottom: 3px;
+        margin-left: 5px;
+        margin-right: 5px;
+
+     
+        
+        
+        }
+        .input:focus{
+
+
+            width: 175px;
+            margin-bottom: 3px;
+                 margin-left: 5px;
+                 margin-right: 5px;
+         
+              
+                
+
+
+
+        }
+
+
+
+        .creatingFlexInput{
+
+
+
+            flex-wrap: wrap;
+            display: flex;
+            align-items: center;
+            
+            }
+            
+            
+            
+            .editingFlexInput{
+            
+            width: 200px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column; 
+            }
+            
+            

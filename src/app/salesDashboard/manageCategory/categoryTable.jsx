@@ -6,7 +6,7 @@ import icon from "../../ui/styles/icons.module.css";
 import CreateCategory from "../../salesDashboard/manageCategory/createCategory";
 import ChangeStatusModal from "../../salesDashboard/manageCategory/changeStatusModal"; // Asegúrate de importar tu componente de cambio de estado
 
-export default function CategoryTable() {
+export default function CategoryTable(  {refresh}   ) {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -32,7 +32,9 @@ export default function CategoryTable() {
 
   useEffect(() => {
     fetchCategories();
-  }, []);
+    
+  }, [refresh]);
+
 
   const openEditModal = (category) => {
     setSelectedCategory(category);
@@ -42,7 +44,7 @@ export default function CategoryTable() {
   const closeEditModal = () => {
     setSelectedCategory(null);
     setIsEditModalOpen(false);
-    window.location.reload();
+ 
   };
 
   const openStatusModal = (category) => {
@@ -55,6 +57,11 @@ export default function CategoryTable() {
     setIsStatusModalOpen(false);
     fetchCategories();
   };
+  const handleCategorySaved = async () => {
+    await fetchCategories(); // Actualiza las categorías sin recargar la página
+    closeEditModal(); // Cierra el modal de edición
+  };
+
 
   return (
     <div>
@@ -118,13 +125,15 @@ export default function CategoryTable() {
           <p>No hay categorías disponibles.</p>
         )}
 
-        {isEditModalOpen && (
+{isEditModalOpen && (
           <CreateCategory
             isOpen={isEditModalOpen}
             onClose={closeEditModal}
             initialCategory={selectedCategory}
+            onCategoryCreated={handleCategorySaved}
           />
         )}
+
 
         {isStatusModalOpen && (
           <ChangeStatusModal

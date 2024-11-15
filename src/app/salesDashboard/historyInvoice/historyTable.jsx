@@ -5,7 +5,7 @@ import { format } from "date-fns";
 
 export default function HistoryTable({ invoices, loading, error, onSelectedInvoice }) {
   return (
-    <div>
+    <div >
       <div className={globals.displayTitle}>
         <div className={globals.productRow}>
           <div className={globals.cell}><p>Numero de facturas</p></div>
