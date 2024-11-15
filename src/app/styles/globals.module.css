@@ -1,5 +1,16 @@
 .p {
-  font-size: 100px;
+  display: flex;
+  justify-content: center;
+
+width: fit-content;
+  font-size: 40px;
+}
+.home{
+  display: flex;
+width: 100%;
+margin-top: 60px;
+
+justify-content: center;
 }
 
 .table {
@@ -24,9 +35,8 @@ width: 100%;
 
 .containerButton{
   margin-left: 5px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 182px;
+
+  width: 100%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -34,7 +44,16 @@ width: 100%;
 
 
 }
+.containerFilter{
 
+
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+
+
+}
 
 .modifyButton{
 
@@ -77,6 +96,13 @@ transition: transform 0.1s ease, box-shadow 0.1s ease;
 
 
 }
+
+.addButton{
+  margin-left: 5px;
+  
+  
+  }
+
 .saveButton{
   margin: 10px;
   
@@ -130,7 +156,19 @@ width: auto;
   
   
 
+    .scrollModal{
+      height: 40vh ;
+      overflow-y: scroll;
+      overflow-x: none;  
+      justify-content: center;
+  
+      border-radius: 10px;
+   
+      padding: 3px;
 
+      white-space: nowrap; 
+  
+    }
 
 
 
@@ -139,7 +177,7 @@ width: auto;
     overflow-y: scroll;
     overflow-x: none;  
     justify-content: center;
-padding: 30px;
+padding: 4px;
 padding-top: 10px;
 
   
@@ -299,7 +337,7 @@ margin-top: 10px;
   align-items: center;
   flex: 1;    
   flex-wrap: wrap; 
-  
+
   width: auto;               
   margin-bottom: 5px;      
 
@@ -362,7 +400,19 @@ width: 100%;
 
 }
 
+.filterButtonContainer{
 
+  margin-left: 5px;
+margin-right: 5px;
+width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+
+
+
+
+}
 
 /* Estilo para el estado semi abierto */
 .semiOpenFilter {
@@ -372,43 +422,37 @@ width: 100%;
 
 }
 
+.buttonFilterElements{
+width: 100%;
+margin-right: 10px;
+margin-top: 5px;
+margin-bottom: 5px;
+
+justify-content: center;
+}
+
+
 
 .buttonFilter {
   margin-bottom: 10px;
   width: 100px;
   height: 50px;
-  display: relative;
+display: flex;
 }
 
 
-.inputFilter{
+.inputFilter{                     
 margin-left: 5px;
-margin-bottom: 10px;
-width: 182px;
-}
-.inputFilterDate{
-  margin-left: 5px;
-  margin-bottom:3px;
-  width: 182px;
+width: auto;
+width: 185px;
+margin-bottom: 2px;
 }
 
-.inputFilterDate:focus{
-  margin-left: 5px;
-  margin-bottom: 2px;
-  width: 182px;
-}
 
-.inputFilterAmount{
-  margin-left: 5px;
-  margin-bottom: 2px;
-  width: 182px;
-}
-
-.inputFilterPayMethod{
-  margin-left: 5px;
-  margin-top: 10px;
-  width: 182px;
-}
+.marginFilter{
+  margin-bottom: 7px;
+  
+  }
 
 .cursorPointer{
 cursor: pointer;
@@ -481,10 +525,7 @@ cursor: pointer;
 
 
 
-  .closeButton, .saveButton {
-    width: 100%; 
-    margin: 5px 0;
-  }
+
 }
 
 
@@ -497,13 +538,25 @@ cursor: pointer;
 
  .productRow{
  
-padding: 5px;
+
 border: solid 0.5px #78716C;
 border-radius: 10px;
 
 
  }
+ .scrollModal{
+  height: 40vh ;
+  overflow-y: scroll;
+  overflow-x: none;  
+  justify-content: center;
 
+  border-radius: 10px;
+
+
+
+  white-space: nowrap; 
+
+}
   .titles, .titlePage {
     font-size: 20px; /* Fuente más pequeña en pantallas muy pequeñas */
   }
@@ -512,8 +565,9 @@ border-radius: 10px;
     margin-left: 5px;
   margin-top: 10px;
   margin-bottom: 10px;
-  width: 182px;
+  width: 100%;
   height: auto;
+
   display: flex;
   justify-content: center;
   
@@ -523,6 +577,10 @@ border-radius: 10px;
 
   .closeButton, .saveButton {
     font-size: 10px; /* Ajusta el tamaño de fuente de los botones */
+    width: 100px;
+    height: 30px;
+    margin-left: 2px;
+    margin-right: 2PX;
   }
   .cell {
     align-items: center;

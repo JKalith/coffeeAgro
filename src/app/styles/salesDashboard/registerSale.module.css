@@ -1,11 +1,4 @@
 
-.containerButton {
-
-    height: auto;
-    display: flex;
-
-    justify-content: center;
-  }
 .container{
 
 display: flex;
@@ -73,18 +66,13 @@ display: flex;
 
 
 
-      .modalWidth{
-width: 400px;
-
-
-      }
-
+   
   .flexInput{
     display: flex;
 width: auto;
 align-items: flex-end;
 justify-content: flex-end;
-margin-bottom: 5px;
+margin-top: 5px;
   }
   .flexInputTitle{
     display: flex;

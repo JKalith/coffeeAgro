@@ -110,6 +110,13 @@ export default function HistoryInvoice() {
               isOpen ? globals.openFilter : globals.semiOpenFilter
             }`}
           >
+
+
+            <div className={globals.containerFilter}>
+
+
+
+            </div>
             <button className={globals.buttonFilter} onClick={toggleFilter}>
               <div
                 className={`${icon.containerIcon} ${
@@ -121,7 +128,7 @@ export default function HistoryInvoice() {
 
             {/* Filtro de fecha */}
             <input
-              className={globals.inputFilterDate}
+              className={`${globals.inputFilter}`}
               type="date"
               value={filterDate}
               onChange={(e) => setFilterDate(e.target.value)}
@@ -129,7 +136,7 @@ export default function HistoryInvoice() {
 
             {/* Filtro de nombre de cliente */}
             <input
-              className={globals.inputFilter}
+          className={`${globals.inputFilter} ${globals.marginFilter}`}
               type="text"
               placeholder="Nombre de cliente"
               value={filterName}
@@ -138,7 +145,7 @@ export default function HistoryInvoice() {
 
             {/* Filtro de monto mínimo */}
             <input
-              className={globals.inputFilterAmount}
+              className={globals.inputFilter}
               type="number"
               placeholder="Monto mínimo"
               value={minAmount}
@@ -147,7 +154,7 @@ export default function HistoryInvoice() {
 
             {/* Filtro de monto máximo */}
             <input
-              className={globals.inputFilterAmount}
+         className={`${globals.inputFilter} ${globals.marginFilter}`}
               type="number"
               placeholder="Monto máximo"
               value={maxAmount}
@@ -156,7 +163,7 @@ export default function HistoryInvoice() {
 
             {/* Filtro de método de pago */}
             <select
-              className={globals.inputFilterPayMethod}
+              className={globals.inputFilter}
               value={filterPaymentMethod}
               onChange={(e) => setFilterPaymentMethod(e.target.value)}
             >
@@ -168,7 +175,14 @@ export default function HistoryInvoice() {
               ))}
             </select>
 
-            <button className={globals.containerButton} onClick={handleFilter}>
+
+<div className={globals.filterButtonContainer} >
+
+
+
+
+
+            <button className={globals.buttonFilterElements} onClick={handleFilter}>
               <div
                 className={`${icon.containerIcon} ${icon.filterSearchIcon}`}
               ></div>
@@ -176,7 +190,7 @@ export default function HistoryInvoice() {
             </button>
           </div>
         </div>
-
+        </div>
         {/* Pasamos las facturas filtradas a HistoryTable */}
         <HistoryTable
           invoices={filteredInvoices}

@@ -242,9 +242,12 @@ export default function RegisterSale() {
                     placeholder="Cantidad"
                   />
                 </p>
+
+
+
                 <button
                   type="button"
-                  className={globals.button}
+                  className={`${globals.button} ${globals.addButton}  `}
                   onClick={fetchProduct}
                 >
                   <div
@@ -253,6 +256,9 @@ export default function RegisterSale() {
                   Agregar
                 </button>
               </div>
+
+
+
               <button
                 type="button"
                 onClick={openModal}
@@ -306,11 +312,11 @@ export default function RegisterSale() {
                 <button
                   onClick={resetSale}
                   type="button"
-                  className={globals.button}
+                  className={globals.closeButton}
                 >
                   Cancelar
                 </button>
-                <button type="submit" className={globals.button}>
+                <button type="submit" className={globals.saveButton}>
                   Registrar
                 </button>
               </div>

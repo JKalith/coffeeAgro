@@ -32,7 +32,7 @@ const ModalProduct = ({ onClose, onSelectProduct }) => {
   return (
     <div>
       <div className={stylesWindow.modalOverlay}>
-        <div className={`${stylesWindow.modalContent}  ${styles.modalWidth} }`}>
+        <div className={` ${stylesWindow.modalTableP} ${stylesWindow.modalContent}`}>
 
           <p className={globals.titlePage}>Insertar producto</p>
         
@@ -47,7 +47,7 @@ const ModalProduct = ({ onClose, onSelectProduct }) => {
               <div className={globals.cell}><p>Nombre</p></div>
             </div>
           </div>
-          <div className={globals.scrollTable}>
+          <div className={globals.scrollModal}>
           <div className={globals.containerRows}
           
           >
