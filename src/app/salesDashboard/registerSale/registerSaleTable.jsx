@@ -25,30 +25,37 @@ export default function RegisterSaleTable({ productList, removeProduct }) {
         </div>
       </div>
       <div className={globals.scrollTable}>
-      <div className={globals.containerRows}>
-        {productList.map((product) => (
-          <div key={product.C_product} className={globals.productRow}>
-            <div className={globals.cell}>
-              <p>{product.D_product_name}</p>
+        <div className={globals.containerRows}>
+          {productList.map((product) => (
+            <div key={product.C_product} className={globals.productRow}>
+              <div className={globals.cell}>
+                <p>{product.D_product_name}</p>
+              </div>
+              <div className={globals.cell}>
+                <p>{product.quantity}</p>
+              </div>
+              <div className={globals.cell}>
+                <p>{product.Categories?.D_category_name}</p>
+              </div>
+              <div className={globals.cell}>
+                <p>{product.M_unit_price * product.quantity}</p>
+              </div>
+              <div className={globals.cell}>
+                <button
+                  type="button"
+                  onClick={() => removeProduct(product.C_product)}
+                  onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
+                >
+                  <div
+                    className={`${icon.containerIcon} ${icon.buyIcon}`}
+                  ></div>
+                  Quitar
+                </button>
+              </div>
             </div>
-            <div className={globals.cell}>
-              <p>{product.quantity}</p>
-            </div>
-            <div className={globals.cell}>
-              <p>{product.Categories?.D_category_name}</p>
-            </div>
-            <div className={globals.cell}>
-              <p>{product.M_unit_price * product.quantity}</p>
-            </div>
-            <div className={globals.cell}>
-              <button onClick={() => removeProduct(product.C_product)}>
-                <div className={`${icon.containerIcon} ${icon.buyIcon}`}></div>
-                Quitar
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>    </div>
+          ))}
+        </div>
+      </div>{" "}
+    </div>
   );
 }

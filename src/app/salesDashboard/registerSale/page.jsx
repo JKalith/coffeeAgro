@@ -62,7 +62,10 @@ export default function RegisterSale() {
     }
     try {
       const response = await fetch(`/api/product/${selectedProductId}`);
-      if (!response.ok) throw new Error("Producto no encontrado");
+      if (!response.ok) {
+        setErrorMessage(`Producto no encontrado`);
+        return;
+      }
       const product = await response.json();
 
       if (product.Q_stock < quantity) {
@@ -72,9 +75,7 @@ export default function RegisterSale() {
         return;
       }
       if (!product.B_status) {
-        setErrorMessage(
-          `El producto ${product.D_product_name} está inactivo`
-        );
+        setErrorMessage(`El producto ${product.D_product_name} está inactivo`);
         return;
       }
 
@@ -194,7 +195,7 @@ export default function RegisterSale() {
       )}
       <span>
         <p className={globals.titlePage}>Registrar venta</p>
-        <form onSubmit={handleRegisterSale}>
+        <form onSubmit={handleRegisterSale} onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}>
           <div className={globals.containerBetween}>
             <div className={globals.flexInput}>
               <p>Cliente:</p>
@@ -218,9 +219,9 @@ export default function RegisterSale() {
             </div>
           </div>
 
-          <div className={globals.table}>
+          <div  className={globals.table}>
             <div className={globals.containerBetween}>
-              <div className={globals.flexInput}>
+              <div   onKeyDown={(e) => e.key === "Enter" && fetchProduct()} className={globals.flexInput}>
                 <p className={styles.flexInputTitle}>
                   Producto seleccionado:
                   <input
@@ -240,10 +241,9 @@ export default function RegisterSale() {
                     onChange={handleQuantityChange}
                     min="1"
                     placeholder="Cantidad"
+                  
                   />
                 </p>
-
-
 
                 <button
                   type="button"
@@ -256,8 +256,6 @@ export default function RegisterSale() {
                   Agregar
                 </button>
               </div>
-
-
 
               <button
                 type="button"
@@ -316,7 +314,11 @@ export default function RegisterSale() {
                 >
                   Cancelar
                 </button>
-                <button type="submit" className={globals.saveButton}>
+                <button
+                  type="submit"
+                  className={globals.saveButton}
+              
+                >
                   Registrar
                 </button>
               </div>
