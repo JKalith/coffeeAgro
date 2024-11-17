@@ -148,6 +148,26 @@ border-radius: 5px;
 
 
 
+.expandMenu{
+
+display: none;
+}
+
+
+.iconClose{
+
+display: none;
+
+}
+
+
+.iconOpen {
+
+
+  display: none;
+}
+
+
 
 
 
@@ -173,7 +193,10 @@ height: fit-content;
 
 
 
+.collapseMenu{
+display: none;
 
+}
 
 
 
@@ -189,18 +212,66 @@ height: fit-content;
 
 
 
-
-.open {
-
-}
-
 .menuBtn {
- display: none;
+  display: none;
 }
 
 
 
 @media (max-width: 1000px) {
+
+
+
+
+
+
+  .collapseMenu {
+    position: absolute;
+    top: 61px;
+    display: flex;
+    font-size: 20px;
+    left: 10px;
+    width: 45px;
+    height:45px;
+    padding: 0px;
+  
+  }
+  
+  .containerMenuIcon{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 45px;
+    height:45px;
+  border-radius: 5px;
+
+  }
+
+.iconOpen{  
+  background-color: #08B69C;
+  border: solid 2px #08B69C;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 45px;
+  height:45px;
+border-radius: 5px;
+
+}
+
+.iconClose{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 45px;
+  height:45px;
+border-radius: 5px;
+  background-color: #F0FDF5;
+  border: solid 2px #08B69C;
+}
+
+
+  
   .sidenav {
  
     width: 0; 
@@ -208,14 +279,31 @@ height: fit-content;
     z-index: 1; 
     top: 0;
     left: 0;
-   
+
     overflow-x: hidden; 
     transition: 0.5s; 
  
   }
   .open {
-    width: 250px; 
+    width: 199px; 
+
   }
+
+
+
+
+  .expandMenu{
+
+
+    
+    
+    }
+  .collapseMenu{
+
+    
+  }
+
+
   .sidenav a {
   
     text-decoration: none;
@@ -228,26 +316,31 @@ height: fit-content;
   
   }
   .menuBtn {
-    font-size: 20px;
+  
     cursor: pointer;
     display: block;
-    background-color: #111;
-    color: white;
-    border: none;
-  position: absolute;
-  
+
+
+  background-color: #1e1e1e00;
+
+  width: 45px;
+  height:45px;
     margin: 10px;
 
-    top: 10px;
-    left: 10px;
+   padding: 0px;
   }
-  
+
 
 }
 
 
 @media (max-width: 480px) {
- 
+ .menuRow{
+
+display: flex;
+align-items: left;
+justify-content: left;
+ }
 }
 
 

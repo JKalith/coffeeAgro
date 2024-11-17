@@ -18,7 +18,7 @@ export default function manageCategory() {
   const handleCategoryCreated = () => {
     setRefresh((prev) => !prev);
     closeModal();
-  };
+  };
   return (
     <div className={globals.container}>
       <span>
@@ -29,7 +29,10 @@ export default function manageCategory() {
             {" "}
             <div
               className={`${icon.containerIcon} ${icon.addCategoryIcon}`}
-            ></div>
+            >
+
+
+            </div>
             Registrar categoria
           </button>
 

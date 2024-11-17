@@ -7,7 +7,11 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
   }
 
- 
+ .nav{
+
+display: flex;
+
+ }
   .navLinks {
     list-style: none; /* Quitar los puntos de la lista */
     display: flex; /* Hacer la lista horizontal */
@@ -24,7 +28,6 @@
   }
   
   .logoContainer {
-    background-color: #F0FDF5;
    
     border-radius: 10px;
       height: 30px; /* Para que ocupe toda la altura de la ventana */
@@ -65,20 +68,44 @@
 
 
 
+  .menuBtn {
+display: none;
+  }
+  .menuBTN{ 
 
+display: flex;
 
+  }
 
-  
- 
+  .dropdownMenu {
+    list-style: none; /* Quitar los puntos de la lista */
+
+    position: absolute;
+    top: 44px;
+    right: 10px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    padding: 10px;
+width: 80px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  .dropdownMenu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+
+    margin: 5px 0;
+  }
   .menuRow {
-    align-items: center; /* Centra verticalmente los elementos */
-    width: 100px; /* Ancho del SideNav */
+
+    width: 30px; /* Ancho del SideNav */
     height: 40px;
+    display: flex;
     padding:0%;
     padding-left: 5%;
     text-align: left;
     background-color: #ff000000; /* Color de fondo del sidebar */
-    flex-shrink: 0; /* Evitar que se reduzca de tamaño */
+ 
   color: black;
    border: solid rgba(245, 245, 220, 0);
   
@@ -107,7 +134,14 @@ padding: 0px;
 padding-left: 3%;
   }
   
- 
+  .opening {
+    animation: dropdown-open 1s ease-out forwards;
+  }
+
+
+  .closing {
+    animation: dropdown-close 1s ease-in forwards;
+  }
   .containerSidebar{
   
     padding-top: 10px;
@@ -192,9 +226,190 @@ background-color: #525151;
 }
 
 
+@keyframes dropdown-open {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes dropdown-close {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 748px) {
+  
+  .logoContainer {
+   margin-left: 10px;
+margin-top: 5px;
+    border-radius: 10px;
+      height: 40px; /* Para que ocupe toda la altura de la ventana */
+      width:  40px;
+    
+    }
+    .activeLabel{
+
+width: 10px;
+
+    }
+  .menuRow {
+ 
+    width: 20px;
+    height: 40px;
+  
+    padding:0%;
+    padding-left: 5%;
+    text-align: left;
+
+  color: black;
+   border: solid rgba(245, 245, 220, 0);
+  
+  
+  }
+  .dropdownMenu {
+    position: absolute;
+    top: 44px;
+    right: 10px;
+    width: 85px;
+ 
+    border-radius: 5px;
+    padding: 10px;
+margin: 0%;
+ 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  .dropdownMenu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+  
+
+    margin: 5px 0;
+  }
+
+  .navLinks {
+    display: none;
+  }
+  .menuBtn {
+    height: 40px;
+        background: none;
+    align-items: center;
+    display: flex;
+        font-size: 1.5rem;
+        border: none;
+        cursor: pointer;
+      }
 
 
 
 
 
+      .labelContent{
+     
+        display: flex;
+        width: 65px;
+        justify-content: center;
+        align-items: center;
+      border-radius: 5px;
+      padding: 0px;
+      
+ 
+        }
+    }
+    @media (max-width: 480px) {
 
+
+
+      .logoContainer {
+        margin-left: 10px;
+     margin-top: 5px;
+         border-radius: 10px;
+           height: 40px; /* Para que ocupe toda la altura de la ventana */
+           width:  40px;
+         
+         }
+         .activeLabel{
+     
+     width: 10px;
+     
+         }
+       .menuRow {
+      
+         width: 20px;
+         height: 40px;
+       
+         padding:0%;
+         padding-left: 5%;
+         text-align: left;
+     
+       color: black;
+        border: solid rgba(245, 245, 220, 0);
+       
+       
+       }
+       .dropdownMenu {
+         position: absolute;
+         top: 44px;
+         right: 10px;
+         width: 85px;
+      
+         border-radius: 5px;
+         padding: 10px;
+     margin: 0%;
+      
+         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+       }
+       .dropdownMenu a {
+         display: block;
+         color: white;
+         text-decoration: none;
+       
+     
+         margin: 5px 0;
+       }
+     
+       .navLinks {
+         display: none;
+       }
+       .menuBtn {
+         height: 40px;
+             background: none;
+         align-items: center;
+         display: flex;
+             font-size: 1.5rem;
+             border: none;
+             cursor: pointer;
+           }
+     
+     
+     
+     
+     
+           .labelContent{
+          
+             display: flex;
+             width: 65px;
+             justify-content: center;
+             align-items: center;
+           border-radius: 5px;
+           padding: 0px;
+           
+      
+             }
+
+
+
+
+    }

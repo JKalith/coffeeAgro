@@ -188,10 +188,15 @@ export default function RegisterSale() {
   return (
     <div className={globals.container}>
       {errorMessage && (
+
+        
         <ErrorMessage
           message={errorMessage}
           onClose={handleCloseErrorMessage}
         />
+
+
+
       )}
       <span>
         <p className={globals.titlePage}>Registrar venta</p>

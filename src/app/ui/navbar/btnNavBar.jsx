@@ -16,11 +16,14 @@ const BtnNavBar = ({ href, buttonText, icon }) => {
       <Link className={`${styles.labelContent} ${isActive ? styles.activeLabel:''}`} href={href}>
    <div className={`${styles.logoContainer} ${isActive ? styles.activeIcon: ''} ${icon}`} />
 
-
+ 
 
       <button className={styles.menuRow}>
-          {buttonText}
+
+      {buttonText}
+    
       </button>
+
   </Link>
     );
   };

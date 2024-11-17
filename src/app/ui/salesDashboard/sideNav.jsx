@@ -11,13 +11,25 @@ export default function SideNav() {
   };
   return (
     <div>
-      <button className={styles.menuBtn} onClick={toggleNav}>
-        {isOpen ? "Close" : "Open"}
+      <button
+        className={` ${isOpen ? styles.expandMenu : styles.collapseMenu}`}
+        onClick={toggleNav}
+      >
+        <div
+          className={`${icon.expandMenuIcon}  ${styles.iconClose}`}
+        ></div>
       </button>
-
       <div className={`${styles.sidenav}  ${isOpen ? styles.open : ""}`}>
         <div className={styles.container}>
-          <div className={styles.containerSidebar}>
+        <div className={styles.containerSidebar}>
+   
+        
+
+            <button className={styles.menuBtn} onClick={toggleNav}>
+              <div
+                className={`${icon.collapseMenuIcon}  ${styles.iconOpen} `}
+              ></div>
+            </button>
             <div className={styles.containerTitle}>
               <span className={styles.containerIconTitle}>
                 <span
@@ -71,7 +83,7 @@ export default function SideNav() {
             />
           </div>
         </div>
-      </div>
-    </div>
+      </div></div>
+
   );
 }

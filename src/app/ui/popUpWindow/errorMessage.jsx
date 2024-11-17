@@ -4,12 +4,16 @@ import globals from "../../styles/globals.module.css";
 
 const ErrorMessage = ({ message, onClose }) => {
   const handleClose = () => {
-    onClose(); // Cierra el modal llamando a la función pasada como prop
+    onClose(); 
   };
 
   return (
     <div className={styles.modalOverlay}>
+
       <div className={`${styles.modalContent} `}>
+
+
+
         <div className={styles.errorContainer}>
           <p>{message}</p>
           <span className={globals.containerButton}>
