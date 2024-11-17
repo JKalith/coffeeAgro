@@ -4,6 +4,10 @@ import styles from "../styles/navBar.module.css"
 import Link from 'next/link';
 import icons from "../styles/icons.module.css"
 import BtnNavBar from "./btnNavBar"
+import icon from '../styles/icons.module.css'
+
+
+import globals from '../../styles/globals.module.css'
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [closing, setClosing] = useState(false);
@@ -15,7 +19,7 @@ const Navbar = () => {
       setTimeout(() => {
         setMenuOpen(false);
         setClosing(false);
-      }, 700); // Duración de la animación de cierre
+      }, 1000); // Duración de la animación de cierre
     } else {
       setMenuOpen(true);
     }
@@ -40,9 +44,22 @@ const Navbar = () => {
     <li> <BtnNavBar href="/plotDashboard" buttonText="Lotes" icon={icons.loteIcon} /></li>
     <li> <BtnNavBar href="/payrollDashboard" buttonText="Planilla" icon={icons.payrollIcon} /></li>
   </ul>
-  <button className={styles.menuBtn} onClick={toggleMenu}>
-        ☰
-      </button>
+
+
+  <div className={styles.hideDropdown}>
+
+
+
+
+      <button className={globals.button} onClick={toggleMenu}>
+            <div className={`${icon.containerIcon} ${icon.addProductIcon}`}></div>
+
+          </button>
+
+
+
+
+
       {(menuOpen || closing) && (
          <ul 
           className={`${styles.dropdownMenu} ${
@@ -59,6 +76,9 @@ const Navbar = () => {
 
     </ul>
       )}
+
+          
+  </div>
 </nav>
 
   );

@@ -20,7 +20,7 @@ const BtnNavBar = ({ href, buttonText, icon }) => {
 
       <button className={styles.menuRow}>
 
-      {buttonText}
+{buttonText}
     
       </button>
 

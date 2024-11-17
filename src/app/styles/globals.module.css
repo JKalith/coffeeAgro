@@ -303,10 +303,10 @@ width: 300px;
 
 height: fit-content;
 margin-top: 10px;
-
+background-color: #d9d9d96c;
   display: flex;
   border-radius: 5px;
-  background-color: #d9d9d9;
+
 }
 
 .titles {
@@ -352,8 +352,17 @@ margin-top: 10px;
 
   width: auto;               
   margin-bottom: 5px;      
-
+  background: #5d5d5d00;
+  box-shadow:  3px 3px 6px #5a5a5a00,
+               -2px -2px 6px #00000000;
+color: white;
 }
+
+
+
+
+
+
 
 .cell {
   display: flex;               
@@ -496,9 +505,22 @@ cursor: pointer;
 
 
 
+@media (max-width: 1000px) {
+  .displayTitle{
+ 
+    background-color: #a0a0a000;
+  
+    
+      }
 
-
-
+.titlePage{
+  justify-content: center;
+  display: flex;
+background-color: #5D5D5D;
+margin-right: 70px;
+border-radius: 5px;
+margin-left: 70px;
+  } }
 
 
 
@@ -509,13 +531,16 @@ cursor: pointer;
 
   .table {
     width: 100%;
-  
+  height: auto;
+  overflow: hidden;
   }
 
-  .titles, .titlePage {
-    font-size: 16px; 
-  }
 
+  .titlePage{
+    justify-content: center;
+    display: flex;
+ 
+    }
   .containerBetween {
    
     align-items: center;
@@ -548,11 +573,9 @@ cursor: pointer;
     justify-content: space-between;
   }
 
- .productRow{
- 
+ .table{
 
-border: solid 0.5px #78716C;
-border-radius: 10px;
+overflow: hidden;
 
 
  }
@@ -569,10 +592,22 @@ border-radius: 10px;
   white-space: nowrap; 
 
 }
+.displayTitle{
+ 
+  background-color: #a0a0a000;
+
+  
+    }
   .titles, .titlePage {
     font-size: 20px; /* Fuente más pequeña en pantallas muy pequeñas */
-  }
 
+  
+  }
+  .titlePage{
+    justify-content: center;
+    display: flex;
+
+    }
   .containerButton{
     margin-left: 5px;
   margin-top: 10px;
@@ -617,9 +652,35 @@ border-radius: 10px;
 @media (prefers-color-scheme: dark) {
 
 
+  @media (max-width: 1000px) {
+
+    .productRow{
+    
+   
+   border: solid 0.5px #78716C;
+   border-radius: 10px;
+
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background: #5D5D5D;
+    box-shadow:  3px 3px 6px #5a5a5a,
+                 -2px -2px 6px #000000;
+color: white;
 
 
 
+   
+   
+   
+    }}
+
+.displayTitle{
+
+
+
+
+  
+}
   .checkbox {
     cursor: pointer;
     background-image: none;
@@ -677,6 +738,7 @@ border-radius: 10px;
 
   .table {
    background-color: #3C3C3C;
+ 
   }
 
  .titlePage {
@@ -687,20 +749,15 @@ border-radius: 10px;
   .filterContainer {
 
 
-    background-color: #3C3C3C;
+    background-color: #3c3c3c00;
   }
   .displayTitle{
 
-
-
-    background-color: #5D5D5D;
-  }
-  .productRow{
-
-color: white;
+background-color: none;
 
 
   }
+
 
 
   .hoverRows:hover {

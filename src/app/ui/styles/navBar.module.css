@@ -28,7 +28,7 @@ display: flex;
   }
   
   .logoContainer {
-   
+   background-color: #F0FDF5;
     border-radius: 10px;
       height: 30px; /* Para que ocupe toda la altura de la ventana */
       width:  30px;
@@ -70,11 +70,6 @@ display: flex;
 
   .menuBtn {
 display: none;
-  }
-  .menuBTN{ 
-
-display: flex;
-
   }
 
   .dropdownMenu {
@@ -123,7 +118,11 @@ width: 80px;
     background-color: #D9D9D9
 
   }
+  .hideDropdown{
+display: none;
 
+
+   }
   .labelContent{
   display: flex;
   width: 140px;
@@ -163,7 +162,13 @@ color: white;
 
 
 }
+.labelContent{
 
+
+background-color: #343434;
+
+
+}
   .navbar {
     display: flex;
     justify-content: space-between; /* Espacio entre el logo y los enlaces */
@@ -175,7 +180,13 @@ color: white;
 
 
 
+  .dropdownMenu{
 
+
+background-color: #343434;
+
+
+  }
 
 
 
@@ -201,8 +212,6 @@ color: white;
 .menuRow{
 
 color: white;
-
-
 }
 
 
@@ -228,29 +237,32 @@ background-color: #525151;
 
 @keyframes dropdown-open {
   from {
-    transform: translateY(-10px);
+    transform: translateX(0);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: translateX(-10PX);
     opacity: 1;
   }
 }
 
 @keyframes dropdown-close {
   from {
-    transform: translateY(0);
+    transform: translateX(-10PX);
     opacity: 1;
   }
   to {
-    transform: translateY(-10px);
+    transform: translateX(0);
     opacity: 0;
   }
 }
 
 /* Responsive Design */
 @media (max-width: 748px) {
-  
+  .hideDropdown{
+    
+    
+    display: block;}
   .logoContainer {
    margin-left: 10px;
 margin-top: 5px;
@@ -266,14 +278,12 @@ width: 10px;
     }
   .menuRow {
  
-    width: 20px;
+    width: 100%;
     height: 40px;
   
-    padding:0%;
-    padding-left: 5%;
-    text-align: left;
 
-  color: black;
+   justify-content: center;
+
    border: solid rgba(245, 245, 220, 0);
   
   
@@ -303,8 +313,10 @@ margin: 0%;
     display: none;
   }
   .menuBtn {
-    height: 40px;
-        background: none;
+    height: 50px;
+    color: white;
+
+        background: blue;
     align-items: center;
     display: flex;
         font-size: 1.5rem;
@@ -317,7 +329,7 @@ margin: 0%;
 
 
       .labelContent{
-     
+  
         display: flex;
         width: 65px;
         justify-content: center;
@@ -347,14 +359,13 @@ margin: 0%;
          }
        .menuRow {
       
-         width: 20px;
+         width: 100%;
          height: 40px;
        
          padding:0%;
          padding-left: 5%;
-         text-align: left;
-     
-       color: black;
+         justify-content: center;
+   
         border: solid rgba(245, 245, 220, 0);
        
        
