@@ -37,7 +37,7 @@ export async function POST(req) {
     });
   } catch (error) {
     console.error("Error al crear la categoria: ", error);
-    return new Response(JSON.stringify({ error: "Error al crear la categoria"}),{
+    return new Response(JSON.stringify({ error: "Nombre de categoria ya existente"}),{
       status: 500,
       headers:{
         'Content-Type': 'application/json',

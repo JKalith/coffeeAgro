@@ -50,7 +50,7 @@ export default function CreateCategory({ isOpen, onClose, initialCategory = null
         onCategoryCreated(); 
       } else {
         const errorData = await response.json();
-        setMessage(errorData.error || 'Error al crear o actualizar la categoría');
+        setMessage(errorData.error || 'Nombre Categoria ya existente');
       }
     } catch (error) {
       setMessage(`Error: ${error.message}`);

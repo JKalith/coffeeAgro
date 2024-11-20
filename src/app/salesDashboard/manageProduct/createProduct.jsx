@@ -124,6 +124,7 @@ const CreateProduct = ({
         setMessage("Producto creado/modificado exitosamente");
         setFormData(initialFormState);
         onProductCreated();
+        setMessage();
       } else {
         const errorData = await response.json();
         setMessage(

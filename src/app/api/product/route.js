@@ -1,3 +1,4 @@
+import { Prisma } from '@prisma/client';
 import db from '../../../libs/db'
 export async function GET(req) {
   try {
@@ -51,8 +52,7 @@ export async function POST(req) {
     });
   } catch (error) {
     console.error("Error al crear el producto: ", error);
-    if (error instanceof Prisma.PrismaClientKnownRequestError) {
-      if (error.code === 'P2002') {
+    
         return new Response(JSON.stringify({ error: "Ya existe un producto con este nombre." }), {
           status: 409,
           headers: {
@@ -60,12 +60,4 @@ export async function POST(req) {
           },
         });
       }
-    }
-    return new Response(JSON.stringify({ error: "Error al crear el producto" }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  }
 }
