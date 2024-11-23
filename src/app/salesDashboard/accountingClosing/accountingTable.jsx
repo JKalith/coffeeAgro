@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import AccountingClosingWindow from "../../salesDashboard/accountingClosing/accountingClosingWindow";
 import AccountingJustificationWindow from "../../salesDashboard/accountingClosing/accountingJustificationWindow";
 import icon from '../../ui/styles/icons.module.css'
-import spinner from '../../ui/styles/loadingScreen.module.css'
+
 
 export default function AccountingTable() {
   const [products, setProducts] = useState([]);
@@ -100,7 +100,7 @@ const updatedListFilter = updatedList.filter((product) => product.difference !==
   return (
     <div>
       <div className={globals.displayTitle}>
-        <div className={globals.productRow}>
+        <div className={globals.titleRow}>
           <div className={globals.cell}>
             <p>Codigo de Producto</p>
           </div>
@@ -121,11 +121,20 @@ const updatedListFilter = updatedList.filter((product) => product.difference !==
           {loading ? (
 
 
-<div className={spinner.loadingContainer}>
+/* <div className={spinner.loadingContainer}>
 <div className={spinner.loader}></div>
 <p>Cargando...</p>
+</div> */
+
+<div>
+<p>
+  cargando...
+</p>
+
 </div>
+
  
+
 
 
 

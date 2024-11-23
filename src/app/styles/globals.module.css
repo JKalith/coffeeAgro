@@ -173,14 +173,36 @@ width: auto;
       overflow-y: scroll;
       overflow-x: none;  
       justify-content: center;
-  
+
       border-radius: 10px;
-   
-      padding: 3px;
 
       white-space: nowrap; 
   
     }
+
+
+    .scrollModal::-webkit-scrollbar {
+      width: 10px;     
+ 
+    }
+    
+    .scrollModal::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+      border-radius: 5PX;
+    }
+    
+    .scrollModal::-webkit-scrollbar-thumb {
+      background: #888; 
+      border-radius: 5px;
+    }
+    
+
+
+
+
+
+
+
 
 
 
@@ -190,7 +212,7 @@ width: auto;
     overflow-x: none;  
     justify-content: center;
 padding: 4px;
-padding-top: 10px;
+
 
   width: auto;
     
@@ -205,7 +227,8 @@ padding-top: 10px;
   
  
   .scrollTable::-webkit-scrollbar {
-    width: 10px;      
+    width: 10px;     
+
   }
   
   .scrollTable::-webkit-scrollbar-track {
@@ -302,8 +325,8 @@ width: 300px;
   align-items: center;
 
 height: fit-content;
-margin-top: 10px;
-background-color: #d9d9d96c;
+
+
   display: flex;
   border-radius: 5px;
 
@@ -501,7 +524,35 @@ cursor: pointer;
 
 
 
+.titleRow{
+  
+  margin-top: 8px;
 
+  display: flex;              
+  align-items: center;
+  flex: 1;    
+  flex-wrap: wrap; 
+
+
+
+
+  border-radius: 10px;
+display: flex;
+width: 100%;
+height:auto;
+   border-radius: 5px;
+   margin-bottom: 15px;
+   background: #d9d9d998;
+   box-shadow:  3px 3px 6px #b9b9b9,
+                -2px -2px 6px #b9b9b9;
+color: white;
+
+
+
+  
+
+
+}
 
 
 
@@ -516,7 +567,7 @@ cursor: pointer;
 .titlePage{
   justify-content: center;
   display: flex;
-background-color: #5D5D5D;
+
 margin-right: 70px;
 border-radius: 5px;
 margin-left: 70px;
@@ -654,6 +705,30 @@ overflow: hidden;
 
   @media (max-width: 1000px) {
 
+
+    .titleRow{
+  
+      border: solid 0.5px #78716C;
+      border-radius: 10px;
+    display: flex;
+    width: 100%;
+ 
+       border-radius: 5px;
+       margin-bottom: 15px;
+       background: #5D5D5D;
+       box-shadow:  3px 3px 6px #5a5a5a,
+                    -2px -2px 6px #000000;
+    color: white;
+    
+    
+    
+      
+    
+    
+    }
+    
+
+
     .productRow{
     
    
@@ -680,6 +755,33 @@ color: white;
 
 
   
+}
+
+.titleRow{
+
+
+  border: solid 0.5px #78716C;
+  border-radius: 10px;
+display: flex;
+width: 100%;
+
+   border-radius: 5px;
+   margin-bottom: 15px;
+   background: #5D5D5D;
+   box-shadow:  3px 3px 6px #5a5a5a5c,
+                -2px -2px 6px #000000;
+color: white;
+
+
+
+
+
+
+
+
+
+
+
 }
   .checkbox {
     cursor: pointer;

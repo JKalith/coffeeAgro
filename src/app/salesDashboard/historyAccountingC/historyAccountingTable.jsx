@@ -38,7 +38,7 @@ export default function HistoryAccountingTable() {
   return (
     <div>
       <div className={globals.displayTitle}>
-        <div className={globals.productRow}>
+        <div className={globals.titleRow}>
           <div className={globals.cell}>
             <p>Numero de cierre</p>
           </div>

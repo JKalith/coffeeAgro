@@ -66,7 +66,7 @@ export default function CategoryTable(  {refresh}   ) {
   return (
     <div>
       <div className={globals.displayTitle}>
-        <div className={globals.productRow}>
+        <div className={globals.titleRow}>
           <div className={globals.cell}>
             <p>Categoria</p>
           </div>

@@ -42,7 +42,7 @@ const ModalProduct = ({ onClose, onSelectProduct }) => {
 
 
 
-            <div className={globals.productRow}>
+            <div className={globals.titleRow}>
               <div className={globals.cell}><p>ID</p></div>
               <div className={globals.cell}><p>Nombre</p></div>
             </div>

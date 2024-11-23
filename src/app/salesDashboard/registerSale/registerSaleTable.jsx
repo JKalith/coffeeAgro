@@ -6,7 +6,7 @@ export default function RegisterSaleTable({ productList, removeProduct }) {
   return (
     <div>
       <div className={globals.displayTitle}>
-        <div className={globals.productRow}>
+        <div className={globals.titleRow}>
           <div className={globals.cell}>
             <p>Producto</p>
           </div>

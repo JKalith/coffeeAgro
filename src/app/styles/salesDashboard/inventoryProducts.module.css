@@ -54,8 +54,21 @@ padding-bottom: 0px;
     border: solid 0.5px #78716c;
     border-radius: 10px;
     background-color: #868686;
-    color: #0a0a0a;
+    color: white;
   }
+ .containerText:focus{
 
+    height: 30px;
+    margin-bottom: 5px;
+    width: 250px;
+    padding-left: 7px;
+  
+    border: solid 0.5px #78716c;
+    border-radius: 10px;
+    background-color: #868686;
+    color: white;
+
+
+ }
 
 }

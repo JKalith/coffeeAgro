@@ -7,7 +7,7 @@ export default function HistoryTable({ invoices, loading, error, onSelectedInvoi
   return (
     <div >
       <div className={globals.displayTitle}>
-        <div className={globals.productRow}>
+        <div className={globals.titleRow}>
           <div className={globals.cell}><p>Numero de facturas</p></div>
           <div className={globals.cell}><p>Cliente</p></div>
           <div className={globals.cell}><p>Fecha</p></div>

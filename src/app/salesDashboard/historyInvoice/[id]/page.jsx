@@ -48,9 +48,10 @@ export default function InvoiceDetails() {
 
   <div className={`${globals.table}`}>
 
+      <div className={`${globals.titleRow} ${globals.displayTitle}`}>
 
 
-      <div className={`${globals.productRow} ${globals.displayTitle}`}>
+
         <div className={globals.cell}>
           <p>Código de Producto</p>
         </div>

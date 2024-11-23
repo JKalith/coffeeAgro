@@ -45,7 +45,7 @@ export default function AccountingDetails() {
       <p className={globals.titlePage}>Detalles de la Cierre contable #{id}</p>
 
       <div className={`${globals.table}`}>
-        <div className={`${globals.productRow} ${globals.displayTitle}`}>
+        <div className={`${globals.titleRow} ${globals.displayTitle}`}>
           <div className={globals.cell}>
             <p>Nombre del Producto</p>
           </div>

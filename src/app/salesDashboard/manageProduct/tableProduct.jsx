@@ -78,7 +78,7 @@ export default function TableProducts({ refresh }) {
   return (
     <div>
       <div className={globals.displayTitle}>
-        <div className={globals.productRow}>
+        <div className={globals.titleRow}>
           <div className={globals.cell}>
             <p>Producto</p>
           </div>
@@ -91,7 +91,10 @@ export default function TableProducts({ refresh }) {
           <div className={globals.cell}>
             <p>Estado</p>
           </div>
-          <div className={globals.cell}>Cambiar estado</div>
+          <div className={globals.cell}>
+          <p>Cambiar estado</p></div>
+
+
           <div className={globals.cell}>
             <p>Modificar</p>
           </div>

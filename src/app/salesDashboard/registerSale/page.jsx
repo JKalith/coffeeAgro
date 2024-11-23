@@ -238,6 +238,8 @@ export default function RegisterSale() {
                   />
                 </p>
                 <p className={styles.flexInputTitle}>
+
+                  
                   Cantidad:
                   <input
                     className={styles.inputPayment}
